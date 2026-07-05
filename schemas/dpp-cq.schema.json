@@ -1,0 +1,302 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://icoun.org/schemas/dpp-cq/v1.0.0",
+  "title": "DPP-CQ: Digital Product Passport for Cultural & Quality Goods",
+  "description": "ICO Std 2001-2026 — Core data schema for cultural and quality product digital passports. Based on W3C Verifiable Credentials Data Model v2.0.",
+  "type": "object",
+  "required": ["@context", "type", "issuer", "issuanceDate", "credentialSubject", "proof"],
+  "properties": {
+    "@context": {
+      "type": "array",
+      "description": "JSON-LD context definitions. Must include W3C VC base context and DPP-CQ context.",
+      "items": { "type": "string", "format": "uri" },
+      "minItems": 2,
+      "examples": [
+        [
+          "https://www.w3.org/ns/credentials/v2",
+          "https://icoun.org/contexts/dpp-cq/v1"
+        ]
+      ]
+    },
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Unique credential identifier. Recommended format: did:ico:dpp:<namespace>:<unique-id>"
+    },
+    "type": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Credential type. Must include 'VerifiableCredential' and at least one DPP-CQ type.",
+      "minItems": 2,
+      "examples": [["VerifiableCredential", "DPPQualityCredential", "CulturalHeritageCredential"]]
+    },
+    "issuer": {
+      "type": "string",
+      "format": "uri",
+      "description": "DID of the issuing authority. Format: did:ico:issuer:<namespace>"
+    },
+    "issuanceDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the credential was issued (RFC 3339)."
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the credential expires (RFC 3339). RECOMMENDED for quality-sensitive products."
+    },
+    "credentialSubject": {
+      "type": "object",
+      "description": "The subject of the credential — the product and its attributes.",
+      "required": ["id", "productName", "category"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "description": "Product DID. Format: did:ico:dpp:<namespace>:<unique-id>"
+        },
+        "productName": {
+          "type": "object",
+          "description": "Product name in multiple languages. Key is ISO 639-1 language code.",
+          "additionalProperties": { "type": "string" },
+          "examples": [{ "zh": "西湖龙井茶", "en": "West Lake Longjing Tea" }]
+        },
+        "category": {
+          "type": "string",
+          "description": "Product category code. See ICO Std 2001 Annex A for full category list.",
+          "enum": [
+            "geographical-indication-tea",
+            "intangible-cultural-heritage-ceramic",
+            "haute-couture-apparel",
+            "geographical-indication-food",
+            "handicraft",
+            "specialty-agricultural-product",
+            "cultural-creative-product",
+            "other"
+          ]
+        },
+        "qualityGrade": {
+          "type": "string",
+          "description": "Quality grade per issuing authority's classification scheme."
+        },
+        "productImage": {
+          "type": "string",
+          "format": "uri",
+          "description": "URI of the product image (IPFS CID or HTTPS URL recommended)."
+        },
+        "origin": {
+          "type": "object",
+          "description": "Geographical origin information.",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["GeographicalIndication", "PlaceOfOrigin", "ManufacturingLocation"]
+            },
+            "giNumber": {
+              "type": "string",
+              "description": "Official geographical indication registration number, if applicable."
+            },
+            "region": {
+              "type": "string",
+              "description": "Region or place of origin name."
+            },
+            "country": {
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 country code.",
+              "pattern": "^[A-Z]{2}$"
+            },
+            "coordinates": {
+              "type": "object",
+              "properties": {
+                "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+                "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+              },
+              "required": ["latitude", "longitude"]
+            }
+          },
+          "required": ["type", "country"]
+        },
+        "culturalData": {
+          "type": "object",
+          "description": "Cultural heritage and intangible cultural value data (optional).",
+          "properties": {
+            "heritageStatus": {
+              "type": "string",
+              "description": "ICH heritage classification level.",
+              "enum": [
+                "UNESCO Intangible Cultural Heritage",
+                "National Intangible Cultural Heritage",
+                "Provincial Intangible Cultural Heritage",
+                "Traditional Craft",
+                "Culturally Significant",
+                "None"
+              ]
+            },
+            "heritageYear": {
+              "type": "integer",
+              "description": "Year of inscription or recognition."
+            },
+            "heritageNumber": {
+              "type": "string",
+              "description": "Official ICH registration or inscription number."
+            },
+            "craftMethod": {
+              "type": "string",
+              "description": "Description of traditional craftsmanship or production method."
+            },
+            "craftHistory": {
+              "type": "string",
+              "description": "Historical background of the craft or product tradition."
+            },
+            "artisanInfo": {
+              "type": "object",
+              "description": "Artisan or master craftsman information (with consent).",
+              "properties": {
+                "name": { "type": "string" },
+                "title": { "type": "string" },
+                "generation": { "type": "string" },
+                "biography": { "type": "string" }
+              }
+            },
+            "culturalNarrative": {
+              "type": "string",
+              "description": "Cultural story, legend, or significance narrative."
+            }
+          }
+        },
+        "traceability": {
+          "type": "object",
+          "description": "Supply chain traceability data.",
+          "properties": {
+            "harvestDate": {
+              "type": "string",
+              "format": "date",
+              "description": "Harvest or production date (ISO 8601)."
+            },
+            "processLocation": {
+              "type": "string",
+              "description": "Location of processing or manufacturing."
+            },
+            "batchNumber": {
+              "type": "string",
+              "description": "Production batch or lot number."
+            },
+            "supplyChainSteps": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "step": { "type": "string" },
+                  "date": { "type": "string", "format": "date" },
+                  "location": { "type": "string" },
+                  "entity": { "type": "string" },
+                  "certification": { "type": "string" }
+                },
+                "required": ["step", "date"]
+              }
+            }
+          }
+        },
+        "qualityAttributes": {
+          "type": "object",
+          "description": "Product quality and sensory attributes.",
+          "properties": {
+            "appearance": { "type": "string" },
+            "aroma": { "type": "string" },
+            "taste": { "type": "string" },
+            "texture": { "type": "string" },
+            "materialComposition": { "type": "string" },
+            "specifications": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "attribute": { "type": "string" },
+                  "value": { "type": "string" },
+                  "unit": { "type": "string" },
+                  "testMethod": { "type": "string" }
+                },
+                "required": ["attribute", "value"]
+              }
+            },
+            "certifications": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "certificationBody": { "type": "string" },
+                  "certificationType": { "type": "string" },
+                  "certificateNumber": { "type": "string" },
+                  "validUntil": { "type": "string", "format": "date" }
+                },
+                "required": ["certificationBody", "certificationType"]
+              }
+            }
+          }
+        },
+        "authenticityMarks": {
+          "type": "array",
+          "description": "Physical anti-counterfeiting features registered on-chain.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["nfc-chip", "qr-code", "hologram", "watermark", "security-thread", "other"]
+              },
+              "identifier": { "type": "string" },
+              "description": { "type": "string" }
+            },
+            "required": ["type", "identifier"]
+          }
+        }
+      }
+    },
+    "credentialStatus": {
+      "type": "object",
+      "description": "Credential status verification mechanism.",
+      "properties": {
+        "id": { "type": "string", "format": "uri" },
+        "type": {
+          "type": "string",
+          "examples": ["BitstringStatusListEntry", "RevocationList2020"]
+        },
+        "statusPurpose": {
+          "type": "string",
+          "enum": ["revocation", "suspension"]
+        },
+        "statusListIndex": { "type": "string" },
+        "statusListCredential": { "type": "string", "format": "uri" }
+      },
+      "required": ["type"]
+    },
+    "proof": {
+      "type": "object",
+      "description": "Digital proof of the credential. See W3C VC Data Integrity specification.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Proof suite type. RECOMMENDED: BbsBlsSignature2020, Ed25519Signature2020, or DataIntegrityProof.",
+          "examples": ["BbsBlsSignature2020", "Ed25519Signature2020", "DataIntegrityProof"]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "proofPurpose": {
+          "type": "string",
+          "enum": ["assertionMethod", "authentication", "controllerProof"]
+        },
+        "verificationMethod": {
+          "type": "string",
+          "format": "uri"
+        },
+        "proofValue": { "type": "string" },
+        "previousProof": { "type": "string" },
+        "domain": { "type": "string" },
+        "challenge": { "type": "string" }
+      },
+      "required": ["type", "created", "proofPurpose", "verificationMethod"]
+    }
+  }
+}

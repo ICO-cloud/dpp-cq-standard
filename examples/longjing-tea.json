@@ -1,0 +1,148 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://icoun.org/contexts/dpp-cq/v1"
+  ],
+  "id": "did:ico:dpp:tea:longjing-xh-2026-001",
+  "type": [
+    "VerifiableCredential",
+    "DPPQualityCredential",
+    "CulturalHeritageCredential"
+  ],
+  "issuer": "did:ico:issuer:zjtea-assoc",
+  "issuanceDate": "2026-07-15T00:00:00Z",
+  "expirationDate": "2027-07-14T23:59:59Z",
+  "credentialStatus": {
+    "id": "https://resolver.icoun.org/v1/status/001#42",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "42",
+    "statusListCredential": "https://resolver.icoun.org/v1/status/001"
+  },
+  "credentialSubject": {
+    "id": "did:ico:dpp:tea:longjing-xh-2026-001",
+    "productName": {
+      "zh": "西湖龙井茶",
+      "en": "West Lake Longjing Tea"
+    },
+    "category": "geographical-indication-tea",
+    "qualityGrade": "Premium Grade 1",
+    "productImage": "ipfs://QmXYZ...",
+    "origin": {
+      "type": "GeographicalIndication",
+      "giNumber": "GI-CN-0001",
+      "region": "West Lake Production Area, Hangzhou",
+      "country": "CN",
+      "coordinates": {
+        "latitude": 30.2408,
+        "longitude": 120.1542
+      }
+    },
+    "culturalData": {
+      "heritageStatus": "National Intangible Cultural Heritage",
+      "heritageYear": 2008,
+      "heritageNumber": "Ⅷ-148",
+      "craftMethod": "Hand-fired with ten traditional techniques",
+      "craftHistory": "Longjing tea has a history of over 1,200 years, dating back to the Tang Dynasty.",
+      "artisanInfo": {
+        "name": "Disclosed with authorization",
+        "title": "National Master of Tea Craft",
+        "generation": "5th Generation"
+      },
+      "culturalNarrative": "Longjing tea is one of China's Ten Famous Teas, known for its four characteristics: green color, fragrant aroma, sweet taste, and beautiful shape."
+    },
+    "traceability": {
+      "harvestDate": "2026-03-28",
+      "processLocation": "Longwu Tea Town, Hangzhou",
+      "batchNumber": "XH20260328A01",
+      "supplyChainSteps": [
+        {
+          "step": "Tea leaf harvesting",
+          "date": "2026-03-28",
+          "location": "Shifeng Mountain, West Lake",
+          "entity": "Longjing Tea Cooperative"
+        },
+        {
+          "step": "Hand-firing processing",
+          "date": "2026-03-28",
+          "location": "Longwu Tea Town",
+          "entity": "Master Workshop"
+        },
+        {
+          "step": "Quality inspection",
+          "date": "2026-03-29",
+          "entity": "Zhejiang Tea Quality Inspection Center",
+          "certification": "Premium Grade 1"
+        },
+        {
+          "step": "Packaging and sealing",
+          "date": "2026-03-30",
+          "location": "Hangzhou"
+        }
+      ]
+    },
+    "qualityAttributes": {
+      "appearance": "Flat and smooth, tender green color",
+      "aroma": "Long-lasting tender chestnut aroma",
+      "taste": "Fresh, mellow, and sweet aftertaste",
+      "specifications": [
+        {
+          "attribute": "Tea polyphenols",
+          "value": "18.5",
+          "unit": "%",
+          "testMethod": "GB/T 8313-2018"
+        },
+        {
+          "attribute": "Amino acids",
+          "value": "4.2",
+          "unit": "%",
+          "testMethod": "GB/T 8314-2013"
+        },
+        {
+          "attribute": "Caffeine",
+          "value": "3.1",
+          "unit": "%",
+          "testMethod": "GB/T 8312-2013"
+        },
+        {
+          "attribute": "Water content",
+          "value": "5.8",
+          "unit": "%",
+          "testMethod": "GB 5009.3-2016"
+        }
+      ],
+      "certifications": [
+        {
+          "certificationBody": "General Administration of Quality Supervision",
+          "certificationType": "Geographical Indication Protection Product",
+          "certificateNumber": "GI-CN-0001",
+          "validUntil": "2030-12-31"
+        },
+        {
+          "certificationBody": "Ministry of Culture and Tourism",
+          "certificationType": "National Intangible Cultural Heritage",
+          "certificateNumber": "Ⅷ-148"
+        }
+      ]
+    },
+    "authenticityMarks": [
+      {
+        "type": "nfc-chip",
+        "identifier": "NTAG-424-DNA-001",
+        "description": "NFC chip with unique ID, tamper-evident"
+      },
+      {
+        "type": "qr-code",
+        "identifier": "did:ico:dpp:tea:longjing-xh-2026-001",
+        "description": "QR code linking to DPP verification page"
+      }
+    ]
+  },
+  "proof": {
+    "type": "BbsBlsSignature2020",
+    "created": "2026-07-15T10:30:00Z",
+    "proofPurpose": "assertionMethod",
+    "verificationMethod": "did:ico:issuer:zjtea-assoc#keys-1",
+    "proofValue": "t8MwnQJvN9..."
+  }
+}
