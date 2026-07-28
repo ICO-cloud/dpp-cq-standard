@@ -32,38 +32,31 @@ DPP-CQ extends the digital product passport paradigm beyond environmental and ci
 | **Privacy by Design** | Zero-Knowledge Proofs for compliance without disclosing sensitive data |
 | **Technology Neutral** | Multi-chain hash anchoring, no vendor lock-in |
 
-### Architecture
+### Architecture Layers
 
-```
-┌─────────────────────────────────────────────────────┐
-│  Governance & Compliance Layer  (4000-series)       │
-├─────────────────────────────────────────────────────┤
-│  System & Assessment Layer  (3000-series)           │
-├─────────────────────────────────────────────────────┤
-│  Product Standards Layer  (2000-series)             │
-│  DPP-CQ · GI Mutual Recognition · Haute Couture     │
-├─────────────────────────────────────────────────────┤
-│  Base Protocols Layer  (1000-series)                │
-│  DID · Verifiable Credentials · Data Traceability   │
-└─────────────────────────────────────────────────────┘
-```
+| Layer | Series | Scope |
+|-------|--------|-------|
+| Governance & Compliance | 4000 | Standards process · Multi-stakeholder governance · Dispute resolution |
+| System & Assessment | 3000 | Institutional credibility · Cross-cultural trust · AI content traceability |
+| Product Standards | 2000 | DPP-CQ · GI Mutual Recognition · Haute Couture · ICH |
+| Base Protocols | 1000 | DID · Verifiable Credentials · Data Traceability · Cryptographic suites |
 
 ---
 
 ## Documentation
 
-| Document | Description | Languages |
-|----------|-------------|-----------|
-| [White Paper (Full)](white-paper/README.md) | Complete standard specification (ICO-TS-001:2026 v1.3) | 中文 |
-| [White Paper (English)](white-paper/white-paper-en.md) | Full English version | English |
-| [Executive Summary](white-paper/executive-summary.md) | Concise overview for decision-makers | English |
-| [JSON Schema](schema.md) | Data model specification for DPP-CQ credentials | — |
-| [Examples](examples.md) | Sample credential payloads | — |
+| Document | Description | Language |
+|----------|-------------|----------|
+| [White Paper (中文)](docs/white-paper/) | Complete standard specification (ICO-TS-001:2026 v1.3) | 中文 |
+| [White Paper (English)](docs/white-paper/white-paper-en.md) | Full English version | English |
+| [Executive Summary](docs/white-paper/executive-summary.md) | Concise overview for decision-makers | English |
+| [JSON Schema Reference](schema.html) | Data model specification | — |
+| [Credential Examples](examples.html) | Sample credential payloads | — |
 
-### Downloads
+### PDF Downloads
 
-- 📄 [White Paper PDF (中文)](white-paper/DPP-CQ_White_Paper_v1.3.pdf)
-- 📄 [White Paper PDF (English)](white-paper/DPP-CQ_White_Paper_v1.3_EN.pdf)
+- 📄 [White Paper PDF (中文)](docs/white-paper/DPP-CQ_White_Paper_v1.3.pdf)
+- 📄 [White Paper PDF (English)](docs/white-paper/DPP-CQ_White_Paper_v1.3_EN.pdf)
 
 ---
 
@@ -85,9 +78,9 @@ DPP-CQ is built **on top of** established international standards:
 
 ICO employs a **multi-stakeholder governance** model:
 
-- **General Assembly** — Supreme decision-making body
+- **General Assembly** — Supreme decision-making body, meets annually
 - **Standards Council** — 25% government / 25% industry / 20% academia / 20% civil society / 10% Technical Secretariat (non-voting)
-- **Technical Secretariat** — Neutral execution body
+- **Technical Secretariat** — Neutral execution body; maintains reference implementations, operates Root Resolver Network
 - **Working Groups** — Open participation for all members
 
 ---
