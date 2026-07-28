@@ -109,20 +109,19 @@ DPP-CQ fills this gap by focusing on the *cultural value dimension* and *quality
 ## Repository Structure
 
 ```
-ico-standards/
-├── white-paper/          # White paper (CN + EN)
-├── specs/                # Technical specifications
-│   ├── dpp-cq/           # DPP-CQ standard
-│   ├── did-method/       # DID method specification
-│   └── vocabulary/       # JSON-LD context and vocabulary
-├── schemas/              # JSON schemas for data models
-├── reference/            # Reference implementations (planned)
-├── sdk/                  # Language SDKs (planned)
-├── governance/           # Governance documents and charters
-├── assets/               # Logos, diagrams, and brand assets
+dpp-cq-standard/
+├── docs/
+│   ├── white-paper/      # White paper (CN + EN) — PDF & Markdown
+│   └── README.md
+├── schemas/              # JSON schemas for DPP-CQ data models
+├── examples/             # Example DPP-CQ credential payloads
+├── .github/              # Issue templates (Bug, Comment, Feature Request)
 ├── ROADMAP.md            # Project roadmap
+├── CHANGELOG.md          # Version history
 ├── CONTRIBUTING.md       # Contribution guidelines
-└── LICENSE               # Apache 2.0 (code) / CC BY 4.0 (docs)
+├── CODE_OF_CONDUCT.md    # Community conduct expectations
+├── SECURITY.md           # Security / vulnerability reporting policy
+└── LICENSE               # Apache 2.0
 ```
 
 ## License
