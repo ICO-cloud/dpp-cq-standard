@@ -1,0 +1,24 @@
+title: "DPP-CQ Standard"
+description: "Digital Product Passport for Cultural & Quality Goods — ICO Std 2001"
+baseurl: "/dpp-cq-standard"
+url: "https://ico-cloud.github.io"
+theme: minima
+markdown: kramdown
+
+header_pages:
+  - index.md
+  - schema.md
+  - examples.md
+
+exclude:
+  - "*.pdf"
+  - "CODE_OF_CONDUCT.md"
+  - "CONTRIBUTING.md"
+  - "SECURITY.md"
+  - "CHANGELOG.md"
+  - "ROADMAP.md"
+  - "LICENSE"
+  - ".gitignore"
+  - "schemas/"
+  - "examples/"
+  - ".github/"
