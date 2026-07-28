@@ -47,7 +47,7 @@ DPP-CQ extends the digital product passport paradigm beyond environmental and ci
 
 | Document | Description | Language |
 |----------|-------------|----------|
-| [White Paper (中文)](docs/white-paper/README.md) | Complete standard specification (ICO-TS-001:2026 v1.3) | 中文 |
+| [White Paper (中文)](docs/white-paper/) | Complete standard specification (ICO-TS-001:2026 v1.3) | 中文 |
 | [White Paper (English)](docs/white-paper/white-paper-en.md) | Full English version | English |
 | [Executive Summary](docs/white-paper/executive-summary.md) | Concise overview for decision-makers | English |
 | [JSON Schema Reference](schema.html) | Data model specification | — |
