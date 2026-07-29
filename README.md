@@ -25,7 +25,7 @@ Our flagship standard, **DPP-CQ (Digital Product Passport for Cultural & Quality
 >
 > All specifications are currently in draft form and subject to revision based on community input. This is an open development process — we invite participation from all stakeholders.
 
-- **White Paper v1.3 (Draft for Comment)**: [white-paper/README.md](white-paper/README.md)
+- **White Paper v1.3 (Draft for Comment)**: [docs/white-paper/README.md](docs/white-paper/README.md)
 - **DPP-CQ Technical Specification**: In development
 - **Reference Implementation**: Targeted for Q4 2026
 - **Public Comment Period**: 45 days (July 6 – August 20, 2026) · Accelerated Procedure
@@ -110,6 +110,10 @@ DPP-CQ fills this gap by focusing on the *cultural value dimension* and *quality
 
 ```
 dpp-cq-standard/
+├── _config.yml           # Jekyll configuration for GitHub Pages
+├── index.md              # Documentation site homepage
+├── schema.md             # JSON Schema reference page
+├── examples.md           # Credential examples page
 ├── docs/
 │   ├── white-paper/      # White paper (CN + EN) — PDF & Markdown
 │   └── README.md
@@ -130,6 +134,10 @@ This repository contains two types of content with different licenses:
 
 - **Specifications, documentation, and white papers**: Creative Commons Attribution 4.0 International ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))
 - **Software, reference implementations, SDKs, and tools**: Apache License, Version 2.0 ([LICENSE](LICENSE))
+
+## Documentation Site
+
+The full documentation site is available at: [https://ico-cloud.github.io/dpp-cq-standard/](https://ico-cloud.github.io/dpp-cq-standard/)
 
 ## Contact
 
