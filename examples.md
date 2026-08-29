@@ -10,7 +10,23 @@ permalink: /examples.html
 
 ---
 
-## Example 1: West Lake Longjing Tea
+## Example 0 (v2.0): West Lake Longjing Tea — Full Interop Profile
+
+The v2.0 example demonstrates the international interoperability profile:
+GS1 identifiers (GTIN/GLN with valid check digits, GS1 Digital Link
+`https://id.gs1.org/01/...`), dual carriers (L1 open QR + L2 SDM NFC),
+ISO 14067 sustainability module, data-lifecycle metadata, AI-assessment
+disclosure, UNTP-style conformity claims, and a W3C Data Integrity proof
+with cryptosuite `ecdsa-sd-2023` (SD-JWT-based selective disclosure).
+
+📄 [longjing-tea-v2.json](https://github.com/ICO-cloud/dpp-cq-standard/blob/main/examples/longjing-tea-v2.json)
+
+All v2.0 fields are optional — the v1 example below remains a valid
+credential.
+
+---
+
+## Example 1: West Lake Longjing Tea (v1 profile)
 
 A geographical indication tea product with intangible cultural heritage data, full traceability, and dual physical carriers (NFC + QR).
 
@@ -128,5 +144,8 @@ The DPP-CQ schema supports the following product categories:
 | GI Food | `geographical-indication-food` | Regional specialty foods |
 | Handicraft | `handicraft` | Embroidery, lacquerware, woodwork |
 | Specialty Agricultural | `specialty-agricultural-product` | Regional herbs, honey, oils |
+| Wine & Spirits **[v2.0]** | `wine-and-spirits` | Baijiu, rice wine, aged spirits |
+| Traditional Medicine & Health **[v2.0]** | `traditional-medicine-health` | TCM health products, medicinal foods |
+| Light Consumer Goods **[v2.0]** | `light-consumer-goods` | Other quality consumer products |
 | Cultural Creative | `cultural-creative-product` | Museum collaborations, cultural IP |
 | Other | `other` | Additional categories |

@@ -94,7 +94,7 @@
           "properties": {
             "gtin": {
               "type": "string",
-              "description": "Global Trade Item Number (8/12/13/14 digits).",
+              "description": "Global Trade Item Number (8/12/13/14 digits), including the GS1 mod-10 check digit, which MUST be valid.",
               "pattern": "^(\\d{8}|\\d{12}|\\d{13}|\\d{14})$"
             },
             "batchOrLot": {
@@ -108,11 +108,11 @@
             "digitalLink": {
               "type": "string",
               "format": "uri",
-              "description": "GS1 Digital Link URI resolving to the product passport, e.g. https://id.gtin.info/06901234000017/10/LOT2026A/21/SN0001. See docs/interoperability/gs1-digital-link-mapping.md"
+              "description": "GS1 Digital Link URI resolving to the product passport, e.g. https://id.gs1.org/01/06901234000016/10/LOT2026A/21/SN0001. See docs/interoperability/gs1-digital-link-mapping.md"
             },
             "glnOwner": {
               "type": "string",
-              "description": "Global Location Number (13 digits) of the brand owner or responsible entity.",
+              "description": "Global Location Number (13 digits, including valid GS1 mod-10 check digit) of the brand owner or responsible entity.",
               "pattern": "^\\d{13}$"
             }
           }
@@ -444,13 +444,17 @@
       "properties": {
         "type": {
           "type": "string",
-          "description": "Proof suite type. Data Integrity profiles: BbsBlsSignature2020 (unlinkable ZK-style selective disclosure), DataIntegrityProof (Ed25519). SD-JWT VC profile uses 'SdJwtCredential2025' wrapper with the cryptographic suite in cryptoSuite.",
-          "examples": ["BbsBlsSignature2020", "Ed25519Signature2020", "DataIntegrityProof", "SdJwtCredential2025"]
+          "description": "Proof suite type per W3C VC v2.0. Legacy linked-data suites: BbsBlsSignature2020, Ed25519Signature2020. Current Data Integrity proofs use type 'DataIntegrityProof' with the suite identified by 'cryptosuite' (e.g. ecdsa-sd-2023 for SD-JWT-based selective disclosure, eddsa-2022, bbs-2023, sm2-with-sm3-2026). The compact SD-JWT VC serialization (RFC 9529) is a transport envelope carrying the same W3C VC claims; see docs/specs/credential-formats.md.",
+          "examples": ["DataIntegrityProof", "BbsBlsSignature2020", "Ed25519Signature2020"]
+        },
+        "cryptosuite": {
+          "type": "string",
+          "description": "[v2.0] W3C Data Integrity cryptosuite identifier (property name per W3C Data Integrity spec). International suites: 'ecdsa-sd-2023' (SD-JWT-based selective disclosure, ECDSA P-256), 'eddsa-2022' (Ed25519), 'bbs-2023' (BBS+ unlinkable selective disclosure). Chinese national cryptography suite (domestic deployments only): 'sm2-with-sm3-2026' (SM2 signature per GB/T 32918, SM3 digest per GB/T 32905). SM4 (GB/T 32907) applies to payload encryption, not signatures. Legacy v1.x credentials may use 'cryptoSuite'; issuers SHOULD use 'cryptosuite'.",
+          "examples": ["ecdsa-sd-2023", "eddsa-2022", "bbs-2023", "sm2-with-sm3-2026"]
         },
         "cryptoSuite": {
           "type": "string",
-          "description": "[v2.0] Cryptographic suite identifier. International suites: 'ecdsa-sd-2023' (SD-JWT VC ECDSA), 'eddsa-2022'. Chinese national cryptography suites (for domestic deployments): 'sm2-with-sm3-2026' (SM2 signature per GB/T 32918, SM3 digest per GB/T 32905). SM4 (GB/T 32907) applies to payload encryption, not signatures.",
-          "examples": ["ecdsa-sd-2023", "eddsa-2022", "bbs-2023", "sm2-with-sm3-2026"]
+          "description": "[deprecated in v2.0] Legacy property name; use 'cryptosuite' (W3C Data Integrity). Accepted in v1.x credentials only."
         },
         "created": {
           "type": "string",

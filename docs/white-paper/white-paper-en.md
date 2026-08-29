@@ -31,9 +31,9 @@
 
 Against the backdrop of deep integration between the digital economy and global trade, cross-border product circulation is evolving from *physical flow* to *trusted flow*. Digital Product Passports (DPPs), as an emerging digital trust infrastructure, have achieved significant progress in the environmental data domain for industrial products, yet notable gaps remain in their coverage of cultural products, specialty agricultural goods, geographical indication products, and other categories.
 
-This document systematically presents the overall architecture, core specifications, governance mechanisms, and implementation roadmap of the **DPP-CQ Digital Product Passport for Cultural & Quality Goods standards framework**. Built upon mature technologies such as W3C DIDs, Verifiable Credentials (VCs), and Zero-Knowledge Proofs (ZKPs), this framework focuses on establishing digital trust in the cultural value and quality dimensions, addressing the inclusivity gap in existing DPP standards ecosystems.
+This document systematically presents the overall architecture, core specifications, governance mechanisms, and implementation roadmap of the **DPP-CQ Digital Product Passport for Cultural & Quality Goods standards framework**. Built upon mature technologies such as W3C DIDs, Verifiable Credentials (VCs), and standards-based selective disclosure (SD-JWT / BBS+), this framework focuses on establishing digital trust in the cultural value and quality dimensions, addressing the inclusivity gap in existing DPP standards ecosystems.
 
-The core standard, **ICO Std 2001 (DPP-CQ)**, is a digital passport specification for cultural and quality products. It supports dual carriers of QR codes and NFC, provides a three-tier verification mechanism, and protects sensitive craftsmanship and commercial data through zero-knowledge proofs. The standards framework employs a multi-stakeholder governance model to ensure openness, neutrality, and inclusivity.
+The core standard, **ICO Std 2001 (DPP-CQ)**, is a digital passport specification for cultural and quality products. It supports dual carriers of QR codes and NFC, provides a three-tier verification mechanism, and protects sensitive craftsmanship and commercial data through selective-disclosure proofs (SD-JWT / BBS+). The standards framework employs a multi-stakeholder governance model to ensure openness, neutrality, and inclusivity.
 
 This document is issued as a Public Review Draft. We sincerely invite governments, enterprises, academic institutions, and non-governmental organizations worldwide to participate in building a more inclusive global digital trust ecosystem.
 
@@ -176,8 +176,8 @@ To build a **globally applicable, technology-neutral, and culturally inclusive**
 | **Neutral** | Technology-agnostic architecture, not tied to any specific vendor or technology stack | Supports multiple blockchain and cloud platforms |
 | **Inclusive** | Fully considers the needs of different cultural backgrounds and development stages | Supports lightweight implementations for low-resource environments |
 | **Interoperable** | Based on international technical standards, ensuring connectivity with existing and future systems | Compatible with W3C, ISO, GS1, UNECE, and other standards |
-| **Trustworthy** | Verifiable data, traceable processes, and adjudicatable disputes | Three-tier verification + Root Resolver Network + ZKP privacy protection |
-| **Privacy by Design** | Privacy protection embedded in architectural design; data minimization | Zero-Knowledge Proofs + Selective Disclosure |
+| **Trustworthy** | Verifiable data, traceable processes, and adjudicatable disputes | Three-tier verification + Root Resolver Network + selective-disclosure privacy protection |
+| **Privacy by Design** | Privacy protection embedded in architectural design; data minimization | Selective disclosure (SD-JWT / BBS+) |
 
 ---
 
@@ -215,7 +215,7 @@ DPP-CQ does not replace statutory conformity assessment or sectoral certificatio
 
 ### 3.4 Technology Maturity Window
 
-Technologies such as W3C DIDs (Decentralized Identifiers), Verifiable Credentials, blockchain-based evidence anchoring, and Zero-Knowledge Proofs (ZKPs) have entered mature application phases, providing the technical foundation for building a globally applicable open standard for the cultural and quality dimensions.
+Technologies such as W3C DIDs (Decentralized Identifiers), Verifiable Credentials, blockchain-based evidence anchoring, and selective-disclosure credential technology (SD-JWT, BBS+) have entered mature application phases, providing the technical foundation for building a globally applicable open standard for the cultural and quality dimensions.
 
 Meanwhile, international documents and data such as UNESCO's *Operational Directives for the Implementation of the Convention for the Safeguarding of the Intangible Cultural Heritage* (2016/2018 edition) and WIPO's *World Intellectual Property Indicators 2024* all indicate the urgency and necessity of leveraging digital technology to protect cultural assets and geographical indications. The timing is opportune for establishing open standards oriented toward the cultural and quality dimensions.
 
@@ -229,7 +229,7 @@ Meanwhile, international documents and data such as UNESCO's *Operational Direct
 ┌─────────────────────────────────────────────────────┐
 │ Layer 4  Governance & Compliance                     │
 │  Standards development process · Multi-stakeholder   │
-│  governance · Dispute resolution · Certification     │
+│  governance · Dispute resolution · Assessment rules │
 │  rules                                               │
 ├─────────────────────────────────────────────────────┤
 │ Layer 3  System & Assessment                        │
@@ -264,7 +264,7 @@ Meanwhile, international documents and data such as UNESCO's *Operational Direct
 | **ICO Std 2001-2026** | **Digital Product Passport for Cultural & Quality Goods (DPP-CQ)** | **Public Review Draft** | **2026 Q3** |
 | ICO Std 2002-2026 | Global Haute Couture & Cultural Attire Quality Standard | Planned | 2026 Q4 |
 | ICO Std 2003-2026 | Global Framework for GI & Origin Digital Mutual Recognition | Planned | 2027 Q1 |
-| ICO Std 3001-2026 | Global Digital Credibility Certification (GDCC) | Draft | 2026 Q4 |
+| ICO Std 3001-2026 | Global Digital Credibility Assessment (GDCC) | Draft | 2026 Q4 |
 | ICO Std 4001-2026 | Standards Development & Publication Process | Under Development | 2026 Q3 |
 | ICO Std 4002-2026 | Multi-Stakeholder Governance Charter | Under Development | 2026 Q3 |
 
@@ -293,7 +293,7 @@ Meanwhile, international documents and data such as UNESCO's *Operational Direct
 - Supports dual-carrier verification via QR code and NFC
 - Three-tier verification mechanism: Quick Verification (<1s) / Deep Verification / Judicial-Grade Verification
 - Hybrid storage architecture: data stored off-chain, hashes anchored on-chain
-- **ZKP-enabled Privacy:** The standard enables manufacturers, ICH transmitters, and distribution entities to prove compliance with specific quality grades and origin regulatory requirements to consumers and regulatory authorities through Zero-Knowledge Proof technology, without disclosing core craft recipes, supply chain node identities, or commercial procurement prices — achieving "data usability without visibility, trustworthiness without information leakage"
+- **ZKP-enabled Privacy:** The standard enables manufacturers, ICH transmitters, and distribution entities to prove compliance with specific quality grades and origin regulatory requirements to consumers and regulatory authorities through selective-disclosure proofs (SD-JWT / BBS+), without disclosing core craft recipes, supply chain node identities, or commercial procurement prices — achieving "data usability without visibility, trustworthiness without information leakage"
 - Selective Disclosure: Data holders may choose the scope of disclosure based on the verification scenario
 
 **Applicable Categories:** Geographical indication agricultural products (tea, grains & oils, fruits, medicinal herbs, spices), Intangible Cultural Heritage products (ceramics, embroidery, lacquerware, woodwork), haute couture and cultural attire, premium food and beverages, handicrafts and cultural creative products.
@@ -302,9 +302,9 @@ Meanwhile, international documents and data such as UNESCO's *Operational Direct
 
 Defines the credibility assessment framework and provenance methodology for digital content and data assets, with particular emphasis on provenance identification specifications for AI-generated content. Covers data integrity verification, provenance chain construction methods, credibility grading assessment, timestamps, and evidence anchoring interfaces.
 
-### 5.3 ICO Std 3001: Global Digital Credibility Certification (GDCC)
+### 5.3 ICO Std 3001: Global Digital Credibility Assessment (GDCC)
 
-A digital credibility assessment and certification standard for institutions (enterprises, media, NGOs, etc.), constructing an assessment system across multiple dimensions including information transparency, data credibility, governance compliance, and cultural responsibility, with support for cross-cultural scenario adaptation.
+A digital credibility assessment and evaluation standard for institutions (enterprises, media, NGOs, etc.), constructing an assessment system across multiple dimensions including information transparency, data credibility, governance compliance, and cultural responsibility, with support for cross-cultural scenario adaptation.
 
 ---
 
@@ -371,7 +371,7 @@ To ensure high security and continuous availability of data resolution in global
 - **International Standards First**: Prioritize adoption of published international standards (W3C, IETF, ISO)
 - **Open Source & Open**: Core technology stack based on open-source licenses
 - **Extensible Architecture**: Modular design supporting future standard extensions
-- **Privacy by Design**: Data minimization principle, supporting selective disclosure and Zero-Knowledge Proofs
+- **Privacy by Design**: Data minimization principle, implemented via standards-based selective disclosure (SD-JWT / BBS+)
 
 ### 7.2 Core Technology Stack
 
@@ -426,8 +426,8 @@ The ICO standards framework adopts an intellectual property policy of "openness 
 ### 7.6 Standards Version Management
 
 **Version Numbering Scheme:** Uses the format "major.minor.patch" (e.g., v1.2.3)
-- **Major version**: Incompatible architectural changes
-- **Minor version**: Backward-compatible functional additions
+- **Major version**: Architectural expansion of the standard's scope (e.g. v2.0 adds the GS1 interop profile, SD-JWT VC format and sustainability module); all v2.0 data additions are OPTIONAL so v1.x credentials remain valid
+- **Minor version**: Backward-compatible functional additions within the same architecture
 - **Patch version**: Backward-compatible bug fixes
 
 **Backward Compatibility Commitments:**
@@ -442,7 +442,7 @@ The ICO standards framework adopts an intellectual property policy of "openness 
 
 ### 7.7 Physical Carrier Strategy: Three-Tier, Open by Default
 
-DPP-CQ v2.0 defines three physical carrier levels (normative detail: [Carrier Specification](../../../docs/interoperability/carrier-specification.md)):
+DPP-CQ v2.0 defines three physical carrier levels (normative detail: [Carrier Specification](../interoperability/carrier-specification.md)):
 
 | Level | Carrier | Security profile | Reader requirement |
 |---|---|---|---|
@@ -506,7 +506,7 @@ ICO standards employ an architectural design of **"data localization, hash cross
 
 - **Raw data stored locally**: Detailed product quality, craftsmanship, and supply chain data are stored locally by the issuer or certification body, with no mandatory cross-border transmission
 - **Hash fingerprint anchoring**: Only hash fingerprints of data (one-way irreversible) are registered and anchored at root nodes; hashes themselves contain no identifiable original information
-- **Zero-Knowledge Proof verification**: Sensitive data is verified via ZKP technology; verifiers receive only compliance conclusions without access to raw data
+- **Selective-disclosure verification**: Sensitive data is verified via SD-JWT / BBS+ selective disclosure; verifiers receive only the claims or compliance conclusions they are authorized for, without access to undisclosed raw data
 
 This architecture is compatible with China's *Data Security Law* and *Personal Information Protection Law*, the EU's General Data Protection Regulation (GDPR), and the data sovereignty principles of most countries.
 
@@ -535,8 +535,8 @@ itself to any regional regulatory regime. Its interoperability strategy is
   assessment methodology (Std 3001), the multi-stakeholder governance model,
   affordability for small producers, and applicability to cultural product
   categories that environmental DPPs do not cover.
-- **Multilateral bridge:** active engagement with UN/CEFACT UNTP (United
-  Nations Transparency Protocol) conformity-claim vocabulary and the ISO DPP
+- **Multilateral bridge:** active engagement with the UN/CEFACT UNTP (UN Transparency
+  Protocol) conformity-credential vocabulary and the ISO DPP
   work item (ISO/PWI 25534-1 track), so that DPP-CQ interops through neutral,
   multilateral standards rather than through any single jurisdiction's
   registry.
@@ -553,10 +553,10 @@ Every DPP-CQ credential in v2.0 carries a `dataLifecycle` record identifying
 the data controller, retention policy, storage jurisdiction, cross-border mode
 (default: hash-only), deletion/anonymization rules, privacy notice URI, and
 PIA/DPIA summary URI. A public PIA summary is maintained at
-[docs/compliance/pia-summary.md](../../../docs/compliance/pia-summary.md), and
+[docs/compliance/pia-summary.md](../compliance/pia-summary.md), and
 conformity declarations against GB/T 47507-2026, the ESPR/EN framework, and
 data-protection regimes are maintained at
-[docs/compliance/conformity-declarations.md](../../../docs/compliance/conformity-declarations.md).
+[docs/compliance/conformity-declarations.md](../compliance/conformity-declarations.md).
 
 ### 8.4 Electronic Evidence and Legal Effect
 
@@ -646,7 +646,7 @@ Pilot evaluation dimensions: number of verified products, traceability data qual
 | Risk | Description | Mitigation Strategy |
 |---|---|---|
 | **Adoption Resistance** | SMEs have limited digital capabilities and concerns about integration costs | Provide lightweight toolkits, SaaS platforms, capacity building programs; free during the first 6-month pilot period |
-| **Privacy and Data Security** | High protection requirements for cultural craftsmanship and commercial data | Strict ZKP application, off-chain storage architecture, regular third-party security audits; data control rests with issuers |
+| **Privacy and Data Security** | High protection requirements for cultural craftsmanship and commercial data | Strict selective-disclosure application, off-chain storage architecture, regular third-party security audits; data control rests with issuers |
 | **Standards Fragmentation** | Multiple sets of DPP standards coexist globally, creating confusion for enterprises | Actively promote mutual recognition and compatibility; participate in multilateral interoperability initiatives such as UNECE; avoid closed systems |
 | **Governance Neutrality** | International community has concerns about the fairness of standard-setting | Transparent governance processes, multi-party oversight mechanisms, independent third-party audits, balanced representation |
 | **Technology Evolution Risk** | Cryptography and blockchain technologies evolve rapidly, risking standard obsolescence | Modular design, extensible architecture, periodic technical reviews, backward compatibility strategy |
@@ -785,7 +785,7 @@ Scan QR / NFC Tap
 | **Digital Product Passport (DPP)** | A digital identity credential containing core product data, readable via methods such as code scanning |
 | **Decentralized Identifier (DID)** | A decentralized identity identifier defined by W3C, independent of centralized identity providers |
 | **Verifiable Credential (VC)** | A digital credential digitally signed by the issuer, independently verifiable by third parties |
-| **Zero-Knowledge Proof (ZKP)** | A cryptographic protocol that can prove a statement true without disclosing the underlying data |
+| **Selective Disclosure (SD-JWT / BBS+)** | Cryptographic proofs (SD-JWT per RFC 9529; BBS+ unlinkable derived credentials) that let a holder reveal only selected claims while keeping the signature valid; v1.x used the umbrella term "zero-knowledge proofs (ZKP)", v2.0 normatively uses these standard suites |
 | **Selective Disclosure** | The practice by which a data holder discloses only the necessary data fields to a verifier |
 | **Geographical Indication (GI)** | An indication identifying a product as originating from a specific territory, where a given quality, reputation, or other characteristic of the product is essentially attributable to its geographical origin |
 | **Intangible Cultural Heritage (ICH)** | Practices and expressions recognized by communities, groups, and, in some cases, individuals as part of their cultural heritage, as defined by UNESCO |
@@ -809,7 +809,7 @@ Scan QR / NFC Tap
 | ZKP | Zero-Knowledge Proof 零知识证明 |
 | GI | Geographical Indication 地理标志 |
 | ICH | Intangible Cultural Heritage 非物质文化遗产 |
-| GDCC | Global Digital Credibility Certification 全球数字公信力认证 |
+| GDCC | Global Digital Credibility Assessment 全球数字公信力评定 |
 | TCR | Tianji Credibility Registry 天机可信价值评级数据库 |
 | GDC | Global Digital Compact 全球数字契约 |
 | W3C | World Wide Web Consortium 万维网联盟 |
@@ -844,7 +844,15 @@ Scan QR / NFC Tap
 12. UNCITRAL. *UNCITRAL Model Law on Electronic Commerce*.
 13. ISO. *ISO 22000: Food Safety Management Systems*. International Organization for Standardization.
 14. GS1. *EPCIS 2.0 and Core Business Vocabulary (CBV)*. GS1 Standard.
-15. IETF. *The BBS Signature Scheme*. IETF Draft.
+15. IETF. *RFC 9529 — SD-JWT: Selective Disclosure for JWTs (SD-JWT)*. 2024.
+16. W3C. *Verifiable Credential Data Integrity 1.0* (EdDSA / BBS cryptosuites). W3C Recommendations.
+17. GS1. *GS1 Digital Link: URI Syntax*, version 1.6. GS1 Standard, 2024.
+18. CEN-CENELEC JTC 24. *EN 18216:2026 / EN 18219–18223:2026* — Digital Product Passport horizontal standards. 2026.
+19. European Union. *Regulation (EU) 2024/1689 (AI Act)*, Art. 50; *Regulation (EU) 2023/1542 (Batteries)*.
+20. ISO. *ISO 14067:2018 — Greenhouse gases — Carbon footprint of products*.
+21. UN/CEFACT. *UN Transparency Protocol (UNTP) — Conformity Credential specification*. untp.unece.org.
+22. SAC. *GB/T 47507-2026 人工智能 可信赖 通则 (AI trustworthiness general rules)*. 2026.
+23. IETF. *The BBS Signature Scheme*. IETF Draft.
 
 ---
 
@@ -880,7 +888,7 @@ The design of the root resolution mechanism follows the following principles:
 ICO standards employ an architectural design of "data localization, hash cross-border":
 - **Raw data stored locally**: Detailed product quality, craftsmanship, and supply chain data are stored locally by the issuer or certification body, with no mandatory cross-border transmission;
 - **Hash fingerprint anchoring**: Only hash fingerprints of data (one-way irreversible) are registered and anchored at root nodes; hashes themselves contain no identifiable original information;
-- **Zero-Knowledge Proofs**: Sensitive data is verified via ZKP technology; verifiers receive only compliance conclusions without access to raw data;
+- **Selective disclosure**: Sensitive data is verified via SD-JWT / BBS+ proofs; verifiers receive only the claims or compliance conclusions they are authorized for, without access to undisclosed raw data;
 - **Compliance adaptation**: Regional nodes may conduct localized deployment and compliance adjustments in accordance with local data regulations.
 
 This architecture fundamentally reduces the risk of cross-border flow of raw data and complies with regulatory requirements for data sovereignty and data security in all countries.

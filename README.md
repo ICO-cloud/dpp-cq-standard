@@ -61,7 +61,7 @@ All v2.0 additions are optional and backward compatible with v1.x credentials.
 ┌─────────────────────────────────────────────────────┐
 │  Governance & Compliance Layer  (4000-series)       │
 │  Standards process · Multi-stakeholder governance   │
-│  Dispute resolution · Certification rules           │
+│  Dispute resolution · Assessment rules             │
 ├─────────────────────────────────────────────────────┤
 │  System & Assessment Layer  (3000-series)           │
 │  Institutional credibility · Cross-cultural trust   │
@@ -82,7 +82,7 @@ All v2.0 additions are optional and backward compatible with v1.x credentials.
 - **Standards-based**: Fully aligned with W3C DID Core and Verifiable Credentials
 - **Dual verification support**: QR code (low-cost) and NFC (high-security) physical carriers
 - **Three-tier verification**: Quick scan → Deep verification → Judicial-grade forensics
-- **Privacy by design**: Zero-Knowledge Proofs enable compliance verification without disclosing sensitive data
+- **Privacy by design**: Selective-disclosure proofs (SD-JWT / BBS+) enable compliance verification without exposing sensitive data
 - **Technology neutral**: Multi-chain hash anchoring, no vendor lock-in
 - **Inclusive by default**: Lightweight implementations for low-resource environments
 
@@ -130,7 +130,10 @@ dpp-cq-standard/
 ├── schema.md             # JSON Schema reference page
 ├── examples.md           # Credential examples page
 ├── docs/
-│   ├── white-paper/      # White paper (CN + EN) — PDF & Markdown
+│   ├── white-paper/      # White paper (CN + EN) — Markdown (PDF to follow)
+│   ├── interoperability/ # GS1 Digital Link mapping; three-tier carrier spec
+│   ├── specs/            # Credential format profiles (SD-JWT VC / Data Integrity / SM suites)
+│   ├── compliance/       # Conformity declarations; PIA/DPIA summary
 │   └── README.md
 ├── schemas/              # JSON schemas for DPP-CQ data models
 ├── examples/             # Example DPP-CQ credential payloads

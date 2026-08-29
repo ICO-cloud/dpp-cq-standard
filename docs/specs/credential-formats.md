@@ -19,7 +19,7 @@ deployment; both express the same data model (`schemas/dpp-cq.schema.json`).
 |---|---|---|
 | **Format** | W3C VC v2.0 JSON-LD | IETF SD-JWT VC (RFC 9529 + SD-JWT VC draft) |
 | **Selective disclosure** | BBS+ signatures (unlinkable) | SD-JWT disclosures (salted hashes) |
-| **Proof type** | `BbsBlsSignature2020` / `DataIntegrityProof` | `SdJwtCredential2025` |
+| **Proof type** | `DataIntegrityProof` (cryptosuite `bbs-2023` / `eddsa-2022`); legacy `BbsBlsSignature2020` | Compact JWS envelope (RFC 9529); JSON-LD form uses `DataIntegrityProof` with cryptosuite `ecdsa-sd-2023` |
 | **Typical suite** | bbs-2023; Ed25519 (eddsa-2022) | ecdsa-sd-2023 (P-256) |
 | **Strengths** | Rich JSON-LD semantics; unlinkable multi-show | Compact JWT; broad wallet/library support; IETF standard |
 | **Recommended for** | Cross-border semantic interop, EPCIS/linked-data contexts | Mobile wallets, EU EUDI ecosystem, high-volume issuance |
@@ -73,8 +73,9 @@ optional suite **`sm2-with-sm3-2026`**:
 Rules:
 
 1. The SM suite is **opt-in and region-scoped**: a credential signed with SM2
-   **MUST** declare its suite in `proof.cryptoSuite`; root nodes outside a
-   Chinese-compliance domain are not required to verify SM2.
+   **MUST** declare its suite in `proof.cryptosuite` (`sm2-with-sm3-2026`);
+   root nodes outside a Chinese-compliance domain are not required to verify
+   SM2. The v1.x property name `cryptoSuite` is accepted on legacy credentials.
 2. Cross-border credentials **SHOULD** use international suites; a dual-signature
    (SM2 for domestic + Ed25519/ECDSA for international) MAY be attached via
    `proof.previousProof` chaining or parallel proof blocks in future minor
@@ -87,6 +88,13 @@ Rules:
 
 - Status lists use **BitstringStatusList** (W3C VC v2.0 standard), superseding
   the legacy RevocationList2020 mention in examples.
+- W3C JSON-LD credentials carry Data Integrity proofs: the `proof` object uses
+  `type: "DataIntegrityProof"` with the suite in property `cryptosuite`
+  (lowercase, per W3C Data Integrity). Legacy suites (`BbsBlsSignature2020`,
+  `Ed25519Signature2020`) remain verifiable. SD-JWT VC as a *compact
+  serialization* (RFC 9529: `JWT~disclosures~signature`) is the transport
+  envelope for wallet exchange; when represented as JSON-LD inside the DPP-CQ
+  data model it uses the same `DataIntegrityProof`/`ecdsa-sd-2023` form.
 - Revocation **MUST** propagate to all carrier resolution paths (QR and NFC)
   within the resolver's stated SLA (target: < 5 minutes).
 

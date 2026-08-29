@@ -30,7 +30,7 @@
 | Cross-border transfer of personal data | Medium | Default mode is **hash-only cross-border**: raw data stays in the issuing jurisdiction; only irreversible hash fingerprints anchor internationally |
 | Credential correlation / tracking of consumers | Medium | BBS+ unlinkable presentations recommended for repeat verification; no consumer accounts for basic scanning; status list query privacy via BitstringStatusList |
 | Over-collection by issuers | Medium | Schema marks optional fields; data minimization principle in spec; disclosure-class table in credential-formats annex |
-| Retention beyond necessity | Low-Medium | `dataLifecycle.retentionPolicy` and `deletionPolicy` mandatory fields; default 5-year post-expiry for raw assessment data |
+| Retention beyond necessity | Low-Medium | `dataLifecycle.retentionPolicy` and `deletionPolicy` fields expected on v2.0 credentials (public minimum; full policy maintained by the issuer); default 5-year post-expiry for raw assessment data |
 | Security breach of resolver | Medium (impact) | STRIDE threat model; five-layer defense-in-depth; API key hashing (SHA-256, timing-safe compare); security.txt / vulnerability disclosure policy |
 | AI assessment data profiling | Low | AI only pre-scores; human assessor makes the final decision; AI usage disclosed per credential |
 

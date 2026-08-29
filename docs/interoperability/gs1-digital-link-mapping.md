@@ -46,6 +46,7 @@ identifies the *trade item* in global commerce. DPP-CQ therefore mandates a
    binding, signed by the party controlling the GLN (brand owner).
 3. GTIN allocation **MUST** follow GS1 rules (licensed GS1 Company Prefix or
    valid single GTIN assignment). DPP-CQ does not itself allocate GTINs.
+   Encoded GTINs/GLNs **MUST** carry valid GS1 mod-10 check digits.
 4. Item-level traceability **SHOULD** use GS1 AI (21) serial number or AI (10)
    batch/lot, carried inside the DID-unique credential.
 
@@ -59,14 +60,24 @@ reader** (no proprietary app) resolves the product passport.
 ### 3.1 URI structure
 
 ```
-https://<domain>/01/<GTIN>/10/<batch>/21/<serial>
+https://<resolver-domain>/01/<GTIN-14>/10/<batch>/21/<serial>
 ```
+
+The GTIN **MUST** appear as a 14-digit GTIN-14 (pad shorter GTINs with leading
+zeros) under AI `01`, followed by AI `10` (batch/lot) and AI `21` (serial) as
+applicable. Resolvers MAY be brand domains or the GS1-operated resolver
+`id.gs1.org`.
 
 Example:
 
 ```
-https://id.gtin.info/06901234000017/10/XH20260328A01/21/SN-LJ-2026-00042
+https://id.gs1.org/01/06901234000016/10/XH20260328A01/21/SN-LJ-2026-00042
 ```
+
+All GS1 keys (GTIN, GLN) include a mod-10 check digit, which **MUST** be
+valid when encoded. Brand domains used in production require a GS1-issued
+Digital Link prefix; use of third-party shorthand domains (e.g.
+`id.gtin.info`) is NOT RECOMMENDED in normative deployments.
 
 ### 3.2 Resolution behavior
 

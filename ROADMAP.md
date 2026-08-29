@@ -30,7 +30,7 @@
 
 ### Q1 2027 (Jan–Mar)
 
-- [ ] **GDCC v1.0** — Global Digital Credibility Certification standard release
+- [ ] **GDCC v1.0** — Global Digital Credibility Assessment standard release
 - [ ] **GI Mutual Recognition Standard Draft** — Geographical indication cross-border standard
 - [ ] **First Regional Node (Southeast Asia)** — Regional test node launch
 
@@ -49,7 +49,7 @@
 ### Q4 2027 (Oct–Dec)
 
 - [ ] **Africa Regional Node** — Third regional node
-- [ ] **5,000+ Certified Products** — Milestone for DPP-CQ adoption
+- [ ] **5,000+ Verified Products** — Milestone for DPP-CQ adoption
 - [ ] **1,000+ Developer Community** — Open-source community growth
 
 ## 2028+: Global Mutual Recognition & Maturity
@@ -59,7 +59,7 @@
 - **10+ standards** covering multiple product categories
 - **20+ regional nodes** across continents
 - **1,000+ institutional members**
-- **100,000+ certified products** globally
+- **100,000+ verified products** globally
 - **Formal mutual recognition** with major international standards bodies
 - **UNESCO / WIPO formal partnership** for cultural heritage digital protection
 

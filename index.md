@@ -27,10 +27,10 @@ DPP-CQ extends the digital product passport paradigm beyond environmental and ci
 
 | Feature | Description |
 |---------|-------------|
-| **Six Data Modules** | Base Identity (DID), Quality Data, Cultural Data, Geographical Indication, Traceability, Credential Proof |
+| **Data Modules** | Identity (DID + optional GTIN/GLN), Quality & Assessment, Cultural, Geographical Indication, Traceability (EPCIS-mappable), Sustainability (optional), Data Lifecycle, Credential Proof |
 | **Dual Physical Carrier** | QR code (low-cost) + NFC (high-security) |
 | **Three-Level Verification** | Quick check (<1s) → Deep verification → Judicial-grade forensics |
-| **Privacy by Design** | Zero-Knowledge Proofs for compliance without disclosing sensitive data |
+| **Privacy by Design** | Selective-disclosure proofs (SD-JWT / BBS+) for compliance without exposing sensitive data |
 | **Technology Neutral** | Multi-chain hash anchoring, no vendor lock-in |
 
 ### Architecture Layers
@@ -61,8 +61,7 @@ DPP-CQ extends the digital product passport paradigm beyond environmental and ci
 
 ### PDF Downloads
 
-- 📄 [White Paper PDF (中文)](docs/white-paper/DPP-CQ_White_Paper_v1.3.pdf)
-- 📄 [White Paper PDF (English)](docs/white-paper/DPP-CQ_White_Paper_v1.3_EN.pdf)
+- 📄 White Paper PDFs (v1.3, English/Chinese): being regenerated for v2.0 — the Markdown versions above are the current authoritative text
 
 ---
 

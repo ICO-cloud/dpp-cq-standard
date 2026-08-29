@@ -23,9 +23,9 @@ docs/
 
 ## Related Documents
 
-- [JSON Schema](../schemas/dpp-cq.schema.json) — DPP-CQ credential JSON Schema (draft 2020-12)
+- [JSON Schema](../schemas/dpp-cq.schema.json) — DPP-CQ credential JSON Schema v2.0 (JSON Schema Draft 2020-12)
 - [Examples](../examples/) — Example DPP-CQ credentials
-- [Governance](../governance/) — Governance documents (coming soon)
+- Compliance set: [Conformity Declarations](./compliance/conformity-declarations.md), [PIA Summary](./compliance/pia-summary.md)
 
 ## Status
 

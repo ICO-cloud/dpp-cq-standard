@@ -30,11 +30,11 @@
     },
     "category": "geographical-indication-tea",
     "gs1Identifiers": {
-      "gtin": "06901234000017",
+      "gtin": "06901234000016",
       "batchOrLot": "XH20260328A01",
       "serialNumber": "SN-LJ-2026-00042",
-      "digitalLink": "https://id.gtin.info/06901234000017/10/XH20260328A01/21/SN-LJ-2026-00042",
-      "glnOwner": "6901234000005"
+      "digitalLink": "https://id.gs1.org/01/06901234000016/10/XH20260328A01/21/SN-LJ-2026-00042",
+      "glnOwner": "6901234000009"
     },
     "qualityGrade": "Premium Grade 1",
     "productImage": "ipfs://QmXYZ...",
@@ -85,8 +85,7 @@
           "entity": "Master Workshop",
           "epcisEvent": {
             "eventType": "TransformationEvent",
-            "bizStep": "transforming",
-            "action": "ADD",
+            "bizStep": "commissioning",
             "epcisEventURI": "https://epcis.example.cn/events/8f3a2d"
           }
         },
@@ -132,7 +131,7 @@
       ],
       "certifications": [
         {
-          "certificationBody": "General Administration of Quality Supervision",
+          "certificationBody": "China National Intellectual Property Administration (CNIPA)",
           "certificationType": "Geographical Indication Protection Product",
           "certificateNumber": "GI-CN-0001",
           "validUntil": "2030-12-31"
@@ -215,7 +214,7 @@
       {
         "type": "qr-code",
         "carrierLevel": "L1-open-qr",
-        "identifier": "https://id.gtin.info/06901234000017/10/XH20260328A01/21/SN-LJ-2026-00042",
+        "identifier": "https://id.gs1.org/01/06901234000016/10/XH20260328A01/21/SN-LJ-2026-00042",
         "specification": {
           "standard": "ISO/IEC 18004 (QR Code) / GS1 Digital Link 1.6",
           "qrGrade": "B or better (ISO/IEC 15415)",
@@ -258,11 +257,12 @@
     }
   ],
   "proof": {
-    "type": "SdJwtCredential2025",
-    "cryptoSuite": "ecdsa-sd-2023",
+    "type": "DataIntegrityProof",
+    "cryptosuite": "ecdsa-sd-2023",
     "created": "2026-09-15T10:30:00Z",
     "proofPurpose": "assertionMethod",
-    "verificationMethod": "did:ico:issuer:zjtea-assoc#keys-sdjwt-1",
-    "proofValue": "eyJzZGNfb3J...~disclosures...~signature"
-  }
+    "verificationMethod": "did:ico:issuer:zjtea-assoc#keys-sd-1",
+    "proofValue": "eyJzZGNfb3J...z9XQ2k"
+  },
+  "_sdJwtCompactForm": "The compact SD-JWT serialization (RFC 9529: <JWT>~<disclosure1>~...~<signature>) is the transport envelope for wallet exchange; this JSON-LD form follows W3C VC v2.0 with a Data Integrity proof using the ecdsa-sd-2023 cryptosuite. See docs/specs/credential-formats.md."
 }

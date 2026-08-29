@@ -30,14 +30,14 @@ DPP-CQ (ICO Std 2001) is a digital identity standard for cultural products, spec
 - **Six data modules**: Base Identity (DID), Quality Data, Cultural Data, Geographical Indication, Traceability, and Credential Proof
 - **Dual physical verification**: QR code + NFC, adapting to different cost scenarios
 - **Three-level verification**: Quick check (<1s), Deep verification, Judicial-grade verification
-- **ZKP-enabled privacy**: Prove compliance without disclosing core craft recipes, supplier identities, or commercial pricing
+- **Selective-disclosure privacy (SD-JWT / BBS+)**: Prove compliance without disclosing core craft recipes, supplier identities, or commercial pricing
 - **Mixed storage architecture**: Raw data stored off-chain (privacy-first), hash anchors on-chain (immutability)
 
 ### Why Now?
 
 The technology is ready:
 - **W3C DID Core** (Recommendation, 2022) and **Verifiable Credentials** provide a mature decentralized identity foundation
-- **Zero-Knowledge Proofs (ZKPs)** have moved from labs to production-ready implementations
+- **Selective-disclosure credentials (SD-JWT / BBS+)** have moved from specs to production-ready implementations
 - **NFC and QR code** costs have dropped to commodity levels
 - **Multi-chain architecture** has become industry consensus, avoiding vendor lock-in
 
@@ -86,7 +86,7 @@ ICO standards are built *on top of* — not in competition with — existing int
 ### Roadmap
 
 **2026 — Foundation & Launch**
-- Q3: DPP-CQ v1.0, governance standards, Root Resolver Network launch
+- Q3 2026: DPP-CQ v2.0.0-draft (interoperability & compliance expansion), second public review; Root Resolver Network prototype in progress
 - Q4: Global Digital Credibility Governance Summit, GDCC standard draft
 - Target: 3+ standards, 50+ member institutions, 1,000+ pilot products
 
@@ -94,7 +94,7 @@ ICO standards are built *on top of* — not in competition with — existing int
 - 2-3 new standards (GI mutual recognition, haute couture, etc.)
 - 3 regional nodes: Southeast Asia, Middle East, Africa
 - 5+ industry joint labs
-- Target: 500+ adopters, 10,000+ certified products
+- Target: 500+ adopters, 10,000+ verified products
 
 **2028+ — Global Mutual Recognition & Maturity**
 - 10+ standards, 20+ regional nodes
@@ -105,7 +105,7 @@ ICO standards are built *on top of* — not in competition with — existing int
 
 - **Technical contribution**: GitHub open-source collaboration
 - **Standards development**: Join a Working Group
-- **Ecosystem partnership**: Become a certified service provider or regional node
+- **Ecosystem partnership**: Become a verified service provider or regional node
 - **Adoption**: Implement ICO standards in your products or services
 
 **Join us in building a more inclusive digital trust ecosystem — where every culture's unique value is seen, recognized, and respected in the digital world.**
