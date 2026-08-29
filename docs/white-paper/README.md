@@ -1,3 +1,9 @@
+---
+layout: page
+title: "DPP-CQ 白皮书（中文）"
+permalink: /docs/white-paper/
+---
+
 ```
 ========================================================================
                     ICO-TS-001                      July 2026
@@ -5,13 +11,13 @@
    DPP-CQ: Digital Product Passport for Cultural & Quality Goods
                Standard Architecture and Core Specifications
 
-                    Version 1.3 — Public Review Draft
+                    Version 2.0.0-draft — Public Review Draft (2nd round)
 ========================================================================
 
   Originating Organization:  International Communication Organization (ICO)
   Document Number:           ICO-TS-001:2026
   Status:                    Public Review Draft
-  Comment Period:            July 6 – August 20, 2026 (Accelerated Procedure · 45-day review)
+  Comment Period:            September 1 – October 15, 2026 (2nd review: international interoperability & compliance)
   Feedback:                  info@icoun.org | GitHub Issues
 ========================================================================
 ```
@@ -24,8 +30,8 @@
 ### DPP-CQ: Digital Product Passport for Cultural & Quality Goods
 ### Standard Architecture and Core Specifications
 
-#### （ICO 数字信任标准框架 v1.3）
-#### (ICO Digital Trust Standards Framework v1.3)
+#### （ICO 数字信任标准框架 v2.0.0-draft）
+#### (ICO Digital Trust Standards Framework v2.0.0-draft)
 
 ---
 
@@ -73,7 +79,7 @@
 
 本文档为**征求意见稿（Draft for Public Comment）**，由国际传播组织（ICO）发布。
 
-文档内容可能根据社区反馈进行修改。正式版本以ICO官方发布为准。意见征集截止日期为 **2026年8月20日（快速通道 · Accelerated Procedure · 45天征集期）**。欢迎通过以下方式提交反馈：
+文档内容可能根据社区反馈进行修改。正式版本以ICO官方发布为准。本 v2.0.0-draft 版本已吸纳第一轮公开征求意见（2026年7月6日–8月20日）成果，并开启 **第二轮征求意见：2026年9月1日–10月15日**，重点评审新增的国际互操作与合规附件。欢迎通过以下方式提交反馈：
 
 - GitHub Issues：https://github.com/ICO-cloud/dpp-cq-standard/issues
 - 电子邮件：info@icoun.org
@@ -112,6 +118,7 @@
 
 | 版本 | 日期 | 修订说明 |
 |---|---|---|
+| v2.0.0-draft | 2026年8月 | 国际互操作与合规扩展：GS1 Digital Link/GTIN互操作配置文件；三级载体规范（对齐EN 18220，开放QR+SDM安全NFC+防篡改NFC）；SD-JWT VC（RFC 9529）与BBS+双凭证格式；可选SM2/SM3/SM4国密密码套件；ISO 14067可持续数据模块（品质+可持续双维度模型）；AI辅助评定透明度条款（对齐GB/T 47507-2026与EU AI Act第50条）；数据生命周期治理元数据；UNTP式符合性声明；发布符合性声明与PIA摘要；全部新增内容向后兼容v1.x |
 | v1.3 | 2026年7月 | 格式规范化：对标国际技术规范格式，增加摘要、文档状态、版权声明、修订历史；附录区分规范性/资料性；章节编号统一；主标题更新为DPP-CQ；复核数据引用准确性 |
 | v1.2 | 2026年7月 | 新增合规与法律框架章节、DPP-CQ技术规格附录、知识产权政策、标准版本管理策略、常见问题FAQ；强化UNESCO/WIPO/UNECE引用 |
 | v1.1 | 2026年7月 | 框架重构与精炼：优化架构表述，新增风险与挑战章节、试点框架、UNECE互操作倡议引用 |
@@ -399,8 +406,8 @@ ICO标准体系采用"开放优先、合理保护"的知识产权政策：
 - 设立知识产权工作组，负责专利政策的制定与争议处理
 
 **商标与标识政策**：
-- "ICO Certified"标识、"DPP-CQ"标识等为ICO注册商标
-- 通过认证的产品和服务可在合规前提下使用官方标识
+- "ICO Verified"标识、"DPP-CQ"标识等为ICO注册商标
+- 符合DPP-CQ评定要求的产品和服务可在合规前提下使用官方标识；DPP-CQ符合性为评定/验证，非法定认证
 - 建立标识使用规范与监管机制，防止滥用和误导
 - 区域节点与合作伙伴的标识使用需经授权与审核
 
@@ -425,6 +432,38 @@ ICO标准体系采用"开放优先、合理保护"的知识产权政策：
 - 工作草案（WD） → 委员会草案（CD） → 征求意见稿（PR） → 正式标准（IS）
 - 正式标准每5年复审一次，确保持续有效
 - 过时标准启动撤销程序，提前通知所有采用方
+
+### 7.7 物理载体策略：三级载体、默认开放
+
+DPP-CQ v2.0定义三级物理载体（规范性细节见《数据载体规范》docs/interoperability/carrier-specification.md）：
+
+| 级别 | 载体 | 安全能力 | 读取要求 |
+|---|---|---|---|
+| L1 | 开放QR码（互操作配置中为GS1 Digital Link） | 可复制；真伪依赖注册库核验 | 任意手机摄像头 |
+| L2 | SDM安全NFC（NTAG 424 DNA等级） | 每次扫描SUN消息密码学认证 | 任意NFC手机，NDEF开放读取 |
+| L3 | 防篡改安全NFC（TagTamper等级） | 拆封检测 + SDM | 任意NFC手机 |
+
+载体设计遵循两项原则：
+
+1. **开放载体原则**（对齐ESPR第9条与EN 18220）：产品载体必须可用通用设备读取——无需专有App、注册或付费。安全性通过对解析数据的密码学核验实现，而非隐藏载体内容。
+2. **国际产品双载体**：GS1互操作配置下的产品同时携带开放QR（通用扫描、零售/消费者流程）与SDM NFC标签（密码学防伪）；两者解析至同一本护照，验证页需提示本次扫描使用的载体类型。
+
+### 7.8 双维度数据模型：品质 + 可持续
+
+现有DPP体系（以欧盟ESPR为代表）主要围绕环境可持续与循环经济组织产品数据。DPP-CQ的核心差异化在于**品质与文化价值**维度。v2.0正式确立双维度模型：
+
+- **品质与文化维度（DPP-CQ核心）**：品质等级、感官与实验室指标、工艺、非遗/地理标志、匠人谱系、评定方法与AI使用披露；
+- **可持续维度（v2.0可选模块）**：按ISO 14067的产品碳足迹、材料构成与再生含量、报废指引——结构设计可映射到ESPR委托法案逐品类发布的数据属性清单。
+
+一本凭证同时服务两个目的：填补文化品质维度的信任空白，同时产出欧盟进口商、零售商和监管方可消费的机器可读可持续数据。品质评定本身仍由ICO标准（特别是Std 3001）治理，保持框架独立性。
+
+### 7.9 AI辅助评定透明度
+
+当AI系统辅助品质评定（数据抽取、预评分、图像识别）时，DPP-CQ采用对齐**GB/T 47507-2026《人工智能 可信赖 通则》**与**EU AI Act第50条**透明度方向的规则：
+
+- 凭证中**必须**披露AI参与情况（`qualityAttributes.assessment.aiDisclosure`）；
+- 最终定级决定**必须**由具备资质的人类评定师作出，凭证中标识决定角色与复核流程；
+- 评定方法引用与完整报告**必须**可通过凭证检索（`reportReference`）。
 
 ---
 
@@ -487,9 +526,9 @@ ICO标准本身为技术与行业标准，不具有法律强制力（与ISO等�
 
 **标准参与**：申请加入相关标准工作组（WG），参与标准的制定与评审
 
-**生态参与**：成为认证服务商、区域节点运营商或联合实验室合作伙伴
+**生态参与**：成为经验证的服务商、区域节点运营商或联合实验室合作伙伴
 
-**采用参与**：在产品或服务中落地ICO标准，申请DPP-CQ认证
+**采用参与**：在产品或服务中落地ICO标准，申请DPP-CQ符合性评定
 
 ---
 
@@ -508,27 +547,27 @@ ICO标准本身为技术与行业标准，不具有法律强制力（与ISO等�
 - 发布地理标志互认、高定服饰等2-3项新标准
 - 启动东南亚、中东、非洲3个区域节点
 - 建立5+行业联合实验室
-- 500+机构采用，10,000+产品认证
+- 500+机构采用，10,000+产品验证
 - 与2-3个国际标准组织建立正式合作关系
 
 **2028年及以后：全球互认与体系成熟年**
 - 10+标准发布
 - 20+国家/区域节点
-- 1000+机构采用，100,000+产品认证
+- 1000+机构采用，100,000+产品验证
 - 与主要国际标准组织建立互认机制
 
 ### 10.2 首批试点框架
 
-2026年下半年启动首批标杆产品认证试点：
+2026年下半年启动首批标杆产品评定试点：
 
 | 试点品类 | 标杆方向 | 合作模式 | 衡量指标 |
 |---|---|---|---|
-| 地理标志茶叶 | 顶级产区地标茶 | 产区+品牌联合认证 | 认证SKU数、溯源数据覆盖率 |
+| 地理标志茶叶 | 顶级产区地标茶 | 产区+品牌联合评定 | 验证SKU数、溯源数据覆盖率 |
 | 非遗陶瓷 | 手工技艺传承 | 匠人+产区联合 | 文化数据完整性、用户验证量 |
-| 高级定制服饰 | 中式高定品牌 | 品牌认证+工艺存证 | 全生命周期护照覆盖、市场反馈 |
+| 高级定制服饰 | 中式高定品牌 | 品牌评定+工艺存证 | 全生命周期护照覆盖、市场反馈 |
 | 非遗手工艺品 | 刺绣/漆器等 | 传承人+机构联合 | 非遗价值展示、跨境交易提升 |
 
-试点评估维度：认证产品数量、溯源数据质量、用户验证频次、跨境交易提升、生产者价值增益。
+试点评估维度：验证产品数量、溯源数据质量、用户验证频次、跨境交易提升、生产者价值增益。
 
 ---
 
@@ -555,7 +594,7 @@ ICO标准体系致力于为全球文化与品质资产提供开放、中立、�
 
 我们期待，当每一件承载着人类智慧与文化价值的产品都拥有可信的数字身份时，全球贸易将更加公平、文化传承将更加鲜活、数字经济将更具温度。
 
-**诚邀全球各界于2026年8月20日（快速通道 · Accelerated Procedure · 45天征集期）前提交修改建议，共建更具包容性的全球数字信任未来。**
+**v2.0.0-draft诚邀全球各界于2026年10月15日前（第二轮：国际互操作与合规）提交修改建议，共建更具包容性的全球数字信任未来。**
 
 ---
 
@@ -787,7 +826,7 @@ ICO标准采用"数据本地化、哈希跨境"的架构设计：
 - 参考实现：开源免费，可自由修改、商用
 - 基础验证：扫码验真等基础功能免费开放
 
-增值服务（如定制开发、高级认证、技术支持等）可由生态中的服务商提供，ICO本身不直接经营商业服务。
+增值服务（如定制开发、高级评定服务、技术支持等）可由生态中的服务商提供，ICO本身不直接经营商业服务。
 
 ### Q7: 跟GS1、ISO是什么关系？是另起炉灶吗？
 
@@ -803,7 +842,7 @@ W3C DID是"身份证的技术标准"（告诉怎么做卡片），ISO/GS1是"行
 
 我们的设计目标是让中小生产者和非遗传承人"用得起、用得好"：
 - **低成本方案**：支持QR码等低成本验证方式，起步成本可低至每件几分钱；
-- **轻量级接入**：提供SaaS化的认证平台，无需技术团队，注册即可使用；
+- **轻量级接入**：提供SaaS化的评定平台，无需技术团队，注册即可使用；
 - **批量优惠**：针对中小生产者和非遗传承人提供优惠或减免；
 - **能力建设**：通过区域节点和合作伙伴提供培训与技术支持。
 
@@ -835,21 +874,50 @@ ICO标准本身是一套技术与行业标准，不具有法律强制力（与IS
 ## 如何引用本文档 · How to Cite This Document
 
 **中文引用格式：**
-> 国际传播组织（ICO）. DPP-CQ文化与品质数字产品护照：标准架构与核心规范[R]. ICO-TS-001:2026, v1.3（征求意见稿）. 2026年7月. https://github.com/ICO-cloud/dpp-cq-standard
+> 国际传播组织（ICO）. DPP-CQ文化与品质数字产品护照：标准架构与核心规范[R]. ICO-TS-001:2026, v2.0.0-draft（征求意见稿）. 2026年8月. https://github.com/ICO-cloud/dpp-cq-standard
 
 **English Citation:**
-> International Communication Organization (ICO). *DPP-CQ: Digital Product Passport for Cultural & Quality Goods — Standard Architecture and Core Specifications*[R]. ICO-TS-001:2026, v1.3 (Public Review Draft). July 2026. https://github.com/ICO-cloud/dpp-cq-standard
+> International Communication Organization (ICO). *DPP-CQ: Digital Product Passport for Cultural & Quality Goods — Standard Architecture and Core Specifications*[R]. ICO-TS-001:2026, v2.0.0-draft (Public Review Draft). August 2026. https://github.com/ICO-cloud/dpp-cq-standard
 
 ---
 
 **发布机构 · Published by**：国际传播组织（International Communication Organization, ICO）
 **文档编号 · Document No.**：ICO-TS-001:2026
-**版本 · Version**：v1.3
-**状态 · Status**：征求意见稿 · Public Review Draft
-**发布日期 · Issued**：2026年7月 · July 2026
-**意见征集截止 · Comment Deadline**：2026年8月20日（快速通道 · Accelerated Procedure · 45天征集期） · August 20, 2026
+**版本 · Version**：v2.0.0-draft
+**状态 · Status**：征求意见稿（第二轮）· Public Review Draft (2nd round)
+**发布日期 · Issued**：2026年8月 · August 2026
+**意见征集截止 · Comment Deadline**：2026年10月15日（第二轮：国际互操作与合规） · October 15, 2026
 **反馈 · Feedback**：info@icoun.org
 **仓库 · Repository**：https://github.com/ICO-cloud/dpp-cq-standard
+
+---
+
+## 附录F（规范性）v2.0 互操作与合规附件
+## Annex F (Normative): v2.0 Interoperability & Compliance Annexes
+
+以下独立文件构成 ICO Std 2001 v2.0 的规范性组成部分，维护于仓库 `docs/` 目录：
+
+| 文件 | 路径 | 内容 |
+|---|---|---|
+| **GS1 Digital Link与标识映射** | `docs/interoperability/gs1-digital-link-mapping.md` | GTIN↔DID绑定规则、Digital Link URI结构与内容协商、EPCIS 2.0事件映射、EN 18219/18220对齐 |
+| **数据载体规范** | `docs/interoperability/carrier-specification.md` | 三级载体（L1开放QR / L2 SDM安全NFC / L3防篡改NFC）、开放载体原则、双载体规则、解析器行为 |
+| **凭证格式配置** | `docs/specs/credential-formats.md` | JSON-LD Data Integrity（BBS+）与SD-JWT VC（RFC 9529）双配置；披露分级；SM2/SM3/SM4国密套件；状态与有效期规则 |
+| **符合性声明** | `docs/compliance/conformity-declarations.md` | 针对GB/T 47507-2026、欧盟ESPR/EN标准、GDPR/PIPL、EU AI Act的符合性自我声明 |
+| **PIA/DPIA摘要** | `docs/compliance/pia-summary.md` | 公开版个人信息影响评估：数据流、风险表、数据主体权利、跨境法律依据 |
+| **JSON Schema v2.0** | `schemas/dpp-cq.schema.json` | 机器可读数据模型 |
+| **v2.0示例凭证** | `examples/longjing-tea-v2.json` | 完整互操作配置示例（西湖龙井茶） |
+
+### 与外部框架的关系
+
+| 外部框架 | 性质 | DPP-CQ立场 |
+|---|---|---|
+| W3C DID / VC v2.0、IETF SD-JWT（RFC 9529） | 开放标准 | 技术基础，全面采用 |
+| GS1 Digital Link / EPCIS 2.0 | 全球供应链标准 | 规范性互操作配置 |
+| 欧盟ESPR（法规2024/1781）；EN 18219–18223 | 欧盟法规/协调标准 | 载体、标识符、可持续字段基线兼容；DPP-CQ品类不在首批优先产品群 |
+| UN/CEFACT UNTP | 联合国多边词汇 | 符合性声明采用；首要多边桥梁 |
+| ISO 14067、ISO 22000、ISO 22739 | ISO标准 | 数据模型与术语中引用 |
+| GB/T 47507-2026；SM2/SM3/SM4 | 中国国家标准 | 国内部署支持 |
+| EU AI Act（法规2024/1689）第50条 | 欧盟法规 | 透明度条款作为基线实践采纳 |
 
 ---
 

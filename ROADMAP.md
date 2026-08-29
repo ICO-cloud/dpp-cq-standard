@@ -12,15 +12,19 @@
 - [x] **GitHub Community Launch** — Open source repository & community channels
 - [ ] **Governance Charter v1.0** — Multi-stakeholder governance framework
 - [ ] **Root Resolver Network (Prototype)** — Initial prototype of root DID resolution infrastructure
+- [x] **DPP-CQ v2.0.0-draft (Aug 2026)** — International interoperability & compliance expansion: GS1 Digital Link/GTIN interop profile, EN 18220-aligned three-tier carriers, SD-JWT VC (RFC 9529) + BBS+ dual formats, optional SM2/SM3/SM4 suite, ISO 14067 sustainability module, AI assessment transparency (GB/T 47507-2026 / EU AI Act), data lifecycle metadata, UNTP conformity claims, conformity declarations & PIA summary
+- [ ] **Second Public Review** — Sep 1 – Oct 15, 2026 (international interoperability & compliance annexes)
 
 ### Q4 2026 (Oct–Dec)
 
-- [ ] **DPP-CQ v1.0** — First stable release of DPP-CQ standard
-- [ ] **Reference Implementation** — Open-source reference implementation of DPP-CQ
+- [ ] **DPP-CQ v2.0 Stable Release** — First stable v2.0 after second review (incorporates GS1/SD-JWT/carrier/compliance modules)
+- [ ] **Reference Implementation v2.0** — Open-source implementation including Digital Link resolver and SD-JWT VC issuance
 - [ ] **SDK v0.1 (Python / JS)** — First developer SDKs
+- [ ] **EPCIS 2.0 Event API** — EPCIS-compatible supply-chain event endpoints (P1 interop)
+- [ ] **GDPR/PIPL Dual-Compliance White Paper** — Hash cross-border legal analysis + data processing agreement templates
 - [ ] **Global Digital Credibility Governance Summit** — First major community event
 - [ ] **Pilot Programs Launch** — First batch of pilot products (tea, ceramics, haute couture)
-- [ ] **ICO Std 3001 (GDCC) Draft** — Institutional credibility certification standard draft
+- [ ] **ICO Std 3001 (GDCC) Draft** — Institutional credibility assessment standard draft
 
 ## 2027: Ecosystem Expansion & Regional Rollout
 

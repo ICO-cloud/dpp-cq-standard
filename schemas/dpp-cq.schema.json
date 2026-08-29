@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://icoun.org/schemas/dpp-cq/v1.0.0",
+  "$id": "https://icoun.org/schemas/dpp-cq/v2.0.0-draft",
   "title": "DPP-CQ: Digital Product Passport for Cultural & Quality Goods",
-  "description": "ICO Std 2001-2026 — Core data schema for cultural and quality product digital passports. Based on W3C Verifiable Credentials Data Model v2.0.",
+  "description": "ICO Std 2001-2026 — Core data schema for cultural and quality product digital passports. Based on W3C Verifiable Credentials Data Model v2.0. v2.0 adds: GS1 Digital Link/GTIN interoperability, dual carrier (QR + SDM NFC), SD-JWT VC format, ISO 14067 carbon footprint optional module, data lifecycle metadata, Chinese national cryptography (SM2/SM3/SM4) suite option, AI-assisted assessment disclosure. All v2.0 additions are OPTIONAL for v1.x credential compatibility.",
   "type": "object",
   "required": ["@context", "type", "issuer", "issuanceDate", "credentialSubject", "proof"],
   "properties": {
@@ -14,7 +14,7 @@
       "examples": [
         [
           "https://www.w3.org/ns/credentials/v2",
-          "https://icoun.org/contexts/dpp-cq/v1"
+          "https://icoun.org/contexts/dpp-cq/v2"
         ]
       ]
     },
@@ -40,10 +40,20 @@
       "format": "date-time",
       "description": "Date and time when the credential was issued (RFC 3339)."
     },
+    "validFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "W3C VC v2.0 standard validity start date. MAY be used in place of issuanceDate in SD-JWT VC profiles."
+    },
     "expirationDate": {
       "type": "string",
       "format": "date-time",
       "description": "Date and time when the credential expires (RFC 3339). RECOMMENDED for quality-sensitive products."
+    },
+    "validUntil": {
+      "type": "string",
+      "format": "date-time",
+      "description": "W3C VC v2.0 standard validity end date. MAY be used in place of expirationDate in SD-JWT VC profiles."
     },
     "credentialSubject": {
       "type": "object",
@@ -72,8 +82,40 @@
             "handicraft",
             "specialty-agricultural-product",
             "cultural-creative-product",
+            "wine-and-spirits",
+            "traditional-medicine-health",
+            "light-consumer-goods",
             "other"
           ]
+        },
+        "gs1Identifiers": {
+          "type": "object",
+          "description": "[v2.0] GS1 global identifiers. OPTIONAL. When present, enables resolution via GS1 Digital Link and interoperability with GS1-based systems (EU DPP, retail scanners, customs).",
+          "properties": {
+            "gtin": {
+              "type": "string",
+              "description": "Global Trade Item Number (8/12/13/14 digits).",
+              "pattern": "^(\\d{8}|\\d{12}|\\d{13}|\\d{14})$"
+            },
+            "batchOrLot": {
+              "type": "string",
+              "description": "GS1 AI (10) batch/lot number."
+            },
+            "serialNumber": {
+              "type": "string",
+              "description": "GS1 AI (21) serial number for item-level identification."
+            },
+            "digitalLink": {
+              "type": "string",
+              "format": "uri",
+              "description": "GS1 Digital Link URI resolving to the product passport, e.g. https://id.gtin.info/06901234000017/10/LOT2026A/21/SN0001. See docs/interoperability/gs1-digital-link-mapping.md"
+            },
+            "glnOwner": {
+              "type": "string",
+              "description": "Global Location Number (13 digits) of the brand owner or responsible entity.",
+              "pattern": "^\\d{13}$"
+            }
+          }
         },
         "qualityGrade": {
           "type": "string",
@@ -190,7 +232,20 @@
                   "date": { "type": "string", "format": "date" },
                   "location": { "type": "string" },
                   "entity": { "type": "string" },
-                  "certification": { "type": "string" }
+                  "certification": { "type": "string" },
+                  "epcisEvent": {
+                    "type": "object",
+                    "description": "[v2.0] EPCIS 2.0 event mapping. OPTIONAL. When present, the step is expressible as an EPCIS 2.0 event (ObjectEvent/AggregationEvent/TransformationEvent) per GS1 EPCIS 2.0/CBV 2.0.",
+                    "properties": {
+                      "eventType": {
+                        "type": "string",
+                        "enum": ["ObjectEvent", "AggregationEvent", "TransformationEvent", "AssociationEvent", "TransactionEvent"]
+                      },
+                      "bizStep": { "type": "string", "description": "CBV 2.0 business step, e.g. 'shipping', 'receiving', 'commissioning'." },
+                      "action": { "type": "string", "enum": ["ADD", "OBSERVE", "DELETE"] },
+                      "epcisEventURI": { "type": "string", "format": "uri", "description": "URI of the canonical EPCIS event record." }
+                    }
+                  }
                 },
                 "required": ["step", "date"]
               }
@@ -214,13 +269,15 @@
                   "attribute": { "type": "string" },
                   "value": { "type": "string" },
                   "unit": { "type": "string" },
-                  "testMethod": { "type": "string" }
+                  "testMethod": { "type": "string" },
+                  "testStandard": { "type": "string", "description": "[v2.0] Reference standard for the test method, e.g. ISO, GB/T, SPS." }
                 },
                 "required": ["attribute", "value"]
               }
             },
             "certifications": {
               "type": "array",
+              "description": "Third-party conformity attestations held by the product or producer. Terminology note: within the DPP-CQ system these are 'attestations/assessments (评定/评价/验证)', not 'certifications (认证)' in the regulatory sense.",
               "items": {
                 "type": "object",
                 "properties": {
@@ -231,12 +288,107 @@
                 },
                 "required": ["certificationBody", "certificationType"]
               }
+            },
+            "assessment": {
+              "type": "object",
+              "description": "[v2.0] DPP-CQ quality assessment disclosure. Records how the quality grade was determined.",
+              "properties": {
+                "method": {
+                  "type": "string",
+                  "enum": ["expert-panel", "laboratory-test", "document-review", "ai-assisted", "hybrid"],
+                  "description": "Assessment method. 'ai-assisted' or 'hybrid' requires aiDisclosure."
+                },
+                "methodStandard": { "type": "string", "description": "Assessment methodology standard reference, e.g. ICO Std 3001." },
+                "assessedBy": { "type": "string", "format": "uri", "description": "DID of the assessment body." },
+                "assessmentDate": { "type": "string", "format": "date" },
+                "reportReference": { "type": "string", "format": "uri", "description": "URI or credential id of the full assessment report." },
+                "aiDisclosure": {
+                  "type": "object",
+                  "description": "[v2.0] REQUIRED when method is 'ai-assisted' or 'hybrid'. AI transparency disclosure aligned with EU AI Act Art. 50 and GB/T 47507-2026 transparency/controllability principles.",
+                  "required": ["aiAssisted", "humanOversight"],
+                  "properties": {
+                    "aiAssisted": { "type": "boolean", "const": true },
+                    "tasksPerformed": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "description": "Tasks performed by AI, e.g. ['data extraction', 'sensory score pre-scoring']."
+                    },
+                    "humanOversight": {
+                      "type": "object",
+                      "required": ["finalDecisionMadeBy"],
+                      "properties": {
+                        "finalDecisionMadeBy": { "type": "string", "description": "Role of the human who made the final decision, e.g. lead assessor." },
+                        "reviewProcess": { "type": "string", "description": "Description of human review of AI outputs." }
+                      }
+                    },
+                    "modelInfo": { "type": "string", "description": "Model name/version or vendor description (proprietary detail optional)." }
+                  }
+                }
+              }
             }
+          }
+        },
+        "sustainabilityData": {
+          "type": "object",
+          "description": "[v2.0] Environmental & sustainability module. OPTIONAL. Aligned with ISO 14067 (product carbon footprint) and EU ESPR data attribute directions. Provides the sustainability dimension alongside DPP-CQ's quality dimension.",
+          "properties": {
+            "carbonFootprint": {
+              "type": "object",
+              "properties": {
+                "value": { "type": "number", "description": "Carbon footprint value." },
+                "unit": { "type": "string", "enum": ["kgCO2e", "tCO2e"], "description": "Kilograms or tonnes of CO2 equivalent." },
+                "functionalUnit": { "type": "string", "description": "Functional/declared unit, e.g. 'per 100g', 'per bottle (750ml)'." },
+                "methodStandard": { "type": "string", "description": "Methodology standard, RECOMMENDED 'ISO 14067:2018'." },
+                "systemBoundary": { "type": "string", "description": "System boundary description, e.g. 'cradle-to-gate'." },
+                "verifiedBy": { "type": "string", "description": "Verification body (if independently verified)." },
+                "studyReportURI": { "type": "string", "format": "uri" }
+              },
+              "required": ["value", "unit", "functionalUnit"]
+            },
+            "materials": {
+              "type": "array",
+              "description": "Material composition for circularity (ESPR-aligned).",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "material": { "type": "string" },
+                  "percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+                  "recycledContent": { "type": "number", "minimum": 0, "maximum": 100, "description": "Recycled content percentage." },
+                  "hazardous": { "type": "boolean", "description": "Whether the material contains substances of concern." }
+                },
+                "required": ["material"]
+              }
+            },
+            "endOfLife": {
+              "type": "object",
+              "properties": {
+                "recyclingInfo": { "type": "string" },
+                "repairInfo": { "type": "string", "format": "uri", "description": "URI to repair/reuse instructions." },
+                "disposalGuidance": { "type": "string" }
+              }
+            }
+          }
+        },
+        "dataLifecycle": {
+          "type": "object",
+          "description": "[v2.0] Data governance and lifecycle metadata. Aligned with GB/T 47507-2026 data security/full-lifecycle requirements and GDPR accountability.",
+          "properties": {
+            "dataController": { "type": "string", "description": "Entity responsible for data processing (legal name)." },
+            "retentionPolicy": { "type": "string", "description": "Retention period and basis for each data class." },
+            "storageLocation": { "type": "string", "description": "Jurisdiction/region where raw data is stored." },
+            "crossBorderMode": {
+              "type": "string",
+              "enum": ["hash-only", "full-transfer-with-adequacy", "full-transfer-with-scc", "local-only"],
+              "description": "Cross-border data mode. 'hash-only' is the DPP-CQ default: raw data local, hash fingerprints cross-border."
+            },
+            "deletionPolicy": { "type": "string", "description": "Data destruction/anonymization rules upon credential revocation or expiry." },
+            "privacyNoticeURI": { "type": "string", "format": "uri", "description": "URI of the privacy notice presented at verification time." },
+            "piaReportURI": { "type": "string", "format": "uri", "description": "URI of the Personal Information Impact Assessment / DPIA summary (public portion)." }
           }
         },
         "authenticityMarks": {
           "type": "array",
-          "description": "Physical anti-counterfeiting features registered on-chain.",
+          "description": "Physical anti-counterfeiting features registered on-chain. v2.0 carrier levels: L1 open QR (any reader), L2 secure NFC with SDM (NTAG 424 DNA class), L3 tamper-evident NFC (TagTamper class). See docs/interoperability/carrier-specification.md.",
           "items": {
             "type": "object",
             "properties": {
@@ -244,7 +396,23 @@
                 "type": "string",
                 "enum": ["nfc-chip", "qr-code", "hologram", "watermark", "security-thread", "other"]
               },
+              "carrierLevel": {
+                "type": "string",
+                "description": "[v2.0] Carrier security level.",
+                "enum": ["L1-open-qr", "L2-sdm-nfc", "L3-tamper-evident-nfc", "physical-only"]
+              },
               "identifier": { "type": "string" },
+              "specification": {
+                "type": "object",
+                "description": "[v2.0] Carrier technical specification.",
+                "properties": {
+                  "standard": { "type": "string", "description": "e.g. 'ISO/IEC 14443 Type 4', 'ISO/IEC 18004 (QR)', 'NFC Forum NDEF'." },
+                  "chipModel": { "type": "string", "description": "e.g. 'NXP NTAG 424 DNA', 'NXP NTAG 424 DNA TagTamper'." },
+                  "sdmEnabled": { "type": "boolean", "description": "Secure Dynamic Messaging supported (SUN authentication)." },
+                  "qrGrade": { "type": "string", "description": "QR print quality grade per ISO/IEC 15415, e.g. 'B' or better." },
+                  "openlyReadable": { "type": "boolean", "description": "Whether the carrier resolves with any standard reader without proprietary app (EN 18220 'open data carrier' requirement)." }
+                }
+              },
               "description": { "type": "string" }
             },
             "required": ["type", "identifier"]
@@ -272,12 +440,17 @@
     },
     "proof": {
       "type": "object",
-      "description": "Digital proof of the credential. See W3C VC Data Integrity specification.",
+      "description": "Digital proof of the credential. v2.0 supports two profiles: (a) W3C Data Integrity proofs (JSON-LD VC; BBS+ for unlinkable selective disclosure); (b) IETF SD-JWT VC (RFC 9529 + SD-JWT VC draft) for compact, selective-disclosure JWT credentials. Profile selection per docs/specs/credential-formats.md.",
       "properties": {
         "type": {
           "type": "string",
-          "description": "Proof suite type. RECOMMENDED: BbsBlsSignature2020, Ed25519Signature2020, or DataIntegrityProof.",
-          "examples": ["BbsBlsSignature2020", "Ed25519Signature2020", "DataIntegrityProof"]
+          "description": "Proof suite type. Data Integrity profiles: BbsBlsSignature2020 (unlinkable ZK-style selective disclosure), DataIntegrityProof (Ed25519). SD-JWT VC profile uses 'SdJwtCredential2025' wrapper with the cryptographic suite in cryptoSuite.",
+          "examples": ["BbsBlsSignature2020", "Ed25519Signature2020", "DataIntegrityProof", "SdJwtCredential2025"]
+        },
+        "cryptoSuite": {
+          "type": "string",
+          "description": "[v2.0] Cryptographic suite identifier. International suites: 'ecdsa-sd-2023' (SD-JWT VC ECDSA), 'eddsa-2022'. Chinese national cryptography suites (for domestic deployments): 'sm2-with-sm3-2026' (SM2 signature per GB/T 32918, SM3 digest per GB/T 32905). SM4 (GB/T 32907) applies to payload encryption, not signatures.",
+          "examples": ["ecdsa-sd-2023", "eddsa-2022", "bbs-2023", "sm2-with-sm3-2026"]
         },
         "created": {
           "type": "string",
@@ -297,6 +470,31 @@
         "challenge": { "type": "string" }
       },
       "required": ["type", "created", "proofPurpose", "verificationMethod"]
+    },
+    "conformityClaims": {
+      "type": "array",
+      "description": "[v2.0] Self-declared conformity claims to external frameworks. Modeled on UN/CEFACT UNTP conformity claim vocabulary. Each claim references the framework, the assessed scope, and the attestation evidence. This is the bridge for regulators/importers to map DPP-CQ credentials to ESPR, EN standards, and national regulations.",
+      "items": {
+        "type": "object",
+        "required": ["framework", "claim", "evidence"],
+        "properties": {
+          "framework": {
+            "type": "string",
+            "description": "Reference framework identifier.",
+            "examples": ["EU ESPR (Reg. (EU) 2024/1781)", "EN 18220:2026", "GB/T 47507-2026", "ISO 14067:2018", "UNTP v1.0"]
+          },
+          "claim": { "type": "string", "description": "Conformity statement, e.g. 'DPP data carrier meets open-carrier and unique-identifier requirements'." },
+          "conformity": { "type": "string", "enum": ["full", "partial", "not-applicable"] },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "assessmentReference": { "type": "string", "format": "uri", "description": "URI of the conformity assessment / self-assessment document." },
+              "attestedBy": { "type": "string", "format": "uri", "description": "DID of the attesting body (self or third party)." },
+              "assessmentDate": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      }
     }
   }
 }

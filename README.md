@@ -1,10 +1,10 @@
-**ICO-TS-001:2026**　　　　　　　　　　　　　　July 2026
+**ICO-TS-001:2026**　　　　　　　　　　　　　August 2026
 
 # DPP-CQ: Digital Product Passport for Cultural & Quality Goods
 ## Standard Architecture and Core Specifications
 
 ### 文化与品质数字产品护照 · 标准架构与核心规范
-#### ICO Digital Trust Standards Framework v1.3
+#### ICO Digital Trust Standards Framework v2.0.0-draft
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![License: CC BY 4.0](https://img.shields.io/badge/Docs-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -19,24 +19,39 @@ The **International Communication Organization (ICO)** is a multi-stakeholder pl
 
 Our flagship standard, **DPP-CQ (Digital Product Passport for Cultural & Quality Goods)**, extends the digital product passport paradigm beyond environmental and circular economy data to encompass cultural value, quality attributes, and craft heritage — addressing a significant gap in the global digital trust landscape.
 
+
+## What's New in v2.0.0-draft
+
+Following the first public review, v2.0 expands international interoperability and compliance posture:
+
+- **GS1 interop profile** — GTIN↔DID identifier binding, GS1 Digital Link resolution, EPCIS 2.0 event mapping; aligned with EU DPP standards EN 18219/18220
+- **Three-tier carriers** — open QR (any reader) + SDM secure NFC (NTAG 424 DNA class) + tamper-evident NFC; open-carrier principle per ESPR Art. 9
+- **Dual credential formats** — W3C Data Integrity (BBS+) and IETF SD-JWT VC (RFC 9529) selective disclosure profiles
+- **National cryptography option** — SM2/SM3/SM4 suite for Chinese domestic deployments
+- **Sustainability module** — ISO 14067 carbon footprint and circularity fields (quality + sustainability dual-dimension model)
+- **AI assessment transparency** — AI-use disclosure and human final decision, aligned with GB/T 47507-2026 and EU AI Act Art. 50
+- **Compliance document set** — conformity declarations and public PIA/DPIA summary
+
+All v2.0 additions are optional and backward compatible with v1.x credentials.
+
 ## Status
 
 > ⚠️ **Early Stage — Draft for Public Comment**
 >
 > All specifications are currently in draft form and subject to revision based on community input. This is an open development process — we invite participation from all stakeholders.
 
-- **White Paper v1.3 (Draft for Comment)**: [docs/white-paper/README.md](docs/white-paper/README.md)
-- **DPP-CQ Technical Specification**: In development
-- **Reference Implementation**: Targeted for Q4 2026
-- **Public Comment Period**: 45 days (July 6 – August 20, 2026) · Accelerated Procedure
+- **White Paper v2.0.0-draft (Draft for Comment, 2nd round)**: [docs/white-paper/README.md](docs/white-paper/README.md)
+- **DPP-CQ Technical Specification**: [JSON Schema v2.0](schemas/dpp-cq.schema.json) · [GS1/Carrier/Credential annexes](docs/interoperability/gs1-digital-link-mapping.md)
+- **Reference Implementation**: Targeted for Q4 2026 (v2.0)
+- **Second Public Comment Period**: September 1 – October 15, 2026 (international interoperability & compliance)
 
 ## Core Standards
 
 | Standard ID | Title | Status |
 |---|---|---|
-| **ICO Std 2001** | Digital Product Passport for Cultural & Quality Goods (DPP-CQ) | Draft |
+| **ICO Std 2001** | Digital Product Passport for Cultural & Quality Goods (DPP-CQ) | v2.0.0-draft (2nd review) |
 | ICO Std 1001 | Global Information Credibility & Data Traceability Specification | Planned |
-| ICO Std 3001 | Global Digital Credibility Certification (GDCC) | Planned |
+| ICO Std 3001 | Global Digital Credibility Assessment (GDCC) | Planned |
 | ICO Std 2002 | Haute Couture & Cultural Craftsmanship Standard | Planned |
 | ICO Std 2003 | GI Cross-Border Mutual Recognition Standard | Planned |
 
@@ -95,7 +110,7 @@ DPP-CQ fills this gap by focusing on the *cultural value dimension* and *quality
 |---|---|
 | **Technical Contribution** | Contribute to reference implementations, SDKs, and tools (coming soon) |
 | **Standard Development** | Join a Working Group to shape the standards themselves |
-| **Ecosystem Partnership** | Become a certified service provider, regional node, or industry partner |
+| **Ecosystem Partnership** | Become a verified service provider, regional node, or industry partner |
 | **Adoption** | Implement ICO standards in your products or organization |
 | **Pilot Program** | Participate in early pilot projects (tea, ceramics, haute couture) |
 

@@ -9,11 +9,12 @@ title: "DPP-CQ Standard"
 
 ---
 
-## 📢 Public Review
+## 📢 Public Review — v2.0.0-draft
 
-This standard is currently in **Public Review Draft** status (v1.3).
+The standard is now in its **second Public Review Draft (v2.0.0-draft)**, focused on international interoperability and compliance.
 
-- **Comment Period:** July 6 – August 20, 2026 (Accelerated Procedure · 45-day review)
+- **What's new in v2.0:** GS1 Digital Link / GTIN interop profile · EN 18220-aligned three-tier carriers (open QR + SDM NFC) · SD-JWT VC (RFC 9529) alongside BBS+ · optional SM2/SM3/SM4 cryptography · ISO 14067 sustainability module (quality + sustainability dual-dimension) · AI assessment transparency (GB/T 47507-2026 / EU AI Act Art. 50) · data lifecycle governance · UNTP-style conformity claims
+- **Second comment period:** September 1 – October 15, 2026
 - **Feedback:** [Open an Issue](https://github.com/ICO-cloud/dpp-cq-standard/issues) or email [info@icoun.org](mailto:info@icoun.org)
 
 ---
@@ -47,11 +48,16 @@ DPP-CQ extends the digital product passport paradigm beyond environmental and ci
 
 | Document | Description | Language |
 |----------|-------------|----------|
-| [White Paper (中文)](docs/white-paper/) | Complete standard specification (ICO-TS-001:2026 v1.3) | 中文 |
+| [White Paper (中文)](docs/white-paper/) | Complete standard specification (ICO-TS-001:2026 v2.0.0-draft) | 中文 |
 | [White Paper (English)](docs/white-paper/white-paper-en.md) | Full English version | English |
 | [Executive Summary](docs/white-paper/executive-summary.md) | Concise overview for decision-makers | English |
-| [JSON Schema Reference](schema.html) | Data model specification | — |
-| [Credential Examples](examples.html) | Sample credential payloads | — |
+| [GS1 Digital Link Mapping](docs/interoperability/gs1-digital-link-mapping.md) | GTIN↔DID binding, Digital Link resolution, EPCIS mapping | English |
+| [Carrier Specification](docs/interoperability/carrier-specification.md) | Three-tier carriers (QR / SDM NFC / tamper-evident), EN 18220 aligned | English |
+| [Credential Formats](docs/specs/credential-formats.md) | SD-JWT VC (RFC 9529) vs BBS+ profiles; SM2/SM3/SM4 suite | English |
+| [Conformity Declarations](docs/compliance/conformity-declarations.md) | GB/T 47507-2026, ESPR/EN, GDPR/PIPL, AI Act alignment | English |
+| [PIA / DPIA Summary](docs/compliance/pia-summary.md) | Public privacy impact assessment summary | English |
+| [JSON Schema Reference](schema.html) | Data model specification (v2.0) | — |
+| [Credential Examples](examples.html) | Sample credential payloads (v1 & v2.0) | — |
 
 ### PDF Downloads
 
@@ -66,11 +72,19 @@ DPP-CQ is built **on top of** established international standards:
 
 | Standard | Relationship |
 |----------|-------------|
-| **W3C DID / VC** | Core technology foundation, fully compliant |
-| **GS1 / EPCIS** | Mapping and interoperability support |
-| **UNECE DPP Initiative** | Active participant in global interoperability framework |
-| **EU DPP / ESPR** | Data mapping for cross-system information sharing |
-| **ISO 22000 / 26000** | Compatible with quality and social responsibility standards |
+| **W3C DID / VC v2.0** | Core technology foundation, fully compliant |
+| **IETF SD-JWT (RFC 9529)** | Normative selective-disclosure credential profile |
+| **GS1 Digital Link / GTIN / EPCIS 2.0** | Normative interop profile for global retail, customs and EU DPP data exchange |
+| **EU ESPR / EN 18219–18223** | Baseline alignment: open carriers, unique identifiers, sustainability data fields |
+| **UN/CEFACT UNTP** | Conformity claim vocabulary; multilateral bridge |
+| **ISO 14067 / 22000 / 22739** | Carbon footprint, food safety, blockchain terminology references |
+| **GB/T 47507-2026; SM2/SM3/SM4** | AI trustworthiness alignment; optional national cryptography for domestic deployments |
+
+DPP-CQ's flagship categories (tea, wine & spirits, cultural crafts, traditional
+medicine products, specialty agri-foods) are not within the first EU ESPR
+priority product groups. The strategy is **baseline compatibility with
+differentiated value**: full interop on carriers, identifiers and formats,
+while keeping the independent quality-and-culture assessment framework.
 
 ---
 
@@ -88,38 +102,4 @@ ICO employs a **multi-stakeholder governance** model:
 ## How to Participate
 
 | Pathway | Description |
-|---------|-------------|
-| **Technical Contribution** | Contribute to reference implementations, SDKs, and tools |
-| **Standard Development** | Join a Working Group to shape the standards |
-| **Ecosystem Partnership** | Become a certified service provider or regional node |
-| **Adoption** | Implement ICO standards in your products or organization |
-| **Pilot Program** | Participate in early pilot projects (tea, ceramics, haute couture) |
-
----
-
-## Live Platforms
-
-| Platform | URL | Purpose |
-|----------|-----|---------|
-| Standard Portal | [www.icoun.org/dpp-cq/](https://www.icoun.org/dpp-cq/) | Official standard documentation |
-| Product Verification | [verify.oppscc.org.cn](https://verify.oppscc.org.cn) | Consumer-facing NFC/QR verification |
-| Certificate Lookup | [verify.icoun.org](https://verify.icoun.org) | Institution certificate verification |
-
----
-
-## License
-
-- **Standards & Documentation:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- **Reference Implementations:** [Apache 2.0](https://github.com/ICO-cloud/dpp-cq-standard/blob/main/LICENSE)
-
----
-
-## Contact
-
-- **Organization:** [International Communication Organization (ICO)](https://www.icoun.org)
-- **Standards inquiries:** info@icoun.org
-- **GitHub:** [ICO-cloud/dpp-cq-standard](https://github.com/ICO-cloud/dpp-cq-standard)
-
----
-
-*Published by the International Communication Organization (ICO) · ICO-TS-001:2026 v1.3*
+|------

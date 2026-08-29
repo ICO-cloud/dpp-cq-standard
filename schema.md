@@ -9,7 +9,7 @@ permalink: /schema.html
 > **ICO Std 2001-2026** — Core data schema for cultural and quality product digital passports.
 > Based on W3C Verifiable Credentials Data Model v2.0.
 
-**Schema ID:** `https://icoun.org/schemas/dpp-cq/v1.0.0`
+**Schema ID:** `https://icoun.org/schemas/dpp-cq/v2.0.0-draft`
 **Draft:** JSON Schema Draft 2020-12
 
 ---
@@ -135,7 +135,7 @@ permalink: /schema.html
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `type` | `string` | ✅ | Recommended: `BbsBlsSignature2020`, `Ed25519Signature2020`, `DataIntegrityProof` |
+| `type` | `string` | ✅ | Profiles: Data Integrity (`BbsBlsSignature2020`, `Ed25519Signature2020`, `DataIntegrityProof`) and SD-JWT VC (`SdJwtCredential2025` with `ecdsa-sd-2023`); optional `sm2-with-sm3-2026` national suite. See docs/specs/credential-formats.md |
 | `created` | `datetime` | ✅ | Proof creation timestamp |
 | `proofPurpose` | `string (enum)` | ✅ | `assertionMethod` / `authentication` / `controllerProof` |
 | `verificationMethod` | `string (uri)` | ✅ | DID key reference |
@@ -150,7 +150,7 @@ The complete JSON Schema file is available at:
 📄 [dpp-cq.schema.json](https://github.com/ICO-cloud/dpp-cq-standard/blob/main/schemas/dpp-cq.schema.json)
 
 ```
-Schema: https://icoun.org/schemas/dpp-cq/v1.0.0
+Schema: https://icoun.org/schemas/dpp-cq/v2.0.0-draft
 Standard: ICO Std 2001-2026
 Version: 1.0.0 (Draft)
 License: CC BY 4.0 (documentation) / Apache 2.0 (implementation)
