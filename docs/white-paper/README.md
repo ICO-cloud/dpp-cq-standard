@@ -9,6 +9,7 @@
 | Document | Format | Description |
 |---|---|---|
 | [white-paper-v2.0.md](white-paper-v2.0.md) | Markdown | Full white paper v2.0 (English) |
+| [DPP-CQ_White_Paper_v2.0_EN.pdf](DPP-CQ_White_Paper_v2.0_EN.pdf) | PDF | Full white paper v2.0 (English, with all normative annexes), 30 pages |
 
 ### Previous Versions (Archived)
 

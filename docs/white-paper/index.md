@@ -11,7 +11,7 @@ The full white paper is available at [white-paper-v2.0.md](white-paper-v2.0.md).
 
 ## Download
 
-- 📄 [PDF (English, with all normative annexes)](https://dppcq.org/whitepaper/DPP-CQ_White_Paper_v2.0_EN.pdf)
+- 📄 [PDF (English, with all normative annexes)](DPP-CQ_White_Paper_v2.0_EN.pdf) — 30 pages
 
 ## Normative Annexes (v2.0)
 
