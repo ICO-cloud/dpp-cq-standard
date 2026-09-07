@@ -9,8 +9,12 @@
 | Document | Format | Description |
 |---|---|---|
 | [white-paper-v2.0.md](white-paper-v2.0.md) | Markdown | Full white paper v2.0 (English) |
-| [DPP-CQ_White_Paper_v1.3.pdf](DPP-CQ_White_Paper_v1.3.pdf) | PDF | White paper v1.3 (Chinese) |
-| [DPP-CQ_White_Paper_v1.3_EN.pdf](DPP-CQ_White_Paper_v1.3_EN.pdf) | PDF | White paper v1.3 (English) |
+
+### Previous Versions (Archived)
+
+| Document | Version | Status |
+|---|---|---|
+| [v1.3 PDFs](archive/) | v1.3 | Superseded — archived for historical reference |
 
 ### v2.0 Enhancements
 
