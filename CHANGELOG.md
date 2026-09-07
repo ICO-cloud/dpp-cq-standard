@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-draft] - 2026-09-01
+
+### Added
+- **GS1 Digital Link interoperability**: Native GS1 Digital Link URI syntax for carrier identification
+- **Three-tier carrier specification**: L1 (Open QR), L2 (SDM Secure NFC), L3 (Tamper-evident NFC)
+- **SD-JWT VC credential format**: IETF RFC 9529 support alongside BBS+ selective disclosure
+- **Chinese cryptography optional module**: SM2/SM3/SM4 support per GM/T 0009, GM/T 0004, GM/T 0002
+- **Sustainability module**: ISO 14067 carbon footprint disclosure requirements
+- **AI transparency disclosure**: EU AI Act Art.50 and GB/T 47507-2026 compliance
+- **Governance Charter v0.5**: Open multi-stakeholder governance framework defining membership, voting, IPR policy, and dispute resolution
+- **White Paper v2.0**: Comprehensive architecture overview with all v2.0 enhancements
+
+### Changed
+- **Standard numbering**: Unified to ICO Std 2001 (previously ICO-TS-001)
+- **Public review period**: Second review Sep 1 – Oct 15, 2026 (previously Jul 6 – Aug 20, 2026)
+- **Carrier specification**: Expanded from dual-tier to three-tier (L1/L2/L3)
+- **Credential formats**: Now supports both BBS+ and SD-JWT VC
+- **Documentation portal**: Launched dedicated standard portal at dppcq.org
+- **Demo**: Published reference implementation at ico-cloud.github.io/dpp-cq-demo
+
+### Fixed
+- Various technical clarifications based on first public review feedback
+- Terminology consistency across specification and white paper
+- Cross-reference alignment between documents
+
 ## [1.3.0] - 2026-07-06
 
 ### Added
@@ -26,29 +51,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - WIPO-WTO-WTO typo in references
-- Inconsistent terminology across sections
+- Inconsistent terminology across documents
 
-## [1.2.0] - 2026-07-06
-
-### Added
-- Compliance & Legal Framework chapter
-- DPP-CQ Technical Specification Appendix (Draft)
-- Intellectual Property Policy
-- Standard Version Management Strategy
-- FAQ section (Appendix)
-- Strengthened UNESCO/WIPO/UNECE references
-
-## [1.1.0] - 2026-07-05
+## [1.0.0] - 2026-05-15
 
 ### Added
-- Complete 12-chapter architecture
-- Technical implementation details
-- Governance framework
-- Roadmap and pilot planning
-
-## [1.0.0] - 2026-07-05
-
-### Added
-- Initial white paper release
-- Core DPP-CQ concept and architecture
-- ICO standards framework overview
+- Initial public release
+- Core DPP-CQ data model
+- Basic carrier specification (QR + NFC)
+- BBS+ credential format
+- White Paper v1.0 (CN + EN)

@@ -1,14 +1,14 @@
-**ICO-TS-001:2026**　　　　　　　　　　　　　　July 2026
+**ICO Std 2001:2026**             September 2026
 
 # DPP-CQ: Digital Product Passport for Cultural & Quality Goods
 ## Standard Architecture and Core Specifications
 
 ### 文化与品质数字产品护照 · 标准架构与核心规范
-#### ICO Digital Trust Standards Framework v1.3
+#### ICO Digital Trust Standards Framework v2.0
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%2.0-blue.svg)](LICENSE)
 [![License: CC BY 4.0](https://img.shields.io/badge/Docs-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Status: Public Review Draft](https://img.shields.io/badge/Status-Public%20Review%20Draft-orange.svg)](#status)
+[![Status: Second Public Review](https://img.shields.io/badge/Status-Second%20Public%20Review-orange.svg)](#status)
 [![Standard: ICO Std 2001](https://img.shields.io/badge/Standard-ICO%20Std%202001-green.svg)](#core-standards)
 
 ---
@@ -21,20 +21,23 @@ Our flagship standard, **DPP-CQ (Digital Product Passport for Cultural & Quality
 
 ## Status
 
-> ⚠️ **Early Stage — Draft for Public Comment**
+> ⚠️ **Second Public Review — v2.0.0-draft**
 >
-> All specifications are currently in draft form and subject to revision based on community input. This is an open development process — we invite participation from all stakeholders.
+> This is the second public review period for DPP-CQ v2.0.0-draft. The specification has been substantially revised since v1.3, incorporating GS1 Digital Link interoperability, three-tier carrier specification, dual credential formats (BBS+ and SD-JWT VC), Chinese cryptography optional module, and sustainability alignment with ISO 14067.
 
-- **White Paper v1.3 (Draft for Comment)**: [docs/white-paper/README.md](docs/white-paper/README.md)
-- **DPP-CQ Technical Specification**: In development
-- **Reference Implementation**: Targeted for Q4 2026
-- **Public Comment Period**: 45 days (July 6 – August 20, 2026) · Accelerated Procedure
+- **White Paper v2.0 (Second Public Review)**: [docs/white-paper/white-paper-v2.0.md](docs/white-paper/white-paper-v2.0.md)
+- **Governance Charter v0.5 (Working Draft)**: [docs/governance/governance-charter-v0.5.md](docs/governance/governance-charter-v0.5.md)
+- **Technical Specification v2.0.0-draft**: [dppcq.org/spec/](https://dppcq.org/spec/)
+- **Reference Implementation (Demo)**: [ico-cloud.github.io/dpp-cq-demo](https://ico-cloud.github.io/dpp-cq-demo/)
+- **Public Comment Period**: Sep 1 – Oct 15, 2026
+
+**Official Standard Portal**: [https://dppcq.org](https://dppcq.org)
 
 ## Core Standards
 
 | Standard ID | Title | Status |
 |---|---|---|
-| **ICO Std 2001** | Digital Product Passport for Cultural & Quality Goods (DPP-CQ) | Draft |
+| **ICO Std 2001** | Digital Product Passport for Cultural & Quality Goods (DPP-CQ) | v2.0 Public Review |
 | ICO Std 1001 | Global Information Credibility & Data Traceability Specification | Planned |
 | ICO Std 3001 | Global Digital Credibility Certification (GDCC) | Planned |
 | ICO Std 2002 | Haute Couture & Cultural Craftsmanship Standard | Planned |
@@ -64,11 +67,14 @@ Our flagship standard, **DPP-CQ (Digital Product Passport for Cultural & Quality
 
 ## Key Design Principles
 
-- **Standards-based**: Fully aligned with W3C DID Core and Verifiable Credentials
-- **Dual verification support**: QR code (low-cost) and NFC (high-security) physical carriers
-- **Three-tier verification**: Quick scan → Deep verification → Judicial-grade forensics
+- **Standards-based**: Fully aligned with W3C DID Core and Verifiable Credentials v2.0
+- **GS1 interoperable**: Native GS1 Digital Link URI syntax for carrier identification
+- **Three-tier carriers**: L1 (Open QR) → L2 (SDM Secure NFC) → L3 (Tamper-evident NFC)
+- **Dual credential formats**: BBS+ selective disclosure and SD-JWT VC (IETF RFC 9529)
+- **Chinese cryptography optional**: SM2/SM3/SM4 support per GM/T standards
 - **Privacy by design**: Zero-Knowledge Proofs enable compliance verification without disclosing sensitive data
-- **Technology neutral**: Multi-chain hash anchoring, no vendor lock-in
+- **Sustainability aligned**: ISO 14067 carbon footprint module
+- **AI transparency**: EU AI Act Art.50 and GB/T 47507-2026 compliance disclosure
 - **Inclusive by default**: Lightweight implementations for low-resource environments
 
 ## Why DPP-CQ?
@@ -82,18 +88,31 @@ Existing digital product passport frameworks — developed primarily by advanced
 
 DPP-CQ fills this gap by focusing on the *cultural value dimension* and *quality dimension* of digital product passports, while maintaining full interoperability with existing and emerging global standards.
 
+## v2.0 Enhancements (since v1.3)
+
+| Enhancement | Description |
+|---|---|
+| **GS1 Digital Link** | Native URI syntax for global carrier interoperability |
+| **Three-tier carriers** | L1/L2/L3 classification with SDM security and tamper-evidence |
+| **SD-JWT VC** | IETF RFC 9529 credential format alongside BBS+ |
+| **Chinese crypto** | SM2/SM3/SM4 optional module (GM/T 0009, GM/T 0004, GM/T 0002) |
+| **Sustainability** | ISO 14067 carbon footprint disclosure module |
+| **AI transparency** | EU AI Act Art.50 and GB/T 47507-2026 disclosure requirements |
+| **Governance Charter** | Open multi-stakeholder governance framework (v0.5) |
+
 ## Getting Involved
 
 ### Feedback & Discussion
 
 - **Issues**: Technical questions, bug reports, and feature proposals → [Open an Issue](https://github.com/ICO-cloud/dpp-cq-standard/issues)
 - **Email**: Formal inquiries and working group applications → info@icoun.org
+- **Standard Portal**: [https://dppcq.org](https://dppcq.org)
 
 ### Ways to Participate
 
 | Pathway | Description |
 |---|---|
-| **Technical Contribution** | Contribute to reference implementations, SDKs, and tools (coming soon) |
+| **Technical Contribution** | Contribute to reference implementations, SDKs, and tools |
 | **Standard Development** | Join a Working Group to shape the standards themselves |
 | **Ecosystem Partnership** | Become a certified service provider, regional node, or industry partner |
 | **Adoption** | Implement ICO standards in your products or organization |
@@ -115,7 +134,8 @@ dpp-cq-standard/
 ├── schema.md             # JSON Schema reference page
 ├── examples.md           # Credential examples page
 ├── docs/
-│   ├── white-paper/      # White paper (CN + EN) — PDF & Markdown
+│   ├── white-paper/      # White paper v2.0 (CN + EN) — PDF & Markdown
+│   ├── governance/       # Governance Charter and framework documents
 │   └── README.md
 ├── schemas/              # JSON schemas for DPP-CQ data models
 ├── examples/             # Example DPP-CQ credential payloads
@@ -135,16 +155,21 @@ This repository contains two types of content with different licenses:
 - **Specifications, documentation, and white papers**: Creative Commons Attribution 4.0 International ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))
 - **Software, reference implementations, SDKs, and tools**: Apache License, Version 2.0 ([LICENSE](LICENSE))
 
-## Documentation Site
+## Documentation Sites
 
-The full documentation site is available at: [https://ico-cloud.github.io/dpp-cq-standard/](https://ico-cloud.github.io/dpp-cq-standard/)
+| Site | URL |
+|---|---|
+| **Standard Portal** | [https://dppcq.org](https://dppcq.org) |
+| **ICO Overview** | [https://www.icoun.org/dpp-cq/](https://www.icoun.org/dpp-cq/) |
+| **GitHub Pages** | [https://ico-cloud.github.io/dpp-cq-standard/](https://ico-cloud.github.io/dpp-cq-standard/) |
+| **Demo** | [https://ico-cloud.github.io/dpp-cq-demo/](https://ico-cloud.github.io/dpp-cq-demo/) |
 
 ## Contact
 
 - **Standards inquiries**: info@icoun.org
 - **Security reports**: info@icoun.org
 - **Partnership**: info@icoun.org
-- **Website**: https://icoun.org (forthcoming)
+- **Website**: [https://www.icoun.org](https://www.icoun.org)
 
 ---
 

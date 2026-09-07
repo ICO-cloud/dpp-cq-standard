@@ -1,31 +1,23 @@
-# Documentation
+# DPP-CQ Documentation
 
-This directory contains all documentation for the DPP-CQ standard.
+This directory contains the authoritative specification documents for the DPP-CQ standard (ICO Std 2001).
 
-## White Paper
+## Contents
 
-- [White Paper v1.3 (Chinese)](./white-paper/README.md) — 白皮书完整版（中文）
-- [Executive Summary (English)](./white-paper/executive-summary.md) — 英文执行摘要
+| Directory | Description |
+|---|---|
+| [white-paper/](white-paper/) | White Paper v2.0 — comprehensive architecture overview |
+| [governance/](governance/) | Governance Charter v0.5 — institutional framework |
 
-## Specification Structure
+## Standard Portal
 
-```
-docs/
-├── white-paper/          # White paper (full framework overview)
-└── specs/                # Technical specifications (coming soon)
-    ├── dpp-cq/           # DPP-CQ core specification
-    ├── did-method/       # ICO DID method specification
-    └── vocabulary/       # JSON-LD context and vocabulary
-```
+The complete documentation site is available at: [https://dppcq.org](https://dppcq.org)
 
-## Related Documents
-
-- [JSON Schema](../schemas/dpp-cq.schema.json) — DPP-CQ credential JSON Schema (draft 2020-12)
-- [Examples](../examples/) — Example DPP-CQ credentials
-- [Governance](../governance/) — Governance documents (coming soon)
-
-## Status
-
-All specifications are currently in **Public Review Draft** status. Feedback is welcome via GitHub Issues or email to info@icoun.org.
-
-**Comment Period**: July 6 – August 20, 2026 (Accelerated Procedure · 45-day review)
+| Page | URL |
+|---|---|
+| Home | [https://dppcq.org/](https://dppcq.org/) |
+| Technical Specification | [https://dppcq.org/spec/](https://dppcq.org/spec/) |
+| Governance | [https://dppcq.org/governance/](https://dppcq.org/governance/) |
+| Charter v0.5 | [https://dppcq.org/governance/charter-v0.5/](https://dppcq.org/governance/charter-v0.5/) |
+| Verification | [https://dppcq.org/verify/](https://dppcq.org/verify/) |
+| Community | [https://dppcq.org/community/](https://dppcq.org/community/) |
