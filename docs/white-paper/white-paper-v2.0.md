@@ -1,5 +1,5 @@
 ========================================================================
-                    ICO-TS-001                      August 2026
+                    ICO Std 2001                      August 2026
 
    DPP-CQ: Digital Product Passport for Cultural & Quality Goods
                Standard Architecture and Core Specifications
@@ -8,7 +8,7 @@
 ========================================================================
 
   Originating Organization:  International Communication Organization (ICO)
-  Document Number:           ICO-TS-001:2026
+  Document Number:           ICO Std 2001:2026
   Status:                    Public Review Draft
   Comment Period:            September 1 – October 15, 2026 (2nd review: interoperability & compliance)
   Feedback:                  info@icoun.org | GitHub Issues
@@ -954,10 +954,10 @@ The multi-stakeholder governance mechanism is the institutional guarantee for st
 ## How to Cite This Document · 如何引用本文档
 
 **English Citation:**
-> International Communication Organization (ICO). *DPP-CQ: Digital Product Passport for Cultural & Quality Goods — Standard Architecture and Core Specifications*[R]. ICO-TS-001:2026, v2.0.0-draft (Public Review Draft). August 2026. https://github.com/ICO-cloud/dpp-cq-standard
+> International Communication Organization (ICO). *DPP-CQ: Digital Product Passport for Cultural & Quality Goods — Standard Architecture and Core Specifications*[R]. ICO Std 2001:2026, v2.0.0-draft (Public Review Draft). August 2026. https://github.com/ICO-cloud/dpp-cq-standard
 
 **中文引用格式：**
-> 国际传播组织（ICO）. DPP-CQ文化与品质数字产品护照：标准架构与核心规范[R]. ICO-TS-001:2026, v2.0.0-draft（征求意见稿）. 2026年8月. https://github.com/ICO-cloud/dpp-cq-standard
+> 国际传播组织（ICO）. DPP-CQ文化与品质数字产品护照：标准架构与核心规范[R]. ICO Std 2001:2026, v2.0.0-draft（征求意见稿）. 2026年8月. https://github.com/ICO-cloud/dpp-cq-standard
 
 ---
 
@@ -991,7 +991,7 @@ The following separate documents form a normative part of ICO Std 2001 v2.0. The
 ---
 
 **Published by · 发布机构**: International Communication Organization (ICO) 国际传播组织
-**Document No. · 文档编号**: ICO-TS-001:2026
+**Document No. · 文档编号**: ICO Std 2001:2026
 **Version · 版本**: v2.0.0-draft
 **Status · 状态**: Public Review Draft · 征求意见稿（第二轮）
 **Issued · 发布日期**: August 2026 · 2026年8月

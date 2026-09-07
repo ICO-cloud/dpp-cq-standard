@@ -134,8 +134,11 @@ dpp-cq-standard/
 ├── schema.md             # JSON Schema reference page
 ├── examples.md           # Credential examples page
 ├── docs/
-│   ├── white-paper/      # White paper v2.0 (CN + EN) — PDF & Markdown
-│   ├── governance/       # Governance Charter and framework documents
+│   ├── white-paper/          # White paper v2.0 (CN + EN) — PDF & Markdown
+│   ├── governance/           # Governance Charter and framework documents
+│   ├── interoperability/     # Normative annexes: GS1 Digital Link, Carrier Spec
+│   ├── specs/                # Normative annexes: Credential Formats
+│   ├── compliance/           # Normative annexes: Conformity Declarations, PIA
 │   └── README.md
 ├── schemas/              # JSON schemas for DPP-CQ data models
 ├── examples/             # Example DPP-CQ credential payloads

@@ -6,13 +6,36 @@ permalink: /examples.html
 
 # DPP-CQ Credential Examples
 
-> Sample verifiable credentials conforming to the DPP-CQ JSON Schema (ICO Std 2001-2026).
+> Sample verifiable credentials conforming to the DPP-CQ JSON Schema (ICO Std 2001:2026).
 
 ---
 
-## Example 1: West Lake Longjing Tea
+## v2.0 Example: West Lake Longjing Tea (Full Interoperability Configuration)
 
-A geographical indication tea product with intangible cultural heritage data, full traceability, and dual physical carriers (NFC + QR).
+A comprehensive v2.0 credential demonstrating all new features: GS1 Digital Link, three-tier carrier (L2 tamper-evident NFC + L1 open QR, dual-carrier), AI transparency disclosure, ISO 14067 sustainability module, data lifecycle governance, and SD-JWT VC–ready structure.
+
+📄 [**longjing-tea-v2.json**](https://github.com/ICO-cloud/dpp-cq-standard/blob/main/examples/longjing-tea-v2.json)
+
+### v2.0 Key Highlights
+
+| Module | Data Included |
+|--------|---------------|
+| **GS1 Digital Link** | GTIN `06141411234567` ↔ DID binding, Digital Link URI with content negotiation |
+| **Carrier Tier** | L2 tamper-evident NFC (NTAG 424 DNA TT) + L1 open QR, dual-carrier |
+| **AI Transparency** | AI used for data-extraction + pre-scoring; human oversight declared |
+| **Sustainability** | PCF 0.85 kgCO2e/kg (ISO 14067, cradle-to-gate, verified) |
+| **Data Lifecycle** | Controller info, storage jurisdiction (CN), cross-border hash-only mode |
+| **Credential Format** | DataIntegrityProof with bbs-2023 cryptosuite |
+| **EPCIS Events** | ObjectEvent (harvest), AggregationEvent (packaging) |
+| **VC 2.0 Terms** | `validFrom` / `validUntil` (with legacy `issuanceDate`/`expirationDate` compat) |
+| **Issuer Object** | `{id, name}` format (DID + human-readable name) |
+| **Conformity Claims** | UNTP-style `conformityClaimRef` in certifications |
+
+---
+
+## v1.3 Example: West Lake Longjing Tea (Legacy)
+
+A v1.3 credential with geographical indication, intangible cultural heritage data, full traceability, and dual physical carriers (NFC + QR). Retained for backward compatibility reference.
 
 ```json
 {
@@ -90,29 +113,29 @@ A geographical indication tea product with intangible cultural heritage data, fu
 }
 ```
 
-### Key Highlights
+### v1.3 Key Highlights
 
 | Module | Data Included |
 |--------|---------------|
 | **Base Identity** | DID-based unique identifier |
-| **Quality Data** | Premium Grade 1, sensory attributes, lab test specs |
-| **Cultural Data** | National ICH status, traditional craft method, 1,200-year history |
+| **Quality Data** | Premium Grade 1, sensory attributes |
+| **Cultural Data** | National ICH status, traditional craft, 1,200-year history |
 | **Geographical Indication** | GI-CN-0001, West Lake production area |
 | **Traceability** | 4-step supply chain from harvest to packaging |
-| **Credential Proof** | BBS+ signature for selective disclosure support |
+| **Credential Proof** | BBS+ signature for selective disclosure |
 
-### Physical Carriers
-
-- **NFC:** NTAG 424 DNA chip — secure, tamper-evident, supports cryptographic verification
-- **QR Code:** Encodes the credential DID for instant lookup via [verify.oppscc.org.cn](https://verify.oppscc.org.cn)
+📄 [longjing-tea.json](https://github.com/ICO-cloud/dpp-cq-standard/blob/main/examples/longjing-tea.json)
 
 ---
 
-## Full Example File
+## Physical Carriers
 
-The complete example file with all fields (including supply chain steps, specifications, certifications) is available at:
-
-📄 [longjing-tea.json](https://github.com/ICO-cloud/dpp-cq-standard/blob/main/examples/longjing-tea.json)
+| Carrier | Version | Description |
+|---------|---------|-------------|
+| **NFC** | v1.3 / v2.0 | NTAG 424 DNA — secure, tamper-evident, cryptographic verification |
+| **QR Code** | v1.3 / v2.0 | Encodes the credential DID for instant lookup via [verify.icoun.org](https://verify.icoun.org) |
+| **Tamper-evident NFC** | v2.0 (L3) | NTAG 424 DNA TT with visible tamper evidence |
+| **Dual Carrier** | v2.0 | L2 NFC + L1 QR simultaneously, `dualCarrier: true` |
 
 ---
 
@@ -129,4 +152,6 @@ The DPP-CQ schema supports the following product categories:
 | Handicraft | `handicraft` | Embroidery, lacquerware, woodwork |
 | Specialty Agricultural | `specialty-agricultural-product` | Regional herbs, honey, oils |
 | Cultural Creative | `cultural-creative-product` | Museum collaborations, cultural IP |
+| Traditional Medicine | `traditional-medicine` | *New in v2.0* — Dongba medicine, Tibetan medicine |
+| Wine & Spirits | `wine-and-spirits` | *New in v2.0* — Moutai, Huangjiu, Baijiu |
 | Other | `other` | Additional categories |

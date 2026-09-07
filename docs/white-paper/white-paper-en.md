@@ -1,5 +1,5 @@
 ========================================================================
-                    ICO-TS-001                      July 2026
+                    ICO Std 2001                      July 2026
 
    DPP-CQ: Digital Product Passport for Cultural & Quality Goods
                Standard Architecture and Core Specifications
@@ -8,7 +8,7 @@
 ========================================================================
 
   Originating Organization:  International Communication Organization (ICO)
-  Document Number:           ICO-TS-001:2026
+  Document Number:           ICO Std 2001:2026
   Status:                    Public Review Draft
   Comment Period:            July 6 – August 20, 2026 (Accelerated Procedure · 45-day review)
   Feedback:                  info@icoun.org | GitHub Issues
@@ -840,15 +840,15 @@ The multi-stakeholder governance mechanism is the institutional guarantee for st
 ## How to Cite This Document · 如何引用本文档
 
 **English Citation:**
-> International Communication Organization (ICO). *DPP-CQ: Digital Product Passport for Cultural & Quality Goods — Standard Architecture and Core Specifications*[R]. ICO-TS-001:2026, v1.3 (Public Review Draft). July 2026. https://github.com/ICO-cloud/dpp-cq-standard
+> International Communication Organization (ICO). *DPP-CQ: Digital Product Passport for Cultural & Quality Goods — Standard Architecture and Core Specifications*[R]. ICO Std 2001:2026, v1.3 (Public Review Draft). July 2026. https://github.com/ICO-cloud/dpp-cq-standard
 
 **中文引用格式：**
-> 国际传播组织（ICO）. DPP-CQ文化与品质数字产品护照：标准架构与核心规范[R]. ICO-TS-001:2026, v1.3（征求意见稿）. 2026年7月. https://github.com/ICO-cloud/dpp-cq-standard
+> 国际传播组织（ICO）. DPP-CQ文化与品质数字产品护照：标准架构与核心规范[R]. ICO Std 2001:2026, v1.3（征求意见稿）. 2026年7月. https://github.com/ICO-cloud/dpp-cq-standard
 
 ---
 
 **Published by · 发布机构**: International Communication Organization (ICO) 国际传播组织
-**Document No. · 文档编号**: ICO-TS-001:2026
+**Document No. · 文档编号**: ICO Std 2001:2026
 **Version · 版本**: v1.3
 **Status · 状态**: Public Review Draft · 征求意见稿
 **Issued · 发布日期**: July 2026 · 2026年7月
