@@ -63,8 +63,8 @@ DPP-CQ extends the digital product passport paradigm beyond environmental and ci
 
 | Document | Description | Language |
 |----------|-------------|----------|
-| [White Paper v2.0](docs/white-paper/white-paper-v2.0.md) | Complete standard specification (ICO Std 2001:2026 v2.0.0-draft) | EN/CN |
-| [White Paper v2.0 (English)](docs/white-paper/white-paper-v2.0.md) | Full bilingual version | English + 中文 |
+| [White Paper v2.0](docs/white-paper/white-paper-v2.0.md) | Complete standard specification (ICO Std 2001:2026 v2.0.0-draft) | English |
+| [White Paper v2.0 PDF](https://dppcq.org/whitepaper/DPP-CQ_White_Paper_v2.0_EN.pdf) | Pure English PDF (with all normative annexes) | English |
 | [White Paper v1.3 (English)](docs/white-paper/white-paper-en.md) | Previous version | English |
 | [Executive Summary](docs/white-paper/executive-summary.md) | Concise overview for decision-makers | English |
 | [Governance Charter v0.5](docs/governance/governance-charter-v0.5.md) | Multi-stakeholder governance framework | English |
@@ -83,9 +83,8 @@ DPP-CQ extends the digital product passport paradigm beyond environmental and ci
 
 ### PDF Downloads
 
-- 📄 [White Paper PDF v1.3 (中文)](docs/white-paper/DPP-CQ_White_Paper_v1.3.pdf)
-- 📄 [White Paper PDF v1.3 (English)](docs/white-paper/DPP-CQ_White_Paper_v1.3_EN.pdf)
-- *v2.0 PDF will be published after the public review period*
+- 📄 [White Paper v2.0 (English)](https://dppcq.org/whitepaper/DPP-CQ_White_Paper_v2.0_EN.pdf) — includes all normative annexes
+- 📄 [White Paper v1.3 (English)](docs/white-paper/DPP-CQ_White_Paper_v1.3_EN.pdf)
 
 ---
 

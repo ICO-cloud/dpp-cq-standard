@@ -3,7 +3,6 @@
 # DPP-CQ: Digital Product Passport for Cultural & Quality Goods
 ## Standard Architecture and Core Specifications
 
-### 文化与品质数字产品护照 · 标准架构与核心规范
 #### ICO Digital Trust Standards Framework v2.0
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%2.0-blue.svg)](LICENSE)
@@ -134,7 +133,7 @@ dpp-cq-standard/
 ├── schema.md             # JSON Schema reference page
 ├── examples.md           # Credential examples page
 ├── docs/
-│   ├── white-paper/          # White paper v2.0 (CN + EN) — PDF & Markdown
+│   ├── white-paper/          # White paper v2.0 (EN) — PDF & Markdown
 │   ├── governance/           # Governance Charter and framework documents
 │   ├── interoperability/     # Normative annexes: GS1 Digital Link, Carrier Spec
 │   ├── specs/                # Normative annexes: Credential Formats

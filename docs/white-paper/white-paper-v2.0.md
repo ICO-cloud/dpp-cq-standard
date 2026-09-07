@@ -977,14 +977,14 @@ The following separate documents form a normative part of ICO Std 2001 v2.0. The
 
 ---
 
-**Published by
-**Document No.
-**Version
-**Status
-**Issued
-**Comment Deadline
-**Feedback
-**Repository
+**Published by**: International Communication Organization (ICO)
+**Document No.**: ICO Std 2001:2026
+**Version**: v2.0.0-draft
+**Status**: Public Review Draft (2nd review round)
+**Issued**: August 2026
+**Comment Deadline**: October 15, 2026 (second review round: international interoperability & compliance)
+**Feedback**: info@icoun.org
+**Repository**: https://github.com/ICO-cloud/dpp-cq-standard
 
 ---
 
