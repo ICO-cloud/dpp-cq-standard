@@ -1,14 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://icoun.org/schemas/dpp-cq/v1.0.0",
+  "$id": "https://icoun.org/schemas/dpp-cq/v2.0.0-draft",
   "title": "DPP-CQ: Digital Product Passport for Cultural & Quality Goods",
-  "description": "ICO Std 2001-2026 — Core data schema for cultural and quality product digital passports. Based on W3C Verifiable Credentials Data Model v2.0.",
+  "description": "ICO Std 2001-2026 v2.0 — Core data schema for cultural and quality product digital passports. Based on W3C Verifiable Credentials Data Model v2.0. Includes sustainability module, AI transparency, data lifecycle governance, GS1 interop, and carrier specification.",
   "type": "object",
-  "required": ["@context", "type", "issuer", "issuanceDate", "credentialSubject", "proof"],
+  "required": ["@context", "type", "issuer", "credentialSubject"],
   "properties": {
     "@context": {
       "type": "array",
-      "description": "JSON-LD context definitions. Must include W3C VC base context and DPP-CQ context.",
+      "description": "JSON-LD context definitions. Must include W3C VC v2 base context and DPP-CQ context.",
       "items": { "type": "string", "format": "uri" },
       "minItems": 2,
       "examples": [
@@ -31,19 +31,38 @@
       "examples": [["VerifiableCredential", "DPPQualityCredential", "CulturalHeritageCredential"]]
     },
     "issuer": {
+      "oneOf": [
+        { "type": "string", "format": "uri", "description": "Issuer DID. Format: did:ico:issuer:<namespace>" },
+        {
+          "type": "object",
+          "description": "Issuer as object with DID and optional name.",
+          "required": ["id"],
+          "properties": {
+            "id": { "type": "string", "format": "uri" },
+            "name": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "validFrom": {
       "type": "string",
-      "format": "uri",
-      "description": "DID of the issuing authority. Format: did:ico:issuer:<namespace>"
+      "format": "date-time",
+      "description": "Date and time from which the credential is valid (VC 2.0, RFC 3339)."
+    },
+    "validUntil": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time until which the credential is valid (VC 2.0, RFC 3339). RECOMMENDED for quality-sensitive products."
     },
     "issuanceDate": {
       "type": "string",
       "format": "date-time",
-      "description": "Date and time when the credential was issued (RFC 3339)."
+      "description": "Legacy (VC 1.x): Date and time when the credential was issued. Use validFrom in VC 2.0."
     },
     "expirationDate": {
       "type": "string",
       "format": "date-time",
-      "description": "Date and time when the credential expires (RFC 3339). RECOMMENDED for quality-sensitive products."
+      "description": "Legacy (VC 1.x): Date and time when the credential expires. Use validUntil in VC 2.0."
     },
     "credentialSubject": {
       "type": "object",
@@ -56,14 +75,22 @@
           "description": "Product DID. Format: did:ico:dpp:<namespace>:<unique-id>"
         },
         "productName": {
-          "type": "object",
-          "description": "Product name in multiple languages. Key is ISO 639-1 language code.",
-          "additionalProperties": { "type": "string" },
-          "examples": [{ "zh": "西湖龙井茶", "en": "West Lake Longjing Tea" }]
+          "oneOf": [
+            {
+              "type": "object",
+              "description": "Product name in multiple languages. Key is ISO 639-1 language code.",
+              "additionalProperties": { "type": "string" },
+              "examples": [{ "zh": "西湖龙井茶", "en": "West Lake Longjing Tea" }]
+            },
+            {
+              "type": "string",
+              "description": "Product name as plain string (legacy support)."
+            }
+          ]
         },
         "category": {
           "type": "string",
-          "description": "Product category code. See ICO Std 2001 Annex A for full category list.",
+          "description": "Product category code.",
           "enum": [
             "geographical-indication-tea",
             "intangible-cultural-heritage-ceramic",
@@ -72,6 +99,8 @@
             "handicraft",
             "specialty-agricultural-product",
             "cultural-creative-product",
+            "traditional-medicine",
+            "wine-and-spirits",
             "other"
           ]
         },
@@ -118,7 +147,7 @@
         },
         "culturalData": {
           "type": "object",
-          "description": "Cultural heritage and intangible cultural value data (optional).",
+          "description": "Cultural heritage and intangible cultural value data.",
           "properties": {
             "heritageStatus": {
               "type": "string",
@@ -181,6 +210,11 @@
               "type": "string",
               "description": "Production batch or lot number."
             },
+            "epcisEndpoint": {
+              "type": "string",
+              "format": "uri",
+              "description": "URI of the EPCIS 2.0 repository for event-level traceability."
+            },
             "supplyChainSteps": {
               "type": "array",
               "items": {
@@ -190,7 +224,12 @@
                   "date": { "type": "string", "format": "date" },
                   "location": { "type": "string" },
                   "entity": { "type": "string" },
-                  "certification": { "type": "string" }
+                  "certification": { "type": "string" },
+                  "epcisEventType": {
+                    "type": "string",
+                    "enum": ["ObjectEvent", "AggregationEvent", "TransactionEvent", "TransformationEvent"],
+                    "description": "EPCIS 2.0 event type mapping."
+                  }
                 },
                 "required": ["step", "date"]
               }
@@ -227,39 +266,310 @@
                   "certificationBody": { "type": "string" },
                   "certificationType": { "type": "string" },
                   "certificateNumber": { "type": "string" },
-                  "validUntil": { "type": "string", "format": "date" }
+                  "validUntil": { "type": "string", "format": "date" },
+                  "conformityClaimRef": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Reference to UNTP-style conformity claim."
+                  }
                 },
                 "required": ["certificationBody", "certificationType"]
+              }
+            },
+            "assessment": {
+              "type": "object",
+              "description": "Quality assessment methodology and AI disclosure (v2.0).",
+              "properties": {
+                "methodologyRef": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "URI of the assessment methodology document."
+                },
+                "reportRef": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "URI of the full assessment report."
+                },
+                "assessorRole": {
+                  "type": "string",
+                  "description": "Role of the human assessor making the final decision."
+                },
+                "aiDisclosure": {
+                  "type": "object",
+                  "description": "AI involvement in the assessment process. MANDATORY if AI was used.",
+                  "properties": {
+                    "aiUsed": {
+                      "type": "boolean",
+                      "description": "Whether AI systems participated in the assessment."
+                    },
+                    "aiRoles": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "data-extraction",
+                          "pre-scoring",
+                          "image-recognition",
+                          "sensory-analysis",
+                          "report-generation",
+                          "other"
+                        ]
+                      },
+                      "description": "Specific AI roles in the assessment process."
+                    },
+                    "humanOversight": {
+                      "type": "boolean",
+                      "description": "Whether human oversight was applied. MUST be true."
+                    },
+                    "finalDecisionBy": {
+                      "type": "string",
+                      "enum": ["human-assessor"],
+                      "description": "Who made the final grading decision. MUST be human."
+                    },
+                    "methodologyReference": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URI of the AI assessment methodology."
+                    },
+                    "reportReference": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URI of the full AI assessment report."
+                    },
+                    "regulatoryBasis": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "description": "Regulatory frameworks for AI transparency (e.g., GB/T 47507-2026, EU AI Act Art.50)."
+                    }
+                  },
+                  "required": ["aiUsed"]
+                }
+              }
+            }
+          }
+        },
+        "sustainability": {
+          "type": "object",
+          "description": "Environmental sustainability data (v2.0 optional module). Aligned with ISO 14067 and ESPR data attributes.",
+          "properties": {
+            "pcf": {
+              "type": "object",
+              "description": "Product Carbon Footprint per ISO 14067.",
+              "properties": {
+                "value": { "type": "number", "description": "PCF value in declared unit." },
+                "unit": {
+                  "type": "string",
+                  "enum": ["kgCO2e", "gCO2e"],
+                  "description": "Unit of measurement."
+                },
+                "declaredUnit": {
+                  "type": "string",
+                  "description": "Declared unit (e.g., 'per 100g', 'per kg', 'per unit')."
+                },
+                "methodology": {
+                  "type": "string",
+                  "enum": ["ISO 14067", "GHG Protocol", "PAS 2050", "other"],
+                  "description": "PCF calculation methodology."
+                },
+                "boundary": {
+                  "type": "string",
+                  "enum": ["cradle-to-gate", "cradle-to-grave", "cradle-to-cradle"],
+                  "description": "System boundary."
+                },
+                "verification": {
+                  "type": "string",
+                  "enum": ["verified", "unverified", "self-declared"],
+                  "description": "Verification status."
+                }
+              },
+              "required": ["value", "unit"]
+            },
+            "materialComposition": {
+              "type": "array",
+              "description": "Material composition with recycled content.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "material": { "type": "string" },
+                  "percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+                  "recycledContent": { "type": "boolean" },
+                  "recycledPercentage": { "type": "number", "minimum": 0, "maximum": 100 }
+                },
+                "required": ["material", "percentage"]
+              }
+            },
+            "endOfLife": {
+              "type": "object",
+              "description": "End-of-life guidance.",
+              "properties": {
+                "recyclable": { "type": "boolean" },
+                "recyclingInstructions": { "type": "string" },
+                "compostable": { "type": "boolean" },
+                "disposalGuidance": { "type": "string" }
+              }
+            },
+            "packaging": {
+              "type": "object",
+              "description": "Packaging sustainability information.",
+              "properties": {
+                "material": { "type": "string" },
+                "recyclable": { "type": "boolean" },
+                "recycledContent": { "type": "boolean" },
+                "weight": { "type": "number" },
+                "weightUnit": { "type": "string", "enum": ["g", "kg"] }
               }
             }
           }
         },
         "authenticityMarks": {
           "type": "array",
-          "description": "Physical anti-counterfeiting features registered on-chain.",
+          "description": "Physical anti-counterfeiting features.",
           "items": {
             "type": "object",
             "properties": {
               "type": {
                 "type": "string",
-                "enum": ["nfc-chip", "qr-code", "hologram", "watermark", "security-thread", "other"]
+                "enum": ["nfc-chip", "qr-code", "hologram", "watermark", "security-thread", "sdm-nfc", "tamper-evident-nfc", "other"]
               },
               "identifier": { "type": "string" },
               "description": { "type": "string" }
             },
             "required": ["type", "identifier"]
           }
+        },
+        "carrierTier": {
+          "type": "object",
+          "description": "Physical carrier tier configuration (v2.0). See docs/interoperability/carrier-specification.md.",
+          "properties": {
+            "level": {
+              "type": "string",
+              "enum": ["L1", "L2", "L3"],
+              "description": "Carrier security level."
+            },
+            "primary": {
+              "type": "string",
+              "enum": ["open-qr", "sdm-nfc", "tamper-evident-nfc"],
+              "description": "Primary carrier type."
+            },
+            "secondary": {
+              "type": "string",
+              "enum": ["open-qr", "sdm-nfc", "tamper-evident-nfc", "none"],
+              "description": "Secondary carrier type (for dual-carrier configurations)."
+            },
+            "nfcChipType": {
+              "type": "string",
+              "description": "NFC chip model (e.g., NTAG-424-DNA)."
+            },
+            "tamperEvident": {
+              "type": "boolean",
+              "description": "Whether the carrier has tamper-evident capability."
+            },
+            "dualCarrier": {
+              "type": "boolean",
+              "description": "Whether dual-carrier configuration is used (GS1 interop profile)."
+            }
+          },
+          "required": ["level", "primary"]
+        },
+        "gs1DigitalLink": {
+          "type": "object",
+          "description": "GS1 Digital Link interoperability data (v2.0). See docs/interoperability/gs1-digital-link-mapping.md.",
+          "properties": {
+            "gtin": {
+              "type": "string",
+              "pattern": "^[0-9]{8,14}$",
+              "description": "GS1 Global Trade Item Number (GTIN-8, GTIN-12, GTIN-13, or GTIN-14)."
+            },
+            "did": {
+              "type": "string",
+              "description": "DPP-CQ DID bound to this GTIN."
+            },
+            "identifierRelation": {
+              "type": "string",
+              "enum": ["one-to-one", "one-to-many"],
+              "description": "Relationship between GTIN and DID."
+            },
+            "digitalLinkUri": {
+              "type": "string",
+              "format": "uri",
+              "description": "GS1 Digital Link URI for this product."
+            }
+          },
+          "required": ["gtin", "did"]
+        },
+        "dataLifecycle": {
+          "type": "object",
+          "description": "Data lifecycle governance metadata (v2.0). See docs/compliance/pia-summary.md.",
+          "properties": {
+            "controller": {
+              "type": "string",
+              "description": "DID or identifier of the data controller."
+            },
+            "controllerContact": {
+              "type": "string",
+              "format": "uri",
+              "description": "Contact URI for the data controller (e.g., mailto:)."
+            },
+            "retentionPolicy": {
+              "type": "object",
+              "properties": {
+                "retentionPeriod": {
+                  "type": "string",
+                  "description": "ISO 8601 duration (e.g., P5Y for 5 years)."
+                },
+                "basis": {
+                  "type": "string",
+                  "enum": ["contractual-obligation", "legal-requirement", "consent", "legitimate-interest"],
+                  "description": "Legal basis for data retention."
+                },
+                "deletionTrigger": {
+                  "type": "string",
+                  "enum": ["expiration", "consent-withdrawal", "legal-order", "manual"],
+                  "description": "What triggers data deletion."
+                }
+              }
+            },
+            "storageJurisdiction": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$",
+              "description": "ISO 3166-1 alpha-2 country code of primary data storage."
+            },
+            "crossBorderMode": {
+              "type": "string",
+              "enum": ["hash-only", "selective-disclosure", "full-transfer"],
+              "description": "Cross-border data transfer mode. Default: hash-only."
+            },
+            "deletionRules": {
+              "type": "object",
+              "properties": {
+                "personalData": { "type": "string" },
+                "credentialData": { "type": "string" },
+                "hashAnchors": { "type": "string" }
+              }
+            },
+            "privacyNoticeUri": {
+              "type": "string",
+              "format": "uri",
+              "description": "URI of the privacy notice for data subjects."
+            },
+            "piaSummaryUri": {
+              "type": "string",
+              "format": "uri",
+              "description": "URI of the PIA/DPIA summary document."
+            }
+          },
+          "required": ["controller", "storageJurisdiction", "crossBorderMode"]
         }
       }
     },
     "credentialStatus": {
       "type": "object",
-      "description": "Credential status verification mechanism.",
+      "description": "Credential status verification mechanism (W3C BitstringStatusList).",
       "properties": {
         "id": { "type": "string", "format": "uri" },
         "type": {
           "type": "string",
-          "examples": ["BitstringStatusListEntry", "RevocationList2020"]
+          "examples": ["BitstringStatusListEntry", "StatusList2021Entry"]
         },
         "statusPurpose": {
           "type": "string",
@@ -270,14 +580,30 @@
       },
       "required": ["type"]
     },
+    "termsOfUse": {
+      "type": "array",
+      "description": "Terms of use for the credential (VC 2.0).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "id": { "type": "string", "format": "uri" }
+        }
+      }
+    },
     "proof": {
       "type": "object",
-      "description": "Digital proof of the credential. See W3C VC Data Integrity specification.",
+      "description": "Digital proof of the credential.",
       "properties": {
         "type": {
           "type": "string",
-          "description": "Proof suite type. RECOMMENDED: BbsBlsSignature2020, Ed25519Signature2020, or DataIntegrityProof.",
-          "examples": ["BbsBlsSignature2020", "Ed25519Signature2020", "DataIntegrityProof"]
+          "description": "Proof suite type.",
+          "examples": ["DataIntegrityProof", "BbsBlsSignature2020", "Ed25519Signature2020"]
+        },
+        "cryptosuite": {
+          "type": "string",
+          "description": "Cryptographic suite for Data Integrity proofs.",
+          "examples": ["bbs-2023", "eddsa-2022", "sm2-2024"]
         },
         "created": {
           "type": "string",
@@ -292,7 +618,7 @@
           "format": "uri"
         },
         "proofValue": { "type": "string" },
-        "previousProof": { "type": "string" },
+        "previousProof": { "type": "string", "format": "uri" },
         "domain": { "type": "string" },
         "challenge": { "type": "string" }
       },

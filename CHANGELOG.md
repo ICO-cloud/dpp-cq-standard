@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-draft] - 2026-09-07
+
+### Added
+- **Normative Annex: GS1 Digital Link & Identifier Mapping** (`docs/interoperability/gs1-digital-link-mapping.md`): GTIN↔DID binding rules, Digital Link URI structure and content negotiation, EPCIS 2.0 event mapping, EN 18219/18220 alignment
+- **Normative Annex: Data Carrier Specification** (`docs/interoperability/carrier-specification.md`): Three-tier carriers (L1/L2/L3), open-carrier principle, dual-carrier rule, resolver behavior
+- **Normative Annex: Credential Format Profiles** (`docs/specs/credential-formats.md`): BBS+ (JSON-LD Data Integrity) vs SD-JWT VC profiles; disclosure classification (P/H/R); SM2/SM3/SM4 optional suite
+- **Normative Annex: Conformity Declarations** (`docs/compliance/conformity-declarations.md`): Self-declarations against GB/T 47507-2026, EU ESPR/EN, GDPR/PIPL, EU AI Act
+- **Normative Annex: PIA/DPIA Summary** (`docs/compliance/pia-summary.md`): Public privacy impact assessment with data flows, risk register, data subject rights, cross-border legal basis
+- **v2.0 Example Credential** (`examples/longjing-tea-v2.json`): Full interop-profile example demonstrating GS1 Digital Link, dual-carrier (L2+L1), AI disclosure, sustainability module, data lifecycle governance
+
+### Changed
+- **JSON Schema upgraded to v2.0.0-draft** (`schemas/dpp-cq.schema.json`): `$id` updated; added sustainability, aiDisclosure, dataLifecycle, carrierTier, gs1DigitalLink modules; VC 2.0 terminology (validFrom/validUntil); issuer as object support; EPCIS event type mapping; UNTP conformity claim references
+
+---
+
 ## [2.0.0-draft] - 2026-09-01
 
 ### Added

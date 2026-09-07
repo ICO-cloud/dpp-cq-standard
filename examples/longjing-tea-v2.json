@@ -1,0 +1,246 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://icoun.org/contexts/dpp-cq/v1"
+  ],
+  "id": "did:ico:dpp:tea:longjing-xh-2026-002",
+  "type": [
+    "VerifiableCredential",
+    "DPPQualityCredential",
+    "CulturalHeritageCredential"
+  ],
+  "issuer": {
+    "id": "did:ico:issuer:zjtea-assoc",
+    "name": "Zhejiang Tea Industry Association"
+  },
+  "validFrom": "2026-09-01T00:00:00Z",
+  "validUntil": "2027-08-31T23:59:59Z",
+  "credentialStatus": {
+    "id": "https://resolver.icoun.org/v1/status/001#88",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "88",
+    "statusListCredential": "https://resolver.icoun.org/v1/status/001"
+  },
+  "credentialSubject": {
+    "id": "did:ico:dpp:tea:longjing-xh-2026-002",
+    "productName": {
+      "zh": "西湖龙井茶",
+      "en": "West Lake Longjing Tea"
+    },
+    "category": "geographical-indication-tea",
+    "qualityGrade": "Premium Grade 1",
+    "productImage": "ipfs://QmXYZv2...",
+    "origin": {
+      "type": "GeographicalIndication",
+      "giNumber": "GI-CN-0001",
+      "region": "West Lake Production Area, Hangzhou",
+      "country": "CN",
+      "coordinates": {
+        "latitude": 30.2408,
+        "longitude": 120.1542
+      }
+    },
+    "culturalData": {
+      "heritageStatus": "National Intangible Cultural Heritage",
+      "heritageYear": 2008,
+      "heritageNumber": "Ⅷ-148",
+      "craftMethod": "Hand-fired with ten traditional techniques",
+      "craftHistory": "Longjing tea has a history of over 1,200 years, dating back to the Tang Dynasty.",
+      "artisanInfo": {
+        "name": "Disclosed with authorization",
+        "title": "National Master of Tea Craft",
+        "generation": "5th Generation"
+      },
+      "culturalNarrative": "Longjing tea is one of China's Ten Famous Teas, known for its four characteristics: green color, fragrant aroma, sweet taste, and beautiful shape."
+    },
+    "traceability": {
+      "harvestDate": "2026-03-28",
+      "processLocation": "Longwu Tea Town, Hangzhou",
+      "batchNumber": "XH20260328A02",
+      "epcisEndpoint": "https://epcis.zjtea-assoc.example/v2",
+      "supplyChainSteps": [
+        {
+          "step": "Tea leaf harvesting",
+          "date": "2026-03-28",
+          "location": "Shifeng Mountain, West Lake",
+          "entity": "Longjing Tea Cooperative",
+          "epcisEventType": "ObjectEvent"
+        },
+        {
+          "step": "Hand-firing processing",
+          "date": "2026-03-28",
+          "location": "Longwu Tea Town",
+          "entity": "Master Workshop",
+          "epcisEventType": "ObjectEvent"
+        },
+        {
+          "step": "Quality inspection",
+          "date": "2026-03-29",
+          "entity": "Zhejiang Tea Quality Inspection Center",
+          "certification": "Premium Grade 1",
+          "epcisEventType": "ObjectEvent"
+        },
+        {
+          "step": "Packaging and sealing",
+          "date": "2026-03-30",
+          "location": "Hangzhou",
+          "epcisEventType": "ObjectEvent"
+        }
+      ]
+    },
+    "qualityAttributes": {
+      "appearance": "Flat and smooth, tender green color",
+      "aroma": "Long-lasting tender chestnut aroma",
+      "taste": "Fresh, mellow, and sweet aftertaste",
+      "specifications": [
+        {
+          "attribute": "Tea polyphenols",
+          "value": "18.5",
+          "unit": "%",
+          "testMethod": "GB/T 8313-2018"
+        },
+        {
+          "attribute": "Amino acids",
+          "value": "4.2",
+          "unit": "%",
+          "testMethod": "GB/T 8314-2013"
+        },
+        {
+          "attribute": "Caffeine",
+          "value": "3.1",
+          "unit": "%",
+          "testMethod": "GB/T 8312-2013"
+        },
+        {
+          "attribute": "Water content",
+          "value": "5.8",
+          "unit": "%",
+          "testMethod": "GB 5009.3-2016"
+        }
+      ],
+      "certifications": [
+        {
+          "certificationBody": "General Administration of Quality Supervision",
+          "certificationType": "Geographical Indication Protection Product",
+          "certificateNumber": "GI-CN-0001",
+          "validUntil": "2030-12-31",
+          "conformityClaimRef": "https://resolver.icoun.org/conformity/GI-CN-0001"
+        },
+        {
+          "certificationBody": "Ministry of Culture and Tourism",
+          "certificationType": "National Intangible Cultural Heritage",
+          "certificateNumber": "Ⅷ-148",
+          "conformityClaimRef": "https://resolver.icoun.org/conformity/ICH-VIII-148"
+        }
+      ],
+      "assessment": {
+        "methodologyRef": "https://resolver.icoun.org/methods/tea-premium-v3",
+        "reportRef": "https://resolver.icoun.org/reports/XH20260328A02",
+        "assessorRole": "Senior Tea Grader",
+        "aiDisclosure": {
+          "aiUsed": true,
+          "aiRoles": ["data-extraction", "pre-scoring"],
+          "humanOversight": true,
+          "finalDecisionBy": "human-assessor",
+          "methodologyReference": "https://resolver.icoun.org/methods/ai-tea-scoring-v2",
+          "reportReference": "https://resolver.icoun.org/reports/ai-assessment-XH20260328A02",
+          "regulatoryBasis": ["GB/T 47507-2026", "EU AI Act Art.50"]
+        }
+      }
+    },
+    "sustainability": {
+      "pcf": {
+        "value": 0.85,
+        "unit": "kgCO2e",
+        "declaredUnit": "per kg of finished tea",
+        "methodology": "ISO 14067",
+        "boundary": "cradle-to-gate",
+        "verification": "verified"
+      },
+      "materialComposition": [
+        {
+          "material": "Tea leaves (dried)",
+          "percentage": 95,
+          "recycledContent": false
+        },
+        {
+          "material": "Natural moisture",
+          "percentage": 5,
+          "recycledContent": false
+        }
+      ],
+      "endOfLife": {
+        "recyclable": false,
+        "compostable": true,
+        "recyclingInstructions": "Tea leaves are biodegradable. Compost or dispose with organic waste.",
+        "disposalGuidance": "Product is fully biodegradable."
+      },
+      "packaging": {
+        "material": "Recyclable aluminum tin with paper label",
+        "recyclable": true,
+        "recycledContent": true,
+        "weight": 150,
+        "weightUnit": "g"
+      }
+    },
+    "authenticityMarks": [
+      {
+        "type": "tamper-evident-nfc",
+        "identifier": "NTAG-424-DNA-TT-002",
+        "description": "Tamper-evident NFC tag with SDM authentication"
+      },
+      {
+        "type": "open-qr",
+        "identifier": "https://id.gs1.org/01/06141411234567",
+        "description": "GS1 Digital Link QR code"
+      }
+    ],
+    "carrierTier": {
+      "level": "L2",
+      "primary": "tamper-evident-nfc",
+      "secondary": "open-qr",
+      "nfcChipType": "NTAG-424-DNA-TT",
+      "tamperEvident": true,
+      "dualCarrier": true
+    },
+    "gs1DigitalLink": {
+      "gtin": "06141411234567",
+      "did": "did:ico:dpp:tea:longjing-xh-2026-002",
+      "identifierRelation": "one-to-many",
+      "digitalLinkUri": "https://id.gs1.org/01/06141411234567"
+    },
+    "dataLifecycle": {
+      "controller": "did:ico:issuer:zjtea-assoc",
+      "controllerContact": "mailto:privacy@zjtea-assoc.example",
+      "retentionPolicy": {
+        "retentionPeriod": "P5Y",
+        "basis": "contractual-obligation",
+        "deletionTrigger": "expiration"
+      },
+      "storageJurisdiction": "CN",
+      "crossBorderMode": "hash-only",
+      "deletionRules": {
+        "personalData": "deleted-within-30-days-of-withdrawal",
+        "credentialData": "retained-for-verification-history",
+        "hashAnchors": "permanent"
+      },
+      "privacyNoticeUri": "https://zjtea-assoc.example/privacy",
+      "piaSummaryUri": "https://resolver.icoun.org/pia/zjtea-assoc"
+    }
+  },
+  "termsOfUse": [
+    {
+      "type": "IssuerPolicy",
+      "id": "https://resolver.icoun.org/policies/dpp-cq-standard"
+    }
+  ],
+  "proof": {
+    "type": "DataIntegrityProof",
+    "cryptosuite": "bbs-2023",
+    "created": "2026-09-01T10:30:00Z",
+    "proofPurpose": "assertionMethod",
+    "verificationMethod": "did:ico:issuer:zjtea-assoc#keys-bbs-1",
+    "proofValue": "u2V0cm..."
+  }
+}
