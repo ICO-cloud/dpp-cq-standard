@@ -533,7 +533,7 @@ itself to any regional regulatory regime. Its interoperability strategy is
   categories that environmental DPPs do not cover.
 - **Multilateral bridge:** active engagement with the UN/CEFACT UNTP (UN Transparency
   Protocol) conformity-credential vocabulary and the ISO DPP
-  work item (ISO/PWI 25534-1 track), so that DPP-CQ interops through neutral,
+  work item (ISO/AWI 25534-1 track), so that DPP-CQ interops through neutral,
   multilateral standards rather than through any single jurisdiction's
   registry.
 
