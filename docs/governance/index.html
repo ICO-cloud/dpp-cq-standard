@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governance Charter v0.5 — DPP-CQ Standard | ICO Std 2001</title>
+  <meta name="description" content="ICO Standards Governance Charter v0.5 — defines membership, voting, IPR policy, and dispute resolution for the DPP-CQ standard.">
+  <link rel="icon" type="image/x-icon" href="https://www.icoun.org/assets/dppcq/favicon.ico">
+  <link rel="apple-touch-icon" href="https://www.icoun.org/assets/dppcq/apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .charter-doc {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #d0d8e8;
+    }
+    .charter-doc h1 {
+      font-size: 1.9rem;
+      color: #ffffff;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    .charter-doc h2 {
+      font-size: 1.4rem;
+      color: #f0c040;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(240,192,64,0.25);
+      font-weight: 600;
+    }
+    .charter-doc h3 {
+      font-size: 1.15rem;
+      color: #5eead4;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .charter-doc p {
+      margin-bottom: 0.9rem;
+      color: #c8d0e0;
+    }
+    .charter-doc ul, .charter-doc ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #c0c8d8;
+    }
+    .charter-doc li {
+      margin-bottom: 0.4rem;
+    }
+    .charter-doc strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .charter-doc table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.92rem;
+      background: rgba(20,27,45,0.6);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .charter-doc th {
+      background: #1a2a4a;
+      color: #5eead4;
+      text-align: left;
+      padding: 0.7rem 0.85rem;
+      border-bottom: 2px solid #3b82f6;
+      font-weight: 600;
+    }
+    .charter-doc td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: #b8c4d8;
+    }
+    .charter-doc tr:hover td {
+      background: rgba(59,130,246,0.06);
+    }
+    .charter-doc pre {
+      background: #0d1525;
+      border: 1px solid #1e2d4a;
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      line-height: 1.55;
+      color: #7dd3c8;
+    }
+    .charter-doc code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.88em;
+      background: rgba(59,130,246,0.15);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      color: #93c5fd;
+    }
+    .charter-doc pre code {
+      background: none;
+      padding: 0;
+      color: #7dd3c8;
+    }
+    .charter-doc hr {
+      border: none;
+      border-top: 1px solid rgba(59,130,246,0.2);
+      margin: 2rem 0;
+    }
+    .charter-doc a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+    .charter-doc a:hover {
+      color: #93c5fd;
+      text-decoration: underline;
+    }
+    .charter-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+      padding: 1.1rem 1.4rem;
+      background: #141e38;
+      border-radius: 10px;
+      border: 1px solid #2a3a5c;
+      font-size: 0.9rem;
+    }
+    .charter-meta span {
+      color: #a0b0c8;
+    }
+    .charter-meta strong {
+      color: #60a5fa;
+    }
+    .charter-back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.5rem 1.1rem;
+      background: #1a2a4a;
+      color: #60a5fa;
+      border: 1px solid #2a3a5c;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .charter-back:hover {
+      background: #243458;
+      color: #93c5fd;
+      text-decoration: none;
+      border-color: #3b82f6;
+    }
+    @media (max-width: 768px) {
+      .charter-doc { padding: 1.5rem 1rem 3rem; }
+      .charter-doc h1 { font-size: 1.5rem; }
+      .charter-doc table { font-size: 0.82rem; }
+      .charter-doc th, .charter-doc td { padding: 0.45rem 0.55rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="dpp-nav" role="navigation" aria-label="Main navigation">
+    <div class="dpp-nav__inner">
+      <a href="/" class="dpp-nav__brand">
+        <img src="https://www.icoun.org/assets/dppcq/header-logo.png" alt="DPP-CQ" class="dpp-nav__logo-img">
+        <span class="dpp-nav__title">DPP-CQ Standard</span>
+      </a>
+      <ul class="dpp-nav__links">
+        <li><a href="../">Home</a></li>
+        <li><a href="../spec/">Specification</a></li>
+        <li><a href="../governance/" class="active">Governance</a></li>
+        <li><a href="../verify/">Verify</a></li>
+        <li><a href="../community/">Community</a></li>
+      </ul>
+      <button class="dpp-nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <nav class="dpp-breadcrumb" aria-label="Breadcrumb">
+    <div class="dpp-breadcrumb__inner">
+      <a href="../">Home</a>
+      <span class="dpp-breadcrumb__sep">›</span>
+      <a href="../governance/">Governance</a>
+      <span class="dpp-breadcrumb__sep">›</span>
+      <span class="dpp-breadcrumb__current">Charter v0.5</span>
+    </div>
+  </nav>
+
+  <!-- Charter Document -->
+  <article class="charter-doc">
+    <a href="../governance/" class="charter-back">← Back to Governance</a>
+
+    <div class="charter-meta">
+      <span><strong>Version:</strong> 0.5 — Working Draft</span>
+      <span><strong>Date:</strong> September 2026</span>
+      <span><strong>Status:</strong> Open for Public Comment (Sep 1 – Oct 15, 2026)</span>
+      <span><strong>Author:</strong> ICO Technical Secretariat</span>
+    </div>
+
+<h1>ICO Standards Governance Charter</h1>
+
+<hr />
+<h2>1. Purpose</h2>
+<p>This Charter establishes the governance framework for the <strong>ICO Digital Trust Standards Framework</strong> — the open, multi-stakeholder standards development process administered by the International Communication Organization (ICO).</p>
+<p>The Charter defines:</p>
+<ul>
+<li>How standards are proposed, developed, reviewed, and approved</li>
+<li>Who participates and how decisions are made</li>
+<li>How conflicts are resolved and how the governance framework itself evolves</li>
+</ul>
+<p>This is <strong>Version 0.5</strong> — an interim governance framework sufficient to support the public review and stabilization of DPP-CQ v2.0. It will be refined into v1.0 based on community feedback and the outcomes of initial working group operations.</p>
+<hr />
+<h2>2. Principles</h2>
+<p>The ICO Standards development process is guided by the following principles:</p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Openness</strong></td>
+<td>Any qualified stakeholder may participate; no unreasonable barriers to entry</td>
+</tr>
+<tr>
+<td><strong>Transparency</strong></td>
+<td>All proceedings, drafts, and decisions are publicly documented</td>
+</tr>
+<tr>
+<td><strong>Consensus</strong></td>
+<td>Decisions seek broad agreement; dissent is recorded and addressed</td>
+</tr>
+<tr>
+<td><strong>Due Process</strong></td>
+<td>Adequate notice, comment periods, and appeal mechanisms are maintained</td>
+</tr>
+<tr>
+<td><strong>Balance</strong></td>
+<td>No single interest group dominates; multiple perspectives are sought</td>
+</tr>
+<tr>
+<td><strong>Neutrality</strong></td>
+<td>Standards are technology-neutral where possible; no vendor lock-in</td>
+</tr>
+<tr>
+<td><strong>Inclusivity</strong></td>
+<td>Developing economies and small organizations have meaningful participation pathways</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Governance Structure</h2>
+<pre><code>┌─────────────────────────────────────────────┐
+│              ICO Standards Council           │
+│  Final approval authority · Strategic direction  │
+│  Composition: Founder + appointed members    │
+├─────────────────────────────────────────────┤
+│           Technical Secretariat              │
+│  Day-to-day standards administration         │
+│  Editor coordination · Document management   │
+├─────────────────────────────────────────────┤
+│              Working Groups                  │
+│  Technical content development               │
+│  Community review · Consensus building       │
+├─────────────────────────────────────────────┤
+│          Community Contributors              │
+│  Issue reports · Public comments · Reviews   │
+└─────────────────────────────────────────────┘
+</code></pre>
+<h3>3.1 ICO Standards Council</h3>
+<p><strong>Role:</strong> The final approval authority for ICO standards. The Council:
+- Approves standards for publication (Public Review → Final Standard)
+- Resolves appeals and disputes that cannot be settled within Working Groups
+- Sets strategic direction for the standards portfolio
+- Approves amendments to this Charter</p>
+<p><strong>Composition (v0.5):</strong>
+- <strong>Chair:</strong> ICO Executive Chairman (founder)
+- <strong>Members:</strong> To be appointed based on stakeholder representation needs (target: 5–9 members from industry, academia, civil society, and government advisory roles)
+- <strong>Secretary:</strong> Technical Secretariat lead (non-voting, administrative)</p>
+<p><strong>Decision Rules (v0.5):</strong>
+- Quorum: 50% of voting members
+- Approval: Simple majority for routine decisions; 2/3 supermajority for standard approval and Charter amendments
+- Decisions are documented and published within 7 working days</p>
+<p><strong>Transition to v1.0:</strong> The Council composition will be expanded to include elected member representatives, with term limits and election procedures defined in v1.0.</p>
+<h3>3.2 Technical Secretariat</h3>
+<p><strong>Role:</strong> The operational body responsible for day-to-day standards administration:
+- Maintains the standards repository and document management system
+- Coordinates Working Group activities and meeting schedules
+- Assigns editors and reviewers for draft documents
+- Manages public comment periods and tracks resolutions
+- Publishes approved standards and maintains version histories
+- Serves as the primary contact point for external inquiries</p>
+<p><strong>Accountability:</strong> The Secretariat reports to the Standards Council and operates under its direction.</p>
+<h3>3.3 Working Groups</h3>
+<p>Working Groups (WGs) are the primary forums for technical content development. Each WG has a defined scope, chair, and participant list.</p>
+<p><strong>Current Working Groups:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Working Group</th>
+<th>Scope</th>
+<th>Chair (v0.5)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DPP-CQ Technical WG</strong></td>
+<td>Core specification, data models, credential formats, carrier specification</td>
+<td>Technical Secretariat</td>
+</tr>
+<tr>
+<td><strong>Governance &amp; Compliance WG</strong></td>
+<td>Governance framework, legal alignment, conformity assessment, privacy</td>
+<td>Technical Secretariat</td>
+</tr>
+<tr>
+<td><strong>Interoperability WG</strong></td>
+<td>Integration with W3C, GS1, ISO, EU DPP, UNECE, and other standards bodies</td>
+<td>Technical Secretariat</td>
+</tr>
+<tr>
+<td><strong>Use Cases &amp; Pilots WG</strong></td>
+<td>Real-world implementation, case studies, sectoral adaptation, pilot coordination</td>
+<td>Technical Secretariat</td>
+</tr>
+</tbody>
+</table>
+<p><strong>WG Operations:</strong>
+- <strong>Meetings:</strong> Bi-weekly (or as needed); open to all registered participants
+- <strong>Decision-making:</strong> Consensus-seeking; if consensus cannot be reached, the WG chair makes a provisional decision subject to Council review
+- <strong>Documentation:</strong> Meeting minutes published in the repository within 5 working days
+- <strong>Participation:</strong> Open to any individual or organization; participants register by emailing info@icoun.org</p>
+<p><strong>WG Lifecycle:</strong>
+1. <strong>Proposal:</strong> Any participant may propose a new WG by submitting a scope definition and rationale to the Secretariat
+2. <strong>Approval:</strong> The Standards Council approves new WGs based on need and resource availability
+3. <strong>Operation:</strong> Active WGs maintain a public charter, participant list, and work plan
+4. <strong>Closure:</strong> WGs may be closed when their work is complete or when activity ceases; closure requires Council approval</p>
+<hr />
+<h2>4. Standards Development Process</h2>
+<p>All ICO standards follow a defined lifecycle with mandatory gates:</p>
+<pre><code>  Proposal → Working Draft → Committee Draft → Public Review → Final Standard
+              (WD)              (CD)              (PR)            (IS)
+</code></pre>
+<h3>4.1 Stage Descriptions</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Description</th>
+<th>Duration</th>
+<th>Approval Gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proposal</strong></td>
+<td>A scope and justification are submitted; Council approves the work item</td>
+<td>—</td>
+<td>Council</td>
+</tr>
+<tr>
+<td><strong>Working Draft (WD)</strong></td>
+<td>Developed within a WG; iterates based on WG discussion</td>
+<td>Variable</td>
+<td>WG consensus</td>
+</tr>
+<tr>
+<td><strong>Committee Draft (CD)</strong></td>
+<td>WG approves the draft for broader review; Secretariat assigns a document number</td>
+<td>—</td>
+<td>WG + Secretariat</td>
+</tr>
+<tr>
+<td><strong>Public Review (PR)</strong></td>
+<td>Published for public comment; minimum 45-day comment period</td>
+<td>≥ 45 days</td>
+<td>Secretariat</td>
+</tr>
+<tr>
+<td><strong>Final Standard (IS)</strong></td>
+<td>All comments resolved; Council approves for publication</td>
+<td>—</td>
+<td>Council</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Public Review Requirements</h3>
+<p>Every standard must undergo at least one Public Review period before approval as a Final Standard. Requirements:
+- <strong>Minimum duration:</strong> 45 calendar days
+- <strong>Publication:</strong> The draft must be publicly accessible (GitHub + web portal)
+- <strong>Comment handling:</strong> All comments must be logged, acknowledged, and either adopted or rejected with rationale
+- <strong>Re-review:</strong> If substantive changes are made after the first review, a second review period may be required (determined by the Secretariat + WG chair)</p>
+<h3>4.3 Document Numbering</h3>
+<p>Approved standards are assigned an <strong>ICO Std NNNN</strong> identifier:
+- <strong>1000-series:</strong> Base protocols (DID, VC, data traceability)
+- <strong>2000-series:</strong> Product standards (DPP-CQ, GI, haute couture)
+- <strong>3000-series:</strong> System &amp; assessment standards (credibility assessment)
+- <strong>4000-series:</strong> Governance &amp; compliance standards</p>
+<p>Draft documents use the format <strong>ICO Std NNNN vX.Y.Z-draft</strong> until approved as a Final Standard.</p>
+<h3>4.4 Maintenance and Revision</h3>
+<p>Published standards are maintained through:
+- <strong>Editorial corrections:</strong> Typographical errors, clarifications (no substantive changes) — administered by Secretariat
+- <strong>Amendments:</strong> Substantive changes require a new development cycle (WD → PR → IS)
+- <strong>Withdrawal:</strong> Standards may be withdrawn by the Council if obsolete or unviable</p>
+<hr />
+<h2>5. Intellectual Property Policy</h2>
+<h3>5.1 Licensing</h3>
+<ul>
+<li><strong>Specifications, documentation, and white papers:</strong> Creative Commons Attribution 4.0 International (CC BY 4.0)</li>
+<li><strong>Reference implementations and software:</strong> Apache License, Version 2.0</li>
+</ul>
+<h3>5.2 Patent Policy (v0.5 — Placeholder)</h3>
+<p>Participants in the standards development process are expected to disclose any known patents that may be essential to implementing the standard. A formal Patent and Royalty-Free (RF) licensing policy will be defined in Governance Charter v1.0.</p>
+<p><strong>Interim principle:</strong> ICO standards are intended to be implementable on a royalty-free basis. If patented technology is included, the patent holder will be asked to provide a royalty-free license or reasonable, non-discriminatory (RAND) terms.</p>
+<h3>5.3 Contributor Agreement</h3>
+<p>For significant contributions (above a threshold determined by the Technical Committee), contributors may be asked to sign a Contributor License Agreement (CLA). This ensures the project has the necessary rights to distribute contributions.</p>
+<hr />
+<h2>6. Participation Pathways</h2>
+<table>
+<thead>
+<tr>
+<th>Pathway</th>
+<th>Description</th>
+<th>Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Community Contributor</strong></td>
+<td>File issues, submit public comments, participate in discussions</td>
+<td>None — open to all</td>
+</tr>
+<tr>
+<td><strong>Working Group Participant</strong></td>
+<td>Attend WG meetings, contribute to draft development</td>
+<td>Registration via email</td>
+</tr>
+<tr>
+<td><strong>Document Editor</strong></td>
+<td>Lead authoring of specific standard documents</td>
+<td>Appointed by WG + Secretariat</td>
+</tr>
+<tr>
+<td><strong>WG Chair</strong></td>
+<td>Lead a Working Group, facilitate consensus</td>
+<td>Appointed by Council</td>
+</tr>
+<tr>
+<td><strong>Standards Council Member</strong></td>
+<td>Approve standards, set strategic direction</td>
+<td>Appointed by Council (v0.5); elected (v1.0)</td>
+</tr>
+<tr>
+<td><strong>Regional Node</strong></td>
+<td>Operate a regional instance of the standards infrastructure</td>
+<td>Partnership agreement with ICO</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Dispute Resolution</h2>
+<h3>7.1 Internal Resolution</h3>
+<p>Disputes within Working Groups are resolved through:
+1. <strong>Discussion:</strong> The WG chair facilitates discussion to reach consensus
+2. <strong>Escalation:</strong> If consensus cannot be reached, the matter is escalated to the Technical Secretariat
+3. <strong>Council Review:</strong> If the Secretariat cannot resolve the dispute, it is referred to the Standards Council for a binding decision</p>
+<h3>7.2 Appeals</h3>
+<p>Any participant may appeal a WG or Secretariat decision by:
+1. Submitting a written appeal to the Secretariat within 30 calendar days of the decision
+2. The appeal must describe the decision, the grounds for appeal, and the desired outcome
+3. The Standards Council reviews the appeal and issues a decision within 30 calendar days</p>
+<h3>7.3 External Disputes</h3>
+<p>Disputes involving external parties (e.g., patent claims, licensing disputes) are handled by the ICO Executive Chairman in consultation with legal counsel, with the goal of resolving disputes amicably and in accordance with applicable law.</p>
+<hr />
+<h2>8. Amendment of This Charter</h2>
+<p>This Charter may be amended by:
+1. <strong>Proposal:</strong> Any Standards Council member or WG participant may propose an amendment
+2. <strong>Review:</strong> The proposed amendment is circulated for comment (minimum 14 days)
+3. <strong>Approval:</strong> The Standards Council approves the amendment by 2/3 supermajority
+4. <strong>Publication:</strong> The amended Charter is published with a version increment and change log</p>
+<hr />
+<h2>9. Transition Plan: v0.5 → v1.0</h2>
+<p>This v0.5 Charter is designed to be sufficient for the immediate needs of the DPP-CQ v2.0 public review and stabilization process. The following items will be addressed in the transition to v1.0:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>v0.5 Status</th>
+<th>v1.0 Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Council composition</td>
+<td>Founder-appointed</td>
+<td>Elected member representatives</td>
+</tr>
+<tr>
+<td>WG chairs</td>
+<td>Secretariat-appointed</td>
+<td>Elected or appointed with WG input</td>
+</tr>
+<tr>
+<td>Patent policy</td>
+<td>Placeholder (RF principle)</td>
+<td>Formal RF or RAND policy</td>
+</tr>
+<tr>
+<td>Election procedures</td>
+<td>Not defined</td>
+<td>Defined with term limits</td>
+</tr>
+<tr>
+<td>Regional node framework</td>
+<td>Conceptual</td>
+<td>Formal partnership agreement template</td>
+</tr>
+<tr>
+<td>Financial sustainability</td>
+<td>Not addressed</td>
+<td>Fee model for premium services (not for standard access)</td>
+</tr>
+<tr>
+<td>Anti-trust compliance</td>
+<td>Not addressed</td>
+<td>Formal guidelines for participant conduct</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Target timeline for v1.0:</strong> Q1 2027, after the first cohort of Working Group participants has been established and initial standards have been published.</p>
+<hr />
+<h2>10. Contact</h2>
+<ul>
+<li><strong>Governance inquiries:</strong> info@icoun.org</li>
+<li><strong>Working Group participation:</strong> info@icoun.org</li>
+<li><strong>GitHub repository:</strong> https://github.com/ICO-cloud/dpp-cq-standard</li>
+<li><strong>Standards portal:</strong> https://www.dppcq.org</li>
+</ul>
+<hr />
+<p><em>This Charter is published under the Creative Commons Attribution 4.0 International License (CC BY 4.0).</em></p>
+<p><em>© 2026 International Communication Organization (ICO). All rights reserved.</em></p>
+  </article>
+
+  <!-- Footer -->
+  <footer class="dpp-footer">
+    <div class="dpp-container dpp-footer__inner">
+      <div class="dpp-footer__copy">
+        &copy; 2026 International Communication Organization (ICO). Licensed under CC BY 4.0.
+      </div>
+      <ul class="dpp-footer__links">
+        <li><a href="https://github.com/ICO-cloud/dpp-cq-standard" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="mailto:info@icoun.org">Contact</a></li>
+        <li><a href="https://www.icoun.org/" target="_blank" rel="noopener">ICO Home</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
