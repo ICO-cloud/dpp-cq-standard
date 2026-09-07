@@ -19,15 +19,12 @@
 # DPP-CQ: Digital Product Passport for Cultural & Quality Goods
 ## Standard Architecture and Core Specifications
 
-### DPP-CQ 文化与品质数字产品护照
-### 标准架构与核心规范
 
 #### (ICO Digital Trust Standards Framework v1.3)
-#### （ICO 数字信任标准框架 v1.3）
 
 ---
 
-## Abstract · 摘要
+## Abstract
 
 Against the backdrop of deep integration between the digital economy and global trade, cross-border product circulation is evolving from *physical flow* to *trusted flow*. Digital Product Passports (DPPs), as an emerging digital trust infrastructure, have achieved significant progress in the environmental data domain for industrial products, yet notable gaps remain in their coverage of cultural products, specialty agricultural goods, geographical indication products, and other categories.
 
@@ -41,7 +38,7 @@ This document is issued as a Public Review Draft. We sincerely invite government
 
 ---
 
-## Scope · 范围
+## Scope
 
 This document describes the **overall architecture, core specifications, governance mechanisms, and implementation roadmap** of the **DPP-CQ Digital Product Passport for Cultural & Quality Goods standards framework**, with particular focus on the technical framework and application model of the core product-level standard **ICO Std 2001-2026 (DPP-CQ)**.
 
@@ -57,7 +54,7 @@ This document describes the **overall architecture, core specifications, governa
 
 ---
 
-## Purpose · 目的
+## Purpose
 
 This document aims to:
 1. Systematically present the design philosophy and overall architecture of the ICO standards framework, providing a panoramic understanding for all stakeholders;
@@ -67,7 +64,7 @@ This document aims to:
 
 ---
 
-## Status of This Document · 本文档状态
+## Status of This Document
 
 This document is a **Public Review Draft** published by the International Communication Organization (ICO).
 
@@ -80,7 +77,7 @@ This document does not constitute a legally binding instrument, nor does it repr
 
 ---
 
-## Copyright Notice · 版权声明
+## Copyright Notice
 
 © 2026 International Communication Organization (ICO). All rights reserved.
 
@@ -92,21 +89,21 @@ Reference implementations and software source code are released under the **Apac
 
 ---
 
-## Editors and Contributors · 编辑与贡献者
+## Editors and Contributors
 
 **Technical Editor:** ICO Technical Secretariat
 **Standards Working Groups:** DPP-CQ Technical Working Group, Governance & Compliance Model Group, Interoperability Working Group
 
 **Contributing Organizations (in alphabetical order):**
 - International Communication Organization (ICO)
-- 天机可信价值研究院 (Tianji Credibility Research Institute)
+- (Tianji Credibility Research Institute)
 - (Additional organizations to be added)
 
 For the complete list of contributors and detailed revision history, please refer to the commit history of the GitHub repository.
 
 ---
 
-## Revision History · 修订历史
+## Revision History
 
 | Version | Date       | Description of Changes                                                                                                                          |
 |---------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -118,7 +115,7 @@ For the complete list of contributors and detailed revision history, please refe
 
 ---
 
-## Table of Contents · 目录
+## Table of Contents
 
 1. [Introduction](#1-introduction)
 2. [Mission & Vision](#2-mission--vision)
@@ -140,7 +137,7 @@ For the complete list of contributors and detailed revision history, please refe
 
 ---
 
-## 1. Introduction · 前言
+## 1. Introduction
 
 In an era of deep integration between the digital economy and global trade, cross-border product circulation is transitioning from *physical flow* to *trusted flow*. However, significant **inclusivity gaps** exist in the current global digital product verification ecosystem:
 
@@ -152,13 +149,12 @@ The International Communication Organization (ICO), as a multi-stakeholder inter
 
 ---
 
-## 2. Mission & Vision · 使命与愿景
+## 2. Mission & Vision
 
 ### 2.1 Mission
 
 **To empower the digital preservation and value transmission of global cultural and quality assets through open standards.**
 
-**以开放标准赋能全球文化与品质资产的数字化保护与价值传递。**
 
 ### 2.2 Vision
 
@@ -177,7 +173,7 @@ To build a **globally applicable, technology-neutral, and culturally inclusive**
 
 ---
 
-## 3. Background & Rationale · 背景与必要性
+## 3. Background & Rationale
 
 ### 3.1 The Trust Deficit in Global Trade
 
@@ -214,7 +210,7 @@ Meanwhile, international documents and data such as UNESCO's *Operational Direct
 
 ---
 
-## 4. Standards Architecture · 标准体系架构
+## 4. Standards Architecture
 
 ### 4.1 Four-Layer Architecture
 
@@ -263,7 +259,7 @@ Meanwhile, international documents and data such as UNESCO's *Operational Direct
 
 ---
 
-## 5. Core Standards · 核心标准介绍
+## 5. Core Standards
 
 ### 5.1 ICO Std 2001: Digital Product Passport for Cultural & Quality Goods (DPP-CQ)
 
@@ -301,7 +297,7 @@ A digital credibility assessment and certification standard for institutions (en
 
 ---
 
-## 6. Governance · 治理架构
+## 6. Governance
 
 ### 6.1 Multi-Stakeholder Governance Model
 
@@ -357,7 +353,7 @@ To ensure high security and continuous availability of data resolution in global
 
 ---
 
-## 7. Technical Approach · 技术路线
+## 7. Technical Approach
 
 ### 7.1 Technology Selection Principles
 
@@ -431,7 +427,7 @@ The ICO standards framework adopts an intellectual property policy of "openness 
 
 ---
 
-## 8. Compliance & Legal Framework · 合规与法律框架
+## 8. Compliance & Legal Framework
 
 ### 8.1 Data Sovereignty and Cross-Border Compliance Architecture
 
@@ -473,7 +469,7 @@ Referencing UNCITRAL (United Nations Commission on International Trade Law) arbi
 
 ---
 
-## 9. Getting Involved · 参与方式
+## 9. Getting Involved
 
 ### 9.1 Membership Categories
 
@@ -496,7 +492,7 @@ Referencing UNCITRAL (United Nations Commission on International Trade Law) arbi
 
 ---
 
-## 10. Roadmap & Pilots · 路线图与试点规划
+## 10. Roadmap & Pilots
 
 ### 10.1 Three-Year Development Roadmap
 
@@ -535,7 +531,7 @@ Pilot evaluation dimensions: number of certified products, traceability data qua
 
 ---
 
-## 11. Risks & Challenges · 风险与挑战
+## 11. Risks & Challenges
 
 | Risk | Description | Mitigation Strategy |
 |---|---|---|
@@ -548,7 +544,7 @@ Pilot evaluation dimensions: number of certified products, traceability data qua
 
 ---
 
-## 12. Conclusion · 结语
+## 12. Conclusion
 
 In the digital age, trust is the most precious public good.
 
@@ -563,7 +559,6 @@ We look forward to a future where every product carrying human wisdom and cultur
 ---
 
 ## Annex A (Normative): DPP-CQ Technical Specification Draft
-### 附录A（规范性）DPP-CQ技术规格草案
 
 > This annex presents a summary of the DPP-CQ standard technical specification draft. The complete technical specification will be published in the official version of ICO Std 2001-2026.
 
@@ -602,33 +597,33 @@ The JSON-LD context definition for DPP-CQ credentials:
   "expirationDate": "2027-07-14T23:59:59Z",
   "credentialSubject": {
     "id": "did:ico:dpp:tea:longjing-xh-2026-001",
-    "productName": "西湖龙井茶",
+    "productName": "West Lake Longjing Tea",
     "category": "geographical-indication-tea",
     "qualityGrade": "Premium",
     "origin": {
       "type": "GeographicalIndication",
       "giNumber": "GI-CN-0001",
-      "region": "杭州西湖产区",
+      "region": "West Lake, Hangzhou",
       "country": "CN"
     },
     "culturalData": {
       "heritageStatus": "National Intangible Cultural Heritage",
       "heritageYear": 2008,
-      "craftMethod": "手工炒制 · 十大手法",
+      "craftMethod": "Hand-roasted, Ten Traditional Techniques",
       "artisanInfo": {
-        "name": "（可选，经授权披露）",
-        "generation": "第5代传承人"
+        "name": "(Optional, disclosed with authorization)",
+        "generation": "5th Generation Inheritor"
       }
     },
     "traceability": {
       "harvestDate": "2026-03-28",
-      "processLocation": "杭州龙坞茶镇",
+      "processLocation": "Longwu Tea Town, Hangzhou",
       "batchNumber": "XH20260328A01"
     },
     "qualityAttributes": {
-      "appearance": "扁平光滑，色泽嫩绿",
-      "aroma": "嫩香持久",
-      "taste": "鲜醇甘爽"
+      "appearance": "Flat and smooth, tender green color",
+      "aroma": "Lasting tender aroma",
+      "taste": "Fresh, mellow, sweet and refreshing"
     }
   },
   "proof": {
@@ -672,7 +667,6 @@ Scan QR / NFC Tap
 ---
 
 ## Annex B (Informative): Glossary
-### 附录B（资料性）术语表
 
 | Term | Definition |
 |---|---|
@@ -691,38 +685,36 @@ Scan QR / NFC Tap
 ---
 
 ## Annex C (Informative): Abbreviations
-### 附录C（资料性）缩略语
 
 | Abbreviation | Full Form |
 |---|---|
-| ICO | International Communication Organization 国际传播组织 |
-| DPP | Digital Product Passport 数字产品护照 |
-| DPP-CQ | Digital Product Passport for Cultural & Quality Goods 文化与品质数字产品护照 |
-| DID | Decentralized Identifier 分布式标识符 |
-| VC | Verifiable Credential 可验证凭证 |
-| ZKP | Zero-Knowledge Proof 零知识证明 |
-| GI | Geographical Indication 地理标志 |
-| ICH | Intangible Cultural Heritage 非物质文化遗产 |
-| GDCC | Global Digital Credibility Certification 全球数字公信力认证 |
-| TCR | Tianji Credibility Registry 天机可信价值评级数据库 |
-| GDC | Global Digital Compact 全球数字契约 |
-| W3C | World Wide Web Consortium 万维网联盟 |
-| WIPO | World Intellectual Property Organization 世界知识产权组织 |
-| UNESCO | United Nations Educational, Scientific and Cultural Organization 联合国教科文组织 |
-| ISO | International Organization for Standardization 国际标准化组织 |
-| IETF | Internet Engineering Task Force 互联网工程任务组 |
-| UNECE | United Nations Economic Commission for Europe 联合国欧洲经济委员会 |
-| ESPR | Ecodesign for Sustainable Products Regulation 可持续产品生态设计法规 |
-| GS1 | Global Standard 1 国际物品编码组织 |
-| GDPR | General Data Protection Regulation 通用数据保护条例 |
-| UNCITRAL | United Nations Commission on International Trade Law 联合国国际贸易法委员会 |
-| NFC | Near Field Communication 近场通信 |
-| CLA | Contributor License Agreement 贡献者许可协议 |
+| ICO | International Communication Organization|
+| DPP | Digital Product Passport|
+| DPP-CQ | Digital Product Passport for Cultural & Quality Goods|
+| DID | Decentralized Identifier|
+| VC | Verifiable Credential|
+| ZKP | Zero-Knowledge Proof|
+| GI | Geographical Indication|
+| ICH | Intangible Cultural Heritage|
+| GDCC | Global Digital Credibility Certification|
+| TCR | Tianji Credibility Registry|
+| GDC | Global Digital Compact|
+| W3C | World Wide Web Consortium|
+| WIPO | World Intellectual Property Organization|
+| UNESCO | United Nations Educational, Scientific and Cultural Organization|
+| ISO | International Organization for Standardization|
+| IETF | Internet Engineering Task Force|
+| UNECE | United Nations Economic Commission for Europe|
+| ESPR | Ecodesign for Sustainable Products Regulation|
+| GS1 | Global Standard 1|
+| GDPR | General Data Protection Regulation|
+| UNCITRAL | United Nations Commission on International Trade Law|
+| NFC | Near Field Communication|
+| CLA | Contributor License Agreement|
 
 ---
 
 ## Annex D (Informative): References
-### 附录D（资料性）参考文献
 
 1. United Nations. *A Global Digital Compact — Our Shared Agenda*. 2024.
 2. WIPO (2024). *World Intellectual Property Indicators 2024*. Geneva: World Intellectual Property Organization.
@@ -743,7 +735,6 @@ Scan QR / NFC Tap
 ---
 
 ## Annex E (Informative): Frequently Asked Questions
-### 附录E（资料性）常见问题
 
 ### Q1: What is ICO? What qualifications does it have to develop international standards?
 
@@ -781,7 +772,7 @@ This architecture fundamentally reduces the risk of cross-border flow of raw dat
 
 ### Q5: What is the relationship between the Tianji system and ICO?
 
-The Tianji system (天机体系) is one of the institutions undertaking the role of Technical Secretariat for the ICO standards framework, responsible for reference implementation of standards, root node operation and maintenance, and technical support.
+The Tianji system is one of the institutions undertaking the role of Technical Secretariat for the ICO standards framework, responsible for reference implementation of standards, root node operation and maintenance, and technical support.
 
 This arrangement is analogous to the relationship between W3C and host institutions such as MIT/ERCIM — standards are developed jointly by the community, and the Technical Secretariat is responsible for execution and implementation. The Tianji system, as a technical service provider, does not participate in standard voting, ensuring separation of standard-setting from technical execution.
 
@@ -837,29 +828,25 @@ The multi-stakeholder governance mechanism is the institutional guarantee for st
 
 ---
 
-## How to Cite This Document · 如何引用本文档
+## How to Cite This Document
 
 **English Citation:**
 > International Communication Organization (ICO). *DPP-CQ: Digital Product Passport for Cultural & Quality Goods — Standard Architecture and Core Specifications*[R]. ICO Std 2001:2026, v1.3 (Public Review Draft). July 2026. https://github.com/ICO-cloud/dpp-cq-standard
 
-**中文引用格式：**
-> 国际传播组织（ICO）. DPP-CQ文化与品质数字产品护照：标准架构与核心规范[R]. ICO Std 2001:2026, v1.3（征求意见稿）. 2026年7月. https://github.com/ICO-cloud/dpp-cq-standard
-
 ---
 
-**Published by · 发布机构**: International Communication Organization (ICO) 国际传播组织
-**Document No. · 文档编号**: ICO Std 2001:2026
-**Version · 版本**: v1.3
-**Status · 状态**: Public Review Draft · 征求意见稿
-**Issued · 发布日期**: July 2026 · 2026年7月
-**Comment Deadline · 意见征集截止**: August 20, 2026 (Accelerated Procedure · 45-day public review) · 2026年8月20日（快速通道 · 45天征集期）
-**Feedback · 反馈**: info@icoun.org
-**Repository · 仓库**: https://github.com/ICO-cloud/dpp-cq-standard
+**Published by
+**Document No.
+**Version
+**Status
+**Issued
+**Comment Deadline
+**Feedback
+**Repository
 
 ---
 
 *This is a public review draft. Content is subject to change based on community feedback. The official version published by ICO shall prevail.*
 
-*本文档为征求意见稿，内容可能根据社区反馈进行修改。正式版本以ICO官方发布为准。*
 
 *© 2026 International Communication Organization (ICO). This work is licensed under a Creative Commons Attribution 4.0 International License.*
