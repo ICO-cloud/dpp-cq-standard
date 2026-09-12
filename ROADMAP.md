@@ -12,7 +12,8 @@
 - [x] **GitHub Community Launch** — Open source repository & community channels
 - [ ] **Governance Charter v1.0** — Multi-stakeholder governance framework
 - [ ] **Root Resolver Network (Prototype)** — Initial prototype of root DID resolution infrastructure
-- [x] **DPP-CQ v2.0.0-draft (Aug 2026)** — International interoperability & compliance expansion: GS1 Digital Link/GTIN interop profile, EN 18220-aligned three-tier carriers, SD-JWT VC (RFC 9529) + BBS+ dual formats, optional SM2/SM3/SM4 suite, ISO 14067 sustainability module, AI assessment transparency (GB/T 47507-2026 / EU AI Act), data lifecycle metadata, UNTP conformity claims, conformity declarations & PIA summary
+- [x] **DPP-CQ v2.0.0-draft (Aug 2026)** — International interoperability & compliance expansion: GS1 Digital Link/GTIN interop profile, EN 18220-aligned three-tier carriers, SD-JWT VC (RFC 9529) + BBS+ dual formats, optional SM2/SM3/SM4 regional suite, ISO 14067 sustainability module, AI assessment transparency (EU AI Act Art. 50), data lifecycle metadata, UNTP conformity claims, conformity declarations & PIA summary
+- [x] **DPP-CQ v2.0.0-draft refinement (Sep 2026)** — Open interoperability API aligned with EN 18222:2026 (Read/Lifecycle/Search conformance); OID ↔ DID application-layer bridge (X.660/9834-1, 8824-1, RFC 3061); carriers normatively reference ISO/IEC 14443/18004/15415; AI provisions cite EU AI Act Art. 50 + ISO/IEC 42001; national-standard mappings demoted to informative
 - [ ] **Second Public Review** — Sep 1 – Oct 15, 2026 (international interoperability & compliance annexes)
 
 ### Q4 2026 (Oct–Dec)
@@ -20,7 +21,7 @@
 - [ ] **DPP-CQ v2.0 Stable Release** — First stable v2.0 after second review (incorporates GS1/SD-JWT/carrier/compliance modules)
 - [ ] **Reference Implementation v2.0** — Open-source implementation including Digital Link resolver and SD-JWT VC issuance
 - [ ] **SDK v0.1 (Python / JS)** — First developer SDKs
-- [ ] **EPCIS 2.0 Event API** — EPCIS-compatible supply-chain event endpoints (P1 interop)
+- [ ] **EPCIS 2.0 Event API** — EPCIS-compatible supply-chain event endpoints, layered on the EN 18222-aligned open API surface (Lifecycle conformance)
 - [ ] **GDPR/PIPL Dual-Compliance White Paper** — Hash cross-border legal analysis + data processing agreement templates
 - [ ] **Global Digital Credibility Governance Summit** — First major community event
 - [ ] **Pilot Programs Launch** — First batch of pilot products (tea, ceramics, haute couture)

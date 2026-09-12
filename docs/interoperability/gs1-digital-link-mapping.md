@@ -119,13 +119,17 @@ API); v2.0-draft defines the field-level mapping only.
 | EN 18219 | Unique identifier | GTIN(+serial) for interop; DID for credential — both carried |
 | EN 18220 | Data carrier | Open QR (Digital Link) + SDM NFC; see `carrier-specification.md` |
 | EN 18221 | Data storage | Hash anchoring + off-chain storage; mapping P1 |
-| EN 18222 | API | Root Resolver API + Digital Link content negotiation |
+| EN 18222 | API | Open interoperability API — see `api-specification.md`; GTIN search redirects to the authoritative passport; Root Resolver endpoints form the Read subset |
 | EN 18223 | Interoperability | VC/JSON-LD + SD-JWT VC; EPCIS mapping P1 |
+
+> Identifier equivalence across schemes (DID / GTIN / OID) is defined in
+> [`identifier-mapping.md`](identifier-mapping.md). GTIN aliases use the same
+> `identifiers.alias` structure as OID bindings.
 
 ## 6. References
 
 - GS1 Digital Link Standard, URI Syntax, version 1.6 (GS1, 2024)
 - GS1 EPCIS 2.0 (GS1 Standard, 2022) & CBV 2.0
 - Regulation (EU) 2024/1781 (ESPR), Art. 9–10 (digital product passport)
-- CEN-CENELEC JTC 24, EN 18219 / EN 18220 series (2026)
-- W3C Decentralized Identifiers (DID) Core 1.0 (W3C Recommendation)
+- CEN-CENELEC JTC 24, EN 18216 / EN 18219–18223 series (2026), incl. EN 18222:2026 (APIs for passport lifecycle management and searchability)
+- W3C Decentralized Identifiers (DID) Core 1.0 (W3C Recommendation, 2022-07-19)

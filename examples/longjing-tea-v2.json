@@ -36,6 +36,14 @@
       "digitalLink": "https://id.gs1.org/01/06901234000016/10/XH20260328A01/21/SN-LJ-2026-00042",
       "glnOwner": "6901234000009"
     },
+    "identifiers": {
+      "canonicalDid": "did:ico:dpp:tea:longjing-xh-2026-002",
+      "alias": [
+        { "scheme": "gtin", "value": "06901234000016" },
+        { "scheme": "batch", "value": "XH20260328A01" },
+        { "scheme": "oid", "value": "urn:oid:2.42.12345.67.002" }
+      ]
+    },
     "qualityGrade": "Premium Grade 1",
     "productImage": "ipfs://QmXYZ...",
     "origin": {
@@ -246,11 +254,11 @@
       }
     },
     {
-      "framework": "GB/T 47507-2026",
-      "claim": "AI-assisted assessment transparency and human oversight disclosed; data security and full-lifecycle data governance documented.",
+      "framework": "ISO/IEC 42001:2023; EU AI Act Art. 50",
+      "claim": "AI-assisted assessment transparency and human oversight disclosed; AI management-system governance direction followed; data security and full-lifecycle data governance documented.",
       "conformity": "full",
       "evidence": {
-        "assessmentReference": "https://icoun.org/dpp-cq/conformity/gbt47507",
+        "assessmentReference": "https://icoun.org/dpp-cq/conformity/iso42001-ai-act",
         "attestedBy": "did:ico:issuer:zjtea-assoc",
         "assessmentDate": "2026-09-10"
       }

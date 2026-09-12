@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-draft] - 2026-09
+
+### Added
+- **Open interoperability API (normative):** RESTful API for passport lifecycle management and searchability, aligned with EN 18222:2026; resource model, identifier search (DID/GTIN/OID/batch), lifecycle methods, Read/Lifecycle/Search conformance levels, RFC 7807 error handling (`docs/interoperability/api-specification.md`)
+- **OID ↔ DID identifier bridge (normative):** application-layer equivalence between the ISO/IEC & ITU-T OID system (X.660/9834-1, 8824-1, RFC 3061 `urn:oid`) and W3C DIDs via DID document `alsoKnownAs` and credential `identifiers.alias`; bidirectional agreement and formally-allocated OID required; no new DID method, no root-resolver change (`docs/interoperability/identifier-mapping.md`)
+- **`identifiers` object** in JSON Schema and the v2.0 example credential (`canonicalDid` + `alias[]` with `gtin`/`oid`/`batch` schemes)
+- ISO/IEC carrier baselines stated normatively: QR — ISO/IEC 18004 + ISO/IEC 15415; NFC — ISO/IEC 14443 Type 4 with NFC Forum NDEF
+
+### Changed
+- AI-assisted assessment provisions now reference EU AI Act Art. 50 and **ISO/IEC 42001:2023** (AI management system) instead of any national AI standard; normative references in the white papers (CN/EN), schema, examples and declarations updated
+- Jurisdiction-specific regulatory mappings (including any national-standard comparisons) are explicitly marked informative deployment-support material, not normative references of the standard
+- SM2/SM3/SM4 reworded as an optional regional cryptography suite (opt-in per jurisdiction), not a national-baseline dependency
+- White papers (CN/EN), root README/index and Annex F synchronized with the new API, identifier and carrier provisions
+
 ## [2.0.0-draft] - 2026-08
 
 ### Added
@@ -13,10 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Dual credential format profiles (normative):** W3C Data Integrity (BBS+ unlinkable selective disclosure) and IETF SD-JWT VC (RFC 9529, ecdsa-sd-2023); disclosure classification table (`docs/specs/credential-formats.md`)
 - **Chinese national cryptography suite (optional):** SM2/SM3 (GB/T 32918/32905) signature suite `sm2-with-sm3-2026`, SM4 (GB/T 32907) for payload encryption, region-scoped opt-in
 - **Sustainability data module:** ISO 14067-aligned product carbon footprint, materials/recycled content, end-of-life guidance — quality + sustainability dual-dimension data model
-- **AI-assisted assessment transparency:** mandatory `aiDisclosure`, human final decision, methodology reference — aligned with GB/T 47507-2026 and EU AI Act Art. 50
+- **AI-assisted assessment transparency:** mandatory `aiDisclosure`, human final decision, methodology reference — aligned with EU AI Act Art. 50 (international reference updated in 2026-09 to also cite ISO/IEC 42001:2023)
 - **Data lifecycle governance metadata:** controller, retention, storage jurisdiction, cross-border mode, deletion policy, privacy notice and PIA URIs
-- **Conformity claims:** UNTP-style machine-readable conformity claim structure for cross-regime mapping (ESPR, EN standards, GB/T standards)
-- **Compliance document set:** conformity declarations against GB/T 47507-2026, ESPR/EN, GDPR/PIPL, AI Act (`docs/compliance/conformity-declarations.md`); public PIA/DPIA summary (`docs/compliance/pia-summary.md`)
+- **Conformity claims:** UNTP-style machine-readable conformity claim structure for cross-regime mapping (ESPR, EN standards, ISO/IEC standards)
+- **Compliance document set:** conformity declarations against ESPR/EN, ISO/IEC 42001, GDPR/PIPL and the EU AI Act, with jurisdiction-specific mappings kept informative (`docs/compliance/conformity-declarations.md`); public PIA/DPIA summary (`docs/compliance/pia-summary.md`)
 - **JSON Schema v2.0** (`schemas/dpp-cq.schema.json`) and full interop-profile example (`examples/longjing-tea-v2.json`)
 - New product categories: wine-and-spirits, traditional-medicine-health, light-consumer-goods
 - Second public review period: September 1 – October 15, 2026

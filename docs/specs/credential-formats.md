@@ -58,11 +58,13 @@ Interop requirement: a DPP-CQ resolver **MUST** verify at least one profile and
 
 Hash function: SHA-256 (and SHA-384 where suite requires).
 
-### 3.2 Chinese national cryptography suite (optional, for domestic deployments)
+### 3.2 SM2/SM3/SM4 regional cryptography suite (optional, opt-in)
 
-For deployments serving Chinese government/enterprise scenarios where
-commercial cryptography (商用密码) requirements apply, DPP-CQ defines the
-optional suite **`sm2-with-sm3-2026`**:
+For deployments within jurisdictions where Chinese commercial cryptography
+(商用密码) requirements apply, DPP-CQ defines the optional, region-scoped
+suite **`sm2-with-sm3-2026`**. It is a deployment option alongside the
+default international suites, never a normative baseline for cross-border
+credentials:
 
 | Function | Algorithm | Standard |
 |---|---|---|
@@ -74,10 +76,10 @@ Rules:
 
 1. The SM suite is **opt-in and region-scoped**: a credential signed with SM2
    **MUST** declare its suite in `proof.cryptosuite` (`sm2-with-sm3-2026`);
-   root nodes outside a Chinese-compliance domain are not required to verify
+   root nodes outside the requiring jurisdiction are not required to verify
    SM2. The v1.x property name `cryptoSuite` is accepted on legacy credentials.
 2. Cross-border credentials **SHOULD** use international suites; a dual-signature
-   (SM2 for domestic + Ed25519/ECDSA for international) MAY be attached via
+   (SM2 for the requiring jurisdiction + Ed25519/ECDSA for international) MAY be attached via
    `proof.previousProof` chaining or parallel proof blocks in future minor
    versions.
 3. SM3 hashes MAY anchor into domestic-compliant chains; the multi-chain

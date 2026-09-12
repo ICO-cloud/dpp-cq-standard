@@ -5,9 +5,11 @@
 
 > This is the public summary of the Personal Information Impact Assessment for
 > the DPP-CQ specification and reference resolver services. It follows the
-> accountability logic of GDPR Art. 35 (DPIA) and the privacy-protection
-> requirements of GB/T 47507-2026 and China's Personal Information Protection
-> Law (PIPL). It is a living document; the full assessment is maintained
+> accountability logic of GDPR Art. 35 (DPIA), the governance direction of
+> ISO/IEC 42001:2023, and — for deployments within China — the requirements
+> of China's Personal Information Protection Law (PIPL). National-standard
+> mappings are informative deployment support, not normative references of the
+> standard. It is a living document; the full assessment is maintained
 > internally by the ICO Technical Secretariat and shared with adopting
 > institutions and regulators on request.
 

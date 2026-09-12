@@ -13,7 +13,7 @@ title: "DPP-CQ Standard"
 
 The standard is now in its **second Public Review Draft (v2.0.0-draft)**, focused on international interoperability and compliance.
 
-- **What's new in v2.0:** GS1 Digital Link / GTIN interop profile · EN 18220-aligned three-tier carriers (open QR + SDM NFC) · SD-JWT VC (RFC 9529) alongside BBS+ · optional SM2/SM3/SM4 cryptography · ISO 14067 sustainability module (quality + sustainability dual-dimension) · AI assessment transparency (GB/T 47507-2026 / EU AI Act Art. 50) · data lifecycle governance · UNTP-style conformity claims
+- **What's new in v2.0:** GS1 Digital Link / GTIN interop profile · EN 18220-aligned three-tier carriers on ISO/IEC baselines (QR: 18004/15415; NFC: 14443 Type 4) · SD-JWT VC (RFC 9529) alongside BBS+ · optional SM2/SM3/SM4 regional cryptography · ISO 14067 sustainability module (quality + sustainability dual-dimension) · AI assessment transparency (EU AI Act Art. 50 / ISO/IEC 42001) · open interoperability API aligned with EN 18222 · OID ↔ DID application-layer bridge · data lifecycle governance · UNTP-style conformity claims
 - **Second comment period:** September 1 – October 15, 2026
 - **Feedback:** [Open an Issue](https://github.com/ICO-cloud/dpp-cq-standard/issues) or email [info@icoun.org](mailto:info@icoun.org)
 
@@ -52,9 +52,11 @@ DPP-CQ extends the digital product passport paradigm beyond environmental and ci
 | [White Paper (English)](docs/white-paper/white-paper-en.md) | Full English version | English |
 | [Executive Summary](docs/white-paper/executive-summary.md) | Concise overview for decision-makers | English |
 | [GS1 Digital Link Mapping](docs/interoperability/gs1-digital-link-mapping.md) | GTIN↔DID binding, Digital Link resolution, EPCIS mapping | English |
-| [Carrier Specification](docs/interoperability/carrier-specification.md) | Three-tier carriers (QR / SDM NFC / tamper-evident), EN 18220 aligned | English |
-| [Credential Formats](docs/specs/credential-formats.md) | SD-JWT VC (RFC 9529) vs BBS+ profiles; SM2/SM3/SM4 suite | English |
-| [Conformity Declarations](docs/compliance/conformity-declarations.md) | GB/T 47507-2026, ESPR/EN, GDPR/PIPL, AI Act alignment | English |
+| [Carrier Specification](docs/interoperability/carrier-specification.md) | Three-tier carriers (QR / SDM NFC / tamper-evident), EN 18220 aligned; ISO/IEC 14443/18004/15415 baselines | English |
+| [Identifier Mapping (OID ↔ DID)](docs/interoperability/identifier-mapping.md) | Application-layer OID ↔ DID binding via `alsoKnownAs` / `identifiers.alias` | English |
+| [Open Interoperability API](docs/interoperability/api-specification.md) | REST API aligned with EN 18222:2026; Read/Lifecycle/Search conformance | English |
+| [Credential Formats](docs/specs/credential-formats.md) | SD-JWT VC (RFC 9529) vs BBS+ profiles; SM2/SM3/SM4 optional regional suite | English |
+| [Conformity Declarations](docs/compliance/conformity-declarations.md) | ESPR/EN, ISO/IEC 42001, GDPR/PIPL, AI Act alignment; jurisdiction mappings informative | English |
 | [PIA / DPIA Summary](docs/compliance/pia-summary.md) | Public privacy impact assessment summary | English |
 | [JSON Schema Reference](schema.html) | Data model specification (v2.0) | — |
 | [Credential Examples](examples.html) | Sample credential payloads (v1 & v2.0) | — |
@@ -74,10 +76,11 @@ DPP-CQ is built **on top of** established international standards:
 | **W3C DID / VC v2.0** | Core technology foundation, fully compliant |
 | **IETF SD-JWT (RFC 9529)** | Normative selective-disclosure credential profile |
 | **GS1 Digital Link / GTIN / EPCIS 2.0** | Normative interop profile for global retail, customs and EU DPP data exchange |
-| **EU ESPR / EN 18219–18223** | Baseline alignment: open carriers, unique identifiers, sustainability data fields |
+| **EU ESPR / EN 18216–18223 (incl. EN 18222 APIs)** | Baseline alignment: open carriers, unique identifiers, lifecycle/search APIs, sustainability data fields |
 | **UN/CEFACT UNTP** | Conformity claim vocabulary; multilateral bridge |
-| **ISO 14067 / 22000 / 22739** | Carbon footprint, food safety, blockchain terminology references |
-| **GB/T 47507-2026; SM2/SM3/SM4** | AI trustworthiness alignment; optional national cryptography for domestic deployments |
+| **ISO/IEC 14067 / 22000 / 22739 / 42001 / 14443 / 18004 / 15415** | Carbon footprint, food safety, blockchain terminology, AI management, NFC/QR carrier baselines |
+| **ITU-T X.660 / ISO/IEC 9834-1; 8824-1; RFC 3061 (OID)** | Application-layer OID ↔ DID bridge; no new DID method |
+| **SM2/SM3/SM4 (GB/T 32918/32905/32907)** | Optional regional cryptography suite, opt-in per jurisdiction |
 
 DPP-CQ's flagship categories (tea, wine & spirits, cultural crafts, traditional
 medicine products, specialty agri-foods) are not within the first EU ESPR

@@ -117,6 +117,37 @@
             }
           }
         },
+        "identifiers": {
+          "type": "object",
+          "description": "[v2.0] Cross-scheme identifier equivalence. The canonical identifier of the credential is the product DID; this object records alternative identifiers asserted as equivalent. OID binding is application-layer only (no new DID method, no root-resolver change); see docs/interoperability/identifier-mapping.md.",
+          "required": ["canonicalDid"],
+          "properties": {
+            "canonicalDid": {
+              "type": "string",
+              "format": "uri",
+              "description": "The canonical W3C DID of the product credential, e.g. did:ico:dpp:tea:longjing-xh-2026-001."
+            },
+            "alias": {
+              "type": "array",
+              "description": "Alternative identifiers equivalent to canonicalDid. A binding is valid only when both sides agree: an 'oid' alias MUST also appear in the DID document alsoKnownAs, and the OID MUST be formally allocated under the ITU-T X.660 / ISO/IEC 9834-1 registration tree.",
+              "items": {
+                "type": "object",
+                "required": ["scheme", "value"],
+                "properties": {
+                  "scheme": {
+                    "type": "string",
+                    "enum": ["gtin", "oid", "batch", "other"],
+                    "description": "Identifier scheme. 'oid' denotes an ISO/ITU-T Object Identifier."
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "Identifier value. For scheme 'oid' use RFC 3061 urn:oid form, e.g. urn:oid:2.42.12345.67.001."
+                  }
+                }
+              }
+            }
+          }
+        },
         "qualityGrade": {
           "type": "string",
           "description": "Quality grade per issuing authority's classification scheme."
@@ -304,7 +335,7 @@
                 "reportReference": { "type": "string", "format": "uri", "description": "URI or credential id of the full assessment report." },
                 "aiDisclosure": {
                   "type": "object",
-                  "description": "[v2.0] REQUIRED when method is 'ai-assisted' or 'hybrid'. AI transparency disclosure aligned with EU AI Act Art. 50 and GB/T 47507-2026 transparency/controllability principles.",
+                  "description": "[v2.0] REQUIRED when method is 'ai-assisted' or 'hybrid'. AI transparency disclosure aligned with EU AI Act Art. 50 transparency obligations and ISO/IEC 42001:2023 AI management-system governance.",
                   "required": ["aiAssisted", "humanOversight"],
                   "properties": {
                     "aiAssisted": { "type": "boolean", "const": true },
@@ -371,7 +402,7 @@
         },
         "dataLifecycle": {
           "type": "object",
-          "description": "[v2.0] Data governance and lifecycle metadata. Aligned with GB/T 47507-2026 data security/full-lifecycle requirements and GDPR accountability.",
+          "description": "[v2.0] Data governance and lifecycle metadata. Aligned with GDPR accountability and the data-governance practices expected under ISO/IEC 42001 management-system governance.",
           "properties": {
             "dataController": { "type": "string", "description": "Entity responsible for data processing (legal name)." },
             "retentionPolicy": { "type": "string", "description": "Retention period and basis for each data class." },
@@ -485,7 +516,7 @@
           "framework": {
             "type": "string",
             "description": "Reference framework identifier.",
-            "examples": ["EU ESPR (Reg. (EU) 2024/1781)", "EN 18220:2026", "GB/T 47507-2026", "ISO 14067:2018", "UNTP v1.0"]
+            "examples": ["EU ESPR (Reg. (EU) 2024/1781)", "EN 18220:2026", "EN 18222:2026", "ISO/IEC 42001:2023", "ISO 14067:2018", "UNTP v1.0"]
           },
           "claim": { "type": "string", "description": "Conformity statement, e.g. 'DPP data carrier meets open-carrier and unique-identifier requirements'." },
           "conformity": { "type": "string", "enum": ["full", "partial", "not-applicable"] },

@@ -72,7 +72,10 @@ ICO standards are built *on top of* — not in competition with — existing int
 | **W3C DID/VC** | Core technology foundation, fully compliant |
 | **GS1 / EPCIS** | Mapping and interoperability support |
 | **UNECE DPP Initiative** | Active participant in global interoperability framework |
-| **EU DPP / ESPR** | Data mapping for cross-system information sharing |
+| **EU DPP / ESPR / EN 18216–18223** | Data mapping for cross-system information sharing; open lifecycle/search API aligned with EN 18222:2026 |
+| **ISO/ITU-T OID** | Application-layer OID ↔ DID bridge (X.660/9834-1, 8824-1, RFC 3061), no new DID method |
+| **ISO/IEC 14443 / 18004 / 15415** | International baselines for NFC and QR physical carriers |
+| **ISO/IEC 42001; EU AI Act Art. 50** | AI governance and transparency for AI-assisted assessment |
 | **ISO 22000 / 26000** | Compatible with quality and social responsibility standards |
 
 ### Open Source & Accessibility

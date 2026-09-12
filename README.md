@@ -27,9 +27,12 @@ Following the first public review, v2.0 expands international interoperability a
 - **GS1 interop profile** — GTIN↔DID identifier binding, GS1 Digital Link resolution, EPCIS 2.0 event mapping; aligned with EU DPP standards EN 18219/18220
 - **Three-tier carriers** — open QR (any reader) + SDM secure NFC (NTAG 424 DNA class) + tamper-evident NFC; open-carrier principle per ESPR Art. 9
 - **Dual credential formats** — W3C Data Integrity (BBS+) and IETF SD-JWT VC (RFC 9529) selective disclosure profiles
-- **National cryptography option** — SM2/SM3/SM4 suite for Chinese domestic deployments
+- **Regional cryptography option** — SM2/SM3/SM4 opt-in suite for deployments within jurisdictions that require it
 - **Sustainability module** — ISO 14067 carbon footprint and circularity fields (quality + sustainability dual-dimension model)
-- **AI assessment transparency** — AI-use disclosure and human final decision, aligned with GB/T 47507-2026 and EU AI Act Art. 50
+- **AI assessment transparency** — AI-use disclosure and human final decision, aligned with EU AI Act Art. 50 and ISO/IEC 42001:2023
+- **Open interoperability API** — REST API for passport lifecycle management and searchability, aligned with EN 18222:2026 ([api-specification.md](docs/interoperability/api-specification.md))
+- **OID ↔ DID identifier bridge** — application-layer equivalence between the ISO/IEC & ITU-T OID system and W3C DIDs, without a new DID method or root-resolver changes ([identifier-mapping.md](docs/interoperability/identifier-mapping.md))
+- **ISO/IEC carrier baselines** — QR per ISO/IEC 18004 + ISO/IEC 15415; NFC per ISO/IEC 14443 Type 4
 - **Compliance document set** — conformity declarations and public PIA/DPIA summary
 
 All v2.0 additions are optional and backward compatible with v1.x credentials.

@@ -84,7 +84,16 @@ Required when assessment `method` is `ai-assisted` or `hybrid`:
 - `humanOversight.finalDecisionMadeBy` (required) — role of the human making the final grading decision
 - `modelInfo` — model/version or vendor description (optional)
 
-Aligned with EU AI Act Art. 50 transparency direction and GB/T 47507-2026.
+Aligned with EU AI Act Art. 50 transparency obligations and the ISO/IEC 42001:2023 AI management-system governance direction.
+
+### identifiers Object (v2.0)
+
+Cross-scheme identifier equivalence, complementing the canonical DID. Rules: see [identifier-mapping.md](docs/interoperability/identifier-mapping.md).
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `canonicalDid` | `string (uri)` | ✅ | The canonical W3C DID of the product credential |
+| `alias[]` | `array` | — | Alternative identifiers asserted as equivalent: each item has `scheme` (`gtin` / `oid` / other registered scheme) and `value`; OID values use `urn:oid:` form (RFC 3061) and must be formally allocated under X.660 / 9834-1; an `oid` alias must also appear in the DID document `alsoKnownAs` |
 
 ---
 
@@ -93,7 +102,7 @@ Aligned with EU AI Act Art. 50 transparency direction and GB/T 47507-2026.
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `type` | `string` | ✅ | `DataIntegrityProof` (current), or legacy `BbsBlsSignature2020` / `Ed25519Signature2020` |
-| `cryptosuite` | `string` | — | **[v2.0]** W3C Data Integrity cryptosuite: `ecdsa-sd-2023` (SD-JWT-based selective disclosure), `eddsa-2022`, `bbs-2023`, or `sm2-with-sm3-2026` (domestic CN deployments) |
+| `cryptosuite` | `string` | — | **[v2.0]** W3C Data Integrity cryptosuite: `ecdsa-sd-2023` (SD-JWT-based selective disclosure), `eddsa-2022`, `bbs-2023`, or `sm2-with-sm3-2026` (optional suite for deployments requiring SM2/SM3/SM4) |
 | `created` | `datetime` | ✅ | Proof creation timestamp |
 | `proofPurpose` | `string (enum)` | ✅ | `assertionMethod` / `authentication` / `controllerProof` |
 | `verificationMethod` | `string (uri)` | ✅ | DID key reference |

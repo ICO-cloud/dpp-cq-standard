@@ -37,7 +37,7 @@ The core standard, **ICO Std 2001 (DPP-CQ)**, is a digital passport specificatio
 
 This document is issued as a Public Review Draft. We sincerely invite governments, enterprises, academic institutions, and non-governmental organizations worldwide to participate in building a more inclusive global digital trust ecosystem.
 
-**v2.0.0-draft update (Aug 2026):** Following the first public review, this revision substantially expands the standard's international interoperability and compliance posture: a GS1 Digital Link / GTIN interop profile, three-tier physical carrier specification (open QR + SDM NFC + tamper-evident NFC) aligned with EN 18220, two normative credential format profiles (W3C Data Integrity with BBS+ and IETF SD-JWT VC / RFC 9529), an optional Chinese national cryptography suite (SM2/SM3/SM4), an ISO 14067-aligned sustainability data module (quality + sustainability dual-dimension model), AI-assisted assessment transparency provisions aligned with GB/T 47507-2026 and EU AI Act Art. 50, data lifecycle governance metadata, and UNTP-style conformity claims. All v2.0 additions are backward compatible with v1.x credentials.
+**v2.0.0-draft update (Aug–Sep 2026):** Following the first public review, this revision substantially expands the standard's international interoperability and compliance posture: a GS1 Digital Link / GTIN interop profile, three-tier physical carrier specification (open QR + SDM NFC + tamper-evident NFC) aligned with EN 18220 and normatively referencing ISO/IEC baselines (QR: ISO/IEC 18004 + ISO/IEC 15415; NFC: ISO/IEC 14443 Type 4), two normative credential format profiles (W3C Data Integrity with BBS+ and IETF SD-JWT VC / RFC 9529), an optional regional cryptography suite (SM2/SM3/SM4, opt-in), an ISO 14067-aligned sustainability data module (quality + sustainability dual-dimension model), AI-assisted assessment transparency provisions aligned with EU AI Act Art. 50 and ISO/IEC 42001:2023, an open interoperability API aligned with EN 18222:2026, an OID ↔ DID application-layer identifier bridge (ISO/IEC 9834-1/8824-1 and W3C), data lifecycle governance metadata, and UNTP-style conformity claims. All v2.0 additions are backward compatible with v1.x credentials.
 
 **Keywords**: Digital Product Passport; Cross-Cultural Digital Trust; Quality Assets; DPP-CQ; Decentralized Identifiers; Verifiable Credentials; Selective Disclosure (SD-JWT / BBS+); GS1 Digital Link; Multi-Stakeholder Governance
 
@@ -112,7 +112,8 @@ For the complete list of contributors and detailed revision history, please refe
 
 | Version | Date       | Description of Changes                                                                                                                          |
 |---------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| v2.0.0-draft | Aug 2026 | International interoperability & compliance expansion: GS1 Digital Link/GTIN interop profile; three-tier carrier specification (EN 18220 aligned); SD-JWT VC (RFC 9529) profile alongside BBS+; optional SM2/SM3/SM4 national cryptography suite; ISO 14067 sustainability data module (quality+sustainability dual-dimension); AI-assisted assessment transparency (GB/T 47507-2026, EU AI Act Art. 50); data lifecycle governance metadata; UNTP-style conformity claims; conformity declarations and PIA summary published; all additions backward compatible with v1.x |
+| v2.0.0-draft | Sep 2026 | International alignment refinement: open interoperability API aligned with EN 18222:2026 (Read/Lifecycle/Search conformance); OID ↔ DID application-layer identifier bridge (X.660/9834-1, 8824-1, RFC 3061, W3C `alsoKnownAs`); carriers normatively reference ISO/IEC 14443 Type 4, ISO/IEC 18004, ISO/IEC 15415; AI provisions aligned with EU AI Act Art. 50 and ISO/IEC 42001:2023; two normative annexes added (api-specification, identifier-mapping) |
+| v2.0.0-draft | Aug 2026 | International interoperability & compliance expansion: GS1 Digital Link/GTIN interop profile; three-tier carrier specification (EN 18220 aligned); SD-JWT VC (RFC 9529) profile alongside BBS+; optional SM2/SM3/SM4 regional cryptography suite (opt-in); ISO 14067 sustainability data module (quality+sustainability dual-dimension); AI-assisted assessment transparency (EU AI Act Art. 50); data lifecycle governance metadata; UNTP-style conformity claims; conformity declarations and PIA summary published; all additions backward compatible with v1.x |
 | v1.3    | July 2026  | Format standardization: aligned with international technical specification formats; added abstract, document status, copyright notice, and revision history; annexes classified as normative/informative; unified section numbering; main title updated to DPP-CQ; verified accuracy of data citations |
 | v1.2    | July 2026  | Added compliance and legal framework chapter, DPP-CQ technical specification annex, intellectual property policy, standards version management strategy, and FAQ; strengthened references to UNESCO/WIPO/UNECE |
 | v1.1    | July 2026  | Framework restructuring and refinement: optimized architecture description; added risks and challenges chapter, pilot framework, and UNECE interoperability initiative references |
@@ -140,7 +141,7 @@ For the complete list of contributors and detailed revision history, please refe
 15. [Annex C (Informative): Abbreviations](#annex-c-informative-abbreviations)
 16. [Annex D (Informative): References](#annex-d-informative-references)
 17. [Annex E (Informative): Frequently Asked Questions](#annex-e-informative-frequently-asked-questions)
-18. [Annex F (Normative, separate documents): v2.0 Interoperability & Compliance Annexes](#annex-f-normative-v20-interoperability--compliance-annexes)
+18. [Annex F (Normative): v2.0 Interoperability & Compliance Annexes](#annex-f-normative-v20-interoperability--compliance-annexes)
 
 ---
 
@@ -206,10 +207,10 @@ ICO standards adopt a strategy of **"baseline compatibility, differentiated valu
 
 - **W3C DID/VC**: Used as the underlying identity and credential technology foundation, fully compatible; v2.0 supports both Data Integrity proofs (BBS+) and SD-JWT VC (RFC 9529)
 - **GS1 Identification System**: GTIN/GLN identifiers and GS1 Digital Link resolution are supported through a normative interop profile; supply-chain events map to EPCIS 2.0/CBV 2.0; DID and GTIN are bound as complementary identifiers
-- **EU DPP / ESPR / EN 18219-18223**: Open data carriers (EN 18220), unique identifiers (EN 18219) and sustainability data attributes are aligned at field level; conformity claims use UNTP-style vocabulary
+- **EU DPP / ESPR / EN 18216–18223**: Open data carriers (EN 18220), unique identifiers (EN 18219), data exchange (EN 18216), lifecycle/searchability APIs (EN 18222) and sustainability data attributes are aligned at field level; conformity claims use UNTP-style vocabulary
 - **UN/CEFACT UNTP**: Conformity claim and interoperability vocabulary adopted as the multilateral bridge for cross-regime data exchange
-- **ISO standards**: Compatible with ISO 22000 (food safety), ISO 14067 (product carbon footprint), ISO 26000 (social responsibility), ISO 22739 (blockchain terminology)
-- **Chinese national standards**: AI trustworthiness (GB/T 47507-2026) and commercial cryptography (SM2/SM3/SM4) supported for domestic deployments
+- **ISO/ITU-T standards**: ISO 22000 (food safety), ISO 14067 (product carbon footprint), ISO 26000 (social responsibility), ISO 22739 (blockchain terminology), ISO/IEC 14443 (NFC physical/link layer), ISO/IEC 18004/15415 (QR symbology and print quality), ISO/IEC 42001 (AI management system); ISO/ITU-T OID bridged via the application-layer OID ↔ DID binding (see §7.10)
+- **Regional cryptographic option**: the SM2/SM3/SM4 commercial cryptography suite is an opt-in profile for deployments within jurisdictions that require it, alongside the default international suites
 
 DPP-CQ does not replace statutory conformity assessment or sectoral certification held by producers; it carries and references such attestations in a verifiable, machine-readable form.
 
@@ -378,6 +379,7 @@ To ensure high security and continuous availability of data resolution in global
 | Layer | Technical Standard | Reference / Compatible Specification |
 |---|---|---|
 | **Decentralized Identifiers** | W3C DID Core 1.0 | W3C Recommendation (Jul 2022) |
+| **Identifier Compatibility** | OID ↔ DID application-layer binding | ITU-T X.660 / ISO/IEC 9834-1; ISO/IEC 8824-1; RFC 3061 |
 | **Verifiable Credentials** | W3C Verifiable Credentials Data Model v2.0 | W3C Recommendation |
 | **Selective Disclosure** | SD-JWT (RFC 9529) / BBS+ signatures | IETF RFC 9529; W3C Data Integrity BBS cryptosuite |
 | **Data Semantics** | JSON-LD 1.1 | W3C Recommendation / IETF BCP 19 |
@@ -385,9 +387,9 @@ To ensure high security and continuous availability of data resolution in global
 | **Global Product Identification** | GS1 GTIN / GLN / GS1 Digital Link 1.6 | GS1 General Specifications; EU DPP EN 18219 alignment |
 | **Supply Chain Events** | GS1 EPCIS 2.0 / CBV 2.0 | GS1 Standard (2022); mapping profile defined in v2.0 |
 | **Data Anchoring** | Cryptographic Hash Anchoring | Blockchain-agnostic, multi-chain support |
-| **Physical Verification** | QR ISO/IEC 18004 (open carrier); NFC ISO/IEC 14443 with SDM (NTAG 424 DNA class) | EN 18220:2026 alignment; NFC Forum NDEF |
+| **Physical Verification** | QR ISO/IEC 18004 + ISO/IEC 15415 print quality; NFC ISO/IEC 14443 Type 4 with SDM (NTAG 424 DNA class); NFC Forum NDEF | EN 18220:2026 alignment; ISO/IEC baselines |
 | **Sustainability Data** | Product carbon footprint per ISO 14067 | Optional sustainability module; ESPR data-attribute direction |
-| **Interface Specification** | RESTful API / OpenAPI 3.0; Digital Link content negotiation | OpenAPI Initiative; GS1 Digital Link resolver pattern |
+| **Interface Specification** | RESTful API / OpenAPI 3.0; open interop API; Digital Link content negotiation | EN 18222:2026 alignment; OpenAPI Initiative; GS1 Digital Link resolver pattern |
 
 ### 7.3 Multi-Chain and Multi-Cloud Architecture
 
@@ -444,17 +446,19 @@ The ICO standards framework adopts an intellectual property policy of "openness 
 
 DPP-CQ v2.0 defines three physical carrier levels (normative detail: [Carrier Specification](../interoperability/carrier-specification.md)):
 
-| Level | Carrier | Security profile | Reader requirement |
-|---|---|---|---|
-| L1 | Open QR (GS1 Digital Link in interop profile) | Cloneable; authenticity via registry | Any smartphone camera |
-| L2 | SDM secure NFC (NTAG 424 DNA class) | Per-scan cryptographic SUN authentication | Any NFC phone, NDEF open read |
-| L3 | Tamper-evident NFC (TagTamper class) | Tamper detection + SDM | Any NFC phone |
+| Level | Carrier | International baseline | Security profile | Reader requirement |
+|---|---|---|---|---|
+| L1 | Open QR (GS1 Digital Link in interop profile) | ISO/IEC 18004 (QR symbology); ISO/IEC 15415 (print quality) | Cloneable; authenticity via registry | Any smartphone camera |
+| L2 | SDM secure NFC (NTAG 424 DNA class) | ISO/IEC 14443 Type 4; NFC Forum NDEF | Per-scan cryptographic SUN authentication | Any NFC phone, NDEF open read |
+| L3 | Tamper-evident NFC (TagTamper class) | ISO/IEC 14443 Type 4; NFC Forum NDEF | Tamper detection + SDM | Any NFC phone |
 
 Two principles govern carrier design:
 
-1. **Open carrier principle (aligned with ESPR Art. 9 and EN 18220):** every
-   product must be readable with generally available means — no proprietary
-   app, registration, or fee. Security is achieved through cryptographic
+1. **Open carrier principle (aligned with ESPR Art. 9 and EN 18220:2026):**
+   every product must be readable with generally available means — no
+   proprietary app, registration, or fee. QR symbology follows ISO/IEC 18004
+   and print quality follows ISO/IEC 15415; NFC follows ISO/IEC 14443 Type 4
+   with open NFC Forum NDEF records. Security is achieved through cryptographic
    verification of the resolved data, never through hiding the payload.
 2. **Dual carrier for international products:** products in the GS1 interop
    profile carry both an open QR (universal scanning, retail/customer flows)
@@ -485,9 +489,10 @@ standards (notably Std 3001), preserving the framework's independence.
 ### 7.9 AI-Assisted Assessment Transparency
 
 Where AI systems support quality assessment (data extraction, pre-scoring,
-image recognition), DPP-CQ adopts transparency and human-oversight rules
-aligned with **GB/T 47507-2026** (AI trustworthiness general rules) and the
-transparency direction of **EU AI Act Art. 50**:
+image recognition), DPP-CQ adopts its own transparency and human-oversight
+rules, aligned with the transparency obligations of **EU AI Act Art. 50** and
+the governance direction of **ISO/IEC 42001:2023 (AI management system,
+AIMS)**:
 
 - AI participation **MUST** be disclosed in the credential
   (`qualityAttributes.assessment.aiDisclosure`).
@@ -495,6 +500,62 @@ transparency direction of **EU AI Act Art. 50**:
   the credential identifies the decision role and review process.
 - The assessment methodology reference and full report **MUST** be
   retrievable via the credential (`reportReference`).
+
+### 7.10 Identifier Interoperability: OID ↔ DID Bridge Between Two International Systems
+
+The canonical identifier of a DPP-CQ credential is the W3C DID
+(`did:ico:dpp`). So that a credential can also be resolved by certificate,
+enterprise-registry and trade/customs systems built on the ISO/IEC & ITU-T
+Object Identifier (OID) architecture, v2.0 defines an **application-layer**
+OID ↔ DID compatibility binding — not a new DID method and not a change to
+root resolution. Normative detail is in
+[identifier-mapping.md](../interoperability/identifier-mapping.md); key points:
+
+- **Two complementary international systems:** OID (registration tree per
+  ITU-T X.660 / ISO/IEC 9834-1; ASN.1 OBJECT IDENTIFIER and OID-IRI per
+  ISO/IEC 8824-1) carries organizational/registration lineage; the W3C DID
+  carries cryptographic control proof and verifiability.
+- **Binding (normative):** the DID document lists the equivalent OID via the
+  standard W3C `alsoKnownAs` property (in RFC 3061 `urn:oid:` form), and the
+  credential carries the same equivalence in `identifiers.alias`; the OID-side
+  record may point back to the passport URI. No new `did:oid:` method is
+  registered.
+- **Bidirectional agreement required:** the DID document and credential
+  record must cite the same OID, and that OID must be formally allocated by an
+  X.660 / 9834-1 Registration Authority. A one-sided claim, an unallocated
+  OID, or a mismatch is surfaced as an identifier-consistency warning. ICO
+  does not allocate OID arcs.
+- **Optional, non-disruptive:** issuers not using OID rely on the canonical
+  DID path alone; the binding does not alter hash-cross-border, selective
+  disclosure, or carrier requirements.
+
+### 7.11 Open Interoperability API (Aligned with EN 18222)
+
+DPP-CQ v2.0 defines a single open machine-to-machine API surface covering
+passport creation, read, versioning/archiving, status/revocation and
+cross-identifier searchability, expressed as a RESTful API (OpenAPI 3.0),
+with normative provisions in
+[api-specification.md](../interoperability/api-specification.md). It is
+aligned with **EN 18222:2026 *Digital product passport — APIs for product
+passport lifecycle management and searchability***:
+
+- **Searchability:** a passport is locable by DID, GTIN, batch number, or a
+  bound OID, with no prior bilateral arrangement between systems.
+- **Gateway resolution:** read requests route to the authoritative data
+  holder for the product, including across hybrid and cross-border
+  deployments.
+- **Open read, authorized depth:** public data (product identity, quality
+  grade summary, issuer, privacy notice) is readable without registration or
+  fee; business-sensitive and personal claims are released via credential
+  exchange with selective disclosure.
+- **Full lifecycle and persistence:** every state change produces a new hash
+  anchor; revocation propagates across QR/NFC paths within SLA (target
+  < 5 minutes); API requirements keep a passport retrievable even if the
+  original economic operator ceases activity.
+- The six Root Resolver endpoints in Annex A.3 are the discovery, status and
+  anchoring subset of this surface. That subset alone is **DPP-CQ Read**
+  conformance; issuer/node systems must implement the lifecycle and search
+  methods to claim **DPP-CQ Lifecycle/Search** conformance.
 
 ---
 
@@ -514,7 +575,7 @@ This architecture is compatible with China's *Data Security Law* and *Personal I
 
 | Jurisdiction | Core Compliance Requirements | ICO Standard Adaptation |
 |---|---|---|
-| **China** | Data classification and grading, security assessment for outbound transfer of important data, critical information infrastructure protection; commercial cryptography requirements; AI trustworthiness (GB/T 47507-2026) | Localized data storage, hash cross-border, independent deployment of domestic root nodes; optional SM2/SM3/SM4 cryptography suite; AI assessment transparency & human-oversight provisions; data lifecycle governance metadata |
+| **China** | Data classification and grading, security assessment for outbound transfer of important data, critical information infrastructure protection; commercial cryptography requirements | Localized data storage, hash cross-border, independent deployment of domestic root nodes; optional SM2/SM3/SM4 cryptography suite; AI assessment transparency & human-oversight provisions (aligned with EU AI Act Art. 50 and ISO/IEC 42001); data lifecycle governance metadata |
 | **European Union** | GDPR data protection; ESPR digital product passport & sustainability data; EN 18219/18220 series; EU AI Act transparency | SD-JWT/BBS+ selective disclosure, data minimization; GS1 Digital Link & EN 18220-aligned open carriers; ISO 14067 sustainability module; conformity claims; AI-use disclosure |
 | **Southeast Asia** | Significant variation in national data protection laws, differing localization requirements | Flexible regional node deployment, configurable data storage strategies; lightweight L1 QR carrier for cost sensitivity |
 | **Middle East / GCC** | Developing data localization and halal/cultural-product traceability regimes; strong interest in digital trade infrastructure | Regional node deployment; cultural-quality framing compatible with heritage-product protection; GS1/UNTP interop for trade |
@@ -554,9 +615,12 @@ the data controller, retention policy, storage jurisdiction, cross-border mode
 (default: hash-only), deletion/anonymization rules, privacy notice URI, and
 PIA/DPIA summary URI. A public PIA summary is maintained at
 [docs/compliance/pia-summary.md](../compliance/pia-summary.md), and
-conformity declarations against GB/T 47507-2026, the ESPR/EN framework, and
-data-protection regimes are maintained at
+conformity declarations against the ESPR/EN framework, EU AI Act,
+ISO/IEC 42001 and data-protection regimes are maintained at
 [docs/compliance/conformity-declarations.md](../compliance/conformity-declarations.md).
+Regulatory mappings for specific jurisdictions (including deployments within
+China) are informative deployment-support material and do not constitute
+normative references of the standard.
 
 ### 8.4 Electronic Evidence and Legal Effect
 
@@ -690,6 +754,13 @@ did:ico:dpp:tea:longjing-xh-2026-001
 did:ico:dpp:ceramic:jz-yd-2026-0892
 ```
 
+A product that also holds a formally allocated ISO/ITU-T Object Identifier
+binds it at the application layer: the DID document carries the OID in
+`alsoKnownAs` as an `urn:oid:` URN (RFC 3061), and the credential repeats the
+equivalence in `identifiers.alias`. The DID remains the canonical identifier;
+the binding rules (bidirectional agreement, registered OID only) are defined
+normatively in [identifier-mapping.md](../interoperability/identifier-mapping.md).
+
 ### A.2 JSON-LD Context Example
 
 The JSON-LD context definition for DPP-CQ credentials:
@@ -747,7 +818,14 @@ The JSON-LD context definition for DPP-CQ credentials:
 }
 ```
 
-### A.3 Root Resolver Node API Specification (Draft)
+### A.3 Root Resolver Node API (Discovery / Status / Anchoring Subset)
+
+The six endpoints below are the discovery, status and hash-anchoring subset
+exposed by a Root Resolver node. The complete open interoperability API for
+passport lifecycle management and searchability (resource model, identifier
+search by GTIN/OID/batch, lifecycle methods, conformance levels) is defined
+normatively in [api-specification.md](../interoperability/api-specification.md),
+aligned with EN 18222:2026.
 
 | Endpoint | Method | Function |
 |---|---|---|
@@ -790,6 +868,7 @@ Scan QR / NFC Tap
 | **Geographical Indication (GI)** | An indication identifying a product as originating from a specific territory, where a given quality, reputation, or other characteristic of the product is essentially attributable to its geographical origin |
 | **Intangible Cultural Heritage (ICH)** | Practices and expressions recognized by communities, groups, and, in some cases, individuals as part of their cultural heritage, as defined by UNESCO |
 | **Root Resolver** | A unified resolution and anchoring infrastructure for globally distributed identifiers |
+| **Object Identifier (OID)** | An internationally unique hierarchical identifier allocated under the registration tree defined by ITU-T X.660 / ISO/IEC 9834-1, used in certificates, registries and enterprise systems; expressed in dotted notation, as OID-IRI, or as an `urn:oid:` URN (RFC 3061) |
 | **Hash Anchoring** | Storing hash fingerprints of data on tamper-proof media for integrity verification and timestamping |
 | **JSON-LD** | JSON for Linked Data — a JSON format for linked data, supporting semantic interoperability |
 | **Multi-Stakeholder Governance** | A governance model ensuring that all parties affected by decisions have the opportunity to participate in decision-making |
@@ -823,6 +902,10 @@ Scan QR / NFC Tap
 | GDPR | General Data Protection Regulation 通用数据保护条例 |
 | UNCITRAL | United Nations Commission on International Trade Law 联合国国际贸易法委员会 |
 | NFC | Near Field Communication 近场通信 |
+| OID | Object Identifier 对象标识符 |
+| OID-IRI | Object Identifier Internationalized Resource Identifier 对象标识符国际化资源标识符 |
+| API | Application Programming Interface 应用程序接口 |
+| REST | Representational State Transfer 表述性状态传递 |
 | CLA | Contributor License Agreement 贡献者许可协议 |
 
 ---
@@ -851,8 +934,13 @@ Scan QR / NFC Tap
 19. European Union. *Regulation (EU) 2024/1689 (AI Act)*, Art. 50; *Regulation (EU) 2023/1542 (Batteries)*.
 20. ISO. *ISO 14067:2018 — Greenhouse gases — Carbon footprint of products*.
 21. UN/CEFACT. *UN Transparency Protocol (UNTP) — Conformity Credential specification*. untp.unece.org.
-22. SAC. *GB/T 47507-2026 人工智能 可信赖 通则 (AI trustworthiness general rules)*. 2026.
+22. ISO/IEC. *ISO/IEC 42001:2023 — Artificial intelligence — Management system*.
 23. IETF. *The BBS Signature Scheme*. IETF Draft.
+24. CEN-CENELEC JTC 24. *EN 18222:2026 — Digital product passport — Application Programming Interfaces (APIs) for the product passport lifecycle management and searchability*. 2026.
+25. ITU-T / ISO/IEC. *X.660 | ISO/IEC 9834-1:2012 — Information technology — Procedures for the operation of object identifier registration authorities*.
+26. ITU-T / ISO/IEC. *X.680 | ISO/IEC 8824-1 — Abstract Syntax Notation One (ASN.1): Specification of basic notation*.
+27. IETF. *RFC 3061 — A URN Namespace of Object Identifiers*.
+28. ISO/IEC. *ISO/IEC 14443 (Identification cards — Contactless integrated circuit cards — Proximity cards), ISO/IEC 18004 (QR code symbology), ISO/IEC 15415 (bar code symbol print quality)*.
 
 ---
 
@@ -969,9 +1057,11 @@ The following separate documents form a normative part of ICO Std 2001 v2.0. The
 | Document | Path | Content |
 |---|---|---|
 | **GS1 Digital Link & Identifier Mapping** | `docs/interoperability/gs1-digital-link-mapping.md` | GTIN↔DID binding rules, Digital Link URI structure and content negotiation, EPCIS 2.0 event mapping, EN 18219/18220 alignment |
-| **Data Carrier Specification** | `docs/interoperability/carrier-specification.md` | Three-tier carriers (L1 open QR / L2 SDM NFC / L3 tamper-evident NFC), open-carrier principle, dual-carrier rule, resolver behavior |
-| **Credential Format Profiles** | `docs/specs/credential-formats.md` | JSON-LD Data Integrity (BBS+) vs SD-JWT VC (RFC 9529) profiles; disclosure classification; SM2/SM3/SM4 national cryptography suite; status and validity rules |
-| **Conformity Declarations** | `docs/compliance/conformity-declarations.md` | Self-declarations against GB/T 47507-2026, EU ESPR/EN standards, GDPR/PIPL, EU AI Act |
+| **Data Carrier Specification** | `docs/interoperability/carrier-specification.md` | Three-tier carriers (L1 open QR / L2 SDM NFC / L3 tamper-evident NFC), open-carrier principle, dual-carrier rule, resolver behavior; ISO/IEC 14443 Type 4, ISO/IEC 18004, ISO/IEC 15415 baselines |
+| **Identifier Mapping: OID ↔ DID** | `docs/interoperability/identifier-mapping.md` | Application-layer equivalence binding via DID `alsoKnownAs` and credential `identifiers.alias`; X.660/9834-1 and 8824-1; no new DID method, no root-resolver change |
+| **Open Interoperability API** | `docs/interoperability/api-specification.md` | REST API aligned with EN 18222:2026: resource model, lifecycle methods, identifier searchability, Read/Lifecycle/Search conformance levels, error and non-functional requirements |
+| **Credential Format Profiles** | `docs/specs/credential-formats.md` | JSON-LD Data Integrity (BBS+) vs SD-JWT VC (RFC 9529) profiles; disclosure classification; SM2/SM3/SM4 optional regional cryptography suite; status and validity rules |
+| **Conformity Declarations** | `docs/compliance/conformity-declarations.md` | Self-declarations against EU ESPR/EN standards, ISO/IEC 42001, GDPR/PIPL, EU AI Act; jurisdiction-specific mappings are informative |
 | **PIA / DPIA Summary** | `docs/compliance/pia-summary.md` | Public privacy impact assessment: data flows, risk table, data-subject rights, cross-border legal basis |
 | **JSON Schema v2.0** | `schemas/dpp-cq.schema.json` | Machine-readable data model ($id: icoun.org/schemas/dpp-cq/v2.0.0-draft) |
 | **v2.0 Example Credential** | `examples/longjing-tea-v2.json` | Full interop-profile example (Longjing tea) |
@@ -982,11 +1072,12 @@ The following separate documents form a normative part of ICO Std 2001 v2.0. The
 |---|---|---|
 | W3C DID / VC v2.0, IETF SD-JWT (RFC 9529) | Open standards | Foundation; fully adopted |
 | GS1 Digital Link / EPCIS 2.0 | Global supply-chain standards | Normative interop profile |
-| EU ESPR (Reg. 2024/1781); EN 18219–18223 | EU regulation / harmonized standards | Baseline compatibility for carriers, identifiers, sustainability fields; DPP-CQ categories not in first priority groups |
+| EU ESPR (Reg. 2024/1781); EN 18216–18223 (incl. EN 18222 APIs) | EU regulation / harmonized standards | Baseline compatibility for carriers, identifiers, APIs, sustainability fields; DPP-CQ categories not in first priority groups |
 | UN/CEFACT UNTP | UN multilateral vocabulary | Adopted for conformity claims; primary multilateral bridge |
-| ISO 14067, ISO 22000, ISO 22739 | ISO standards | Referenced in data model and terminology |
-| GB/T 47507-2026; SM2/SM3/SM4 (GB/T 32918/32905/32907) | Chinese national standards | Supported for domestic deployments |
-| EU AI Act (Reg. 2024/1689) Art. 50 | EU regulation | Transparency provisions adopted as baseline practice |
+| ISO/IEC 14067, 22000, 22739, 42001, 14443, 18004, 15415 | ISO standards | Referenced in data model, terminology, AI governance and carrier baselines |
+| ITU-T X.660 / ISO/IEC 9834-1; X.680 / ISO/IEC 8824-1; RFC 3061 (OID) | International identifier standards | Application-layer OID ↔ DID binding; no new DID method |
+| SM2/SM3/SM4 (GB/T 32918/32905/32907) | Regional cryptography standards | Opt-in suite for deployments within jurisdictions that require it |
+| EU AI Act (Reg. 2024/1689) Art. 50; ISO/IEC 42001 | EU regulation / ISO standard | Transparency and AI management provisions adopted as baseline practice |
 
 ---
 
