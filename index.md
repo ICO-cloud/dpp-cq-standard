@@ -63,7 +63,8 @@ DPP-CQ extends the digital product passport paradigm beyond environmental and ci
 
 ### PDF Downloads
 
-- 📄 White Paper PDFs (v1.3, English/Chinese): being regenerated for v2.0 — the Markdown versions above are the current authoritative text
+- 📄 [White Paper v2.0 (Chinese)](docs/white-paper/DPP-CQ_White_Paper_v2.0.pdf)
+- 📄 [White Paper v2.0 (English)](docs/white-paper/DPP-CQ_White_Paper_v2.0_EN.pdf)
 
 ---
 
