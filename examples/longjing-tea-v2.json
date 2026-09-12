@@ -1,0 +1,276 @@
+{
+  "_comment": "DPP-CQ v2.0.0-draft example — West Lake Longjing Tea with GS1 Digital Link, dual carrier, sustainability module, data lifecycle metadata, and conformity claims. All v2.0 additions are OPTIONAL; this example demonstrates the full interop profile. Fictional values for demonstration.",
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://icoun.org/contexts/dpp-cq/v2"
+  ],
+  "id": "did:ico:dpp:tea:longjing-xh-2026-002",
+  "type": [
+    "VerifiableCredential",
+    "DPPQualityCredential",
+    "CulturalHeritageCredential"
+  ],
+  "issuer": "did:ico:issuer:zjtea-assoc",
+  "issuanceDate": "2026-09-15T00:00:00Z",
+  "validFrom": "2026-09-15T00:00:00Z",
+  "expirationDate": "2027-09-14T23:59:59Z",
+  "validUntil": "2027-09-14T23:59:59Z",
+  "credentialStatus": {
+    "id": "https://resolver.icoun.org/v1/status/002#42",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "42",
+    "statusListCredential": "https://resolver.icoun.org/v1/status/002"
+  },
+  "credentialSubject": {
+    "id": "did:ico:dpp:tea:longjing-xh-2026-002",
+    "productName": {
+      "zh": "西湖龙井茶",
+      "en": "West Lake Longjing Tea"
+    },
+    "category": "geographical-indication-tea",
+    "gs1Identifiers": {
+      "gtin": "06901234000016",
+      "batchOrLot": "XH20260328A01",
+      "serialNumber": "SN-LJ-2026-00042",
+      "digitalLink": "https://id.gs1.org/01/06901234000016/10/XH20260328A01/21/SN-LJ-2026-00042",
+      "glnOwner": "6901234000009"
+    },
+    "identifiers": {
+      "canonicalDid": "did:ico:dpp:tea:longjing-xh-2026-002",
+      "alias": [
+        { "scheme": "gtin", "value": "06901234000016" },
+        { "scheme": "batch", "value": "XH20260328A01" },
+        { "scheme": "oid", "value": "urn:oid:2.42.12345.67.002" }
+      ]
+    },
+    "qualityGrade": "Premium Grade 1",
+    "productImage": "ipfs://QmXYZ...",
+    "origin": {
+      "type": "GeographicalIndication",
+      "giNumber": "GI-CN-0001",
+      "region": "West Lake Production Area, Hangzhou",
+      "country": "CN",
+      "coordinates": {
+        "latitude": 30.2408,
+        "longitude": 120.1542
+      }
+    },
+    "culturalData": {
+      "heritageStatus": "National Intangible Cultural Heritage",
+      "heritageYear": 2008,
+      "heritageNumber": "Ⅷ-148",
+      "craftMethod": "Hand-fired with ten traditional techniques",
+      "craftHistory": "Longjing tea has a history of over 1,200 years, dating back to the Tang Dynasty.",
+      "artisanInfo": {
+        "name": "Disclosed with authorization",
+        "title": "National Master of Tea Craft",
+        "generation": "5th Generation"
+      },
+      "culturalNarrative": "Longjing tea is one of China's Ten Famous Teas, known for its four characteristics: green color, fragrant aroma, sweet taste, and beautiful shape."
+    },
+    "traceability": {
+      "harvestDate": "2026-03-28",
+      "processLocation": "Longwu Tea Town, Hangzhou",
+      "batchNumber": "XH20260328A01",
+      "supplyChainSteps": [
+        {
+          "step": "Tea leaf harvesting",
+          "date": "2026-03-28",
+          "location": "Shifeng Mountain, West Lake",
+          "entity": "Longjing Tea Cooperative",
+          "epcisEvent": {
+            "eventType": "ObjectEvent",
+            "bizStep": "commissioning",
+            "action": "ADD",
+            "epcisEventURI": "https://epcis.example.cn/events/8f3a2c"
+          }
+        },
+        {
+          "step": "Hand-firing processing",
+          "date": "2026-03-28",
+          "location": "Longwu Tea Town",
+          "entity": "Master Workshop",
+          "epcisEvent": {
+            "eventType": "TransformationEvent",
+            "bizStep": "commissioning",
+            "epcisEventURI": "https://epcis.example.cn/events/8f3a2d"
+          }
+        },
+        {
+          "step": "Quality assessment",
+          "date": "2026-03-29",
+          "entity": "Zhejiang Tea Quality Assessment Center",
+          "certification": "Premium Grade 1"
+        },
+        {
+          "step": "Packaging and sealing",
+          "date": "2026-03-30",
+          "location": "Hangzhou"
+        }
+      ]
+    },
+    "qualityAttributes": {
+      "appearance": "Flat and smooth, tender green color",
+      "aroma": "Long-lasting tender chestnut aroma",
+      "taste": "Fresh, mellow, and sweet aftertaste",
+      "specifications": [
+        {
+          "attribute": "Tea polyphenols",
+          "value": "18.5",
+          "unit": "%",
+          "testMethod": "GB/T 8313-2018",
+          "testStandard": "GB/T 8313-2018"
+        },
+        {
+          "attribute": "Amino acids",
+          "value": "4.2",
+          "unit": "%",
+          "testMethod": "GB/T 8314-2013",
+          "testStandard": "GB/T 8314-2013"
+        },
+        {
+          "attribute": "Water content",
+          "value": "5.8",
+          "unit": "%",
+          "testMethod": "GB 5009.3-2016",
+          "testStandard": "GB 5009.3-2016"
+        }
+      ],
+      "certifications": [
+        {
+          "certificationBody": "China National Intellectual Property Administration (CNIPA)",
+          "certificationType": "Geographical Indication Protection Product",
+          "certificateNumber": "GI-CN-0001",
+          "validUntil": "2030-12-31"
+        },
+        {
+          "certificationBody": "Ministry of Culture and Tourism",
+          "certificationType": "National Intangible Cultural Heritage",
+          "certificateNumber": "Ⅷ-148"
+        }
+      ],
+      "assessment": {
+        "method": "hybrid",
+        "methodStandard": "ICO Std 3001 (Draft)",
+        "assessedBy": "did:ico:issuer:zjtea-assoc",
+        "assessmentDate": "2026-03-29",
+        "reportReference": "did:ico:report:tea:longjing-2026-042",
+        "aiDisclosure": {
+          "aiAssisted": true,
+          "tasksPerformed": ["laboratory data extraction", "sensory score pre-scoring"],
+          "humanOversight": {
+            "finalDecisionMadeBy": "lead tea quality assessor (national senior evaluator)",
+            "reviewProcess": "All AI-generated scores reviewed and adjusted by a panel of three senior assessors; the lead assessor signs the final grade."
+          },
+          "modelInfo": "Proprietary sensory pre-scoring model v2.1 (vendor details on request)"
+        }
+      }
+    },
+    "sustainabilityData": {
+      "carbonFootprint": {
+        "value": 2.4,
+        "unit": "kgCO2e",
+        "functionalUnit": "per 250g tin",
+        "methodStandard": "ISO 14067:2018",
+        "systemBoundary": "cradle-to-gate",
+        "verifiedBy": "Third-party verification body (example)",
+        "studyReportURI": "https://example.cn/carbon/longjing-2026"
+      },
+      "materials": [
+        {
+          "material": "Steel tinplate can",
+          "percentage": 62,
+          "recycledContent": 35,
+          "hazardous": false
+        },
+        {
+          "material": "Food-grade paper label",
+          "percentage": 12,
+          "recycledContent": 80,
+          "hazardous": false
+        }
+      ],
+      "endOfLife": {
+        "recyclingInfo": "Steel tin is widely recyclable; rinse and place in metal recycling.",
+        "repairInfo": "https://example.cn/reuse/tea-tin",
+        "disposalGuidance": "Remove paper label before recycling where required locally."
+      }
+    },
+    "dataLifecycle": {
+      "dataController": "Hangzhou West Lake Longjing Tea Industry Association (example)",
+      "retentionPolicy": "Quality and traceability raw data retained for 5 years after credential expiry; hash anchors retained indefinitely.",
+      "storageLocation": "CN (Zhejiang)",
+      "crossBorderMode": "hash-only",
+      "deletionPolicy": "On revocation or expiry+5y, raw assessment data is anonymized or deleted; hash anchors and credential status records are retained for evidentiary integrity.",
+      "privacyNoticeURI": "https://icoun.org/dpp-cq/privacy",
+      "piaReportURI": "https://icoun.org/dpp-cq/pia-summary"
+    },
+    "authenticityMarks": [
+      {
+        "type": "nfc-chip",
+        "carrierLevel": "L2-sdm-nfc",
+        "identifier": "04:63:A2:11:22:33:44:55",
+        "specification": {
+          "standard": "ISO/IEC 14443 Type 4 / NFC Forum NDEF",
+          "chipModel": "NXP NTAG 424 DNA",
+          "sdmEnabled": true,
+          "openlyReadable": true
+        },
+        "description": "Secure Dynamic Messaging NFC tag; SUN message authenticated on every scan."
+      },
+      {
+        "type": "qr-code",
+        "carrierLevel": "L1-open-qr",
+        "identifier": "https://id.gs1.org/01/06901234000016/10/XH20260328A01/21/SN-LJ-2026-00042",
+        "specification": {
+          "standard": "ISO/IEC 18004 (QR Code) / GS1 Digital Link 1.6",
+          "qrGrade": "B or better (ISO/IEC 15415)",
+          "openlyReadable": true
+        },
+        "description": "Open GS1 Digital Link QR; resolves in any standard smartphone reader without a proprietary app."
+      }
+    ]
+  },
+  "conformityClaims": [
+    {
+      "framework": "EN 18220:2026",
+      "claim": "Product data carrier is openly readable and carries a unique item identifier; dual carrier (QR + SDM NFC) deployed.",
+      "conformity": "full",
+      "evidence": {
+        "assessmentReference": "https://icoun.org/dpp-cq/conformity/en18220-self-assessment",
+        "attestedBy": "did:ico:issuer:zjtea-assoc",
+        "assessmentDate": "2026-09-10"
+      }
+    },
+    {
+      "framework": "EU ESPR (Reg. (EU) 2024/1781)",
+      "claim": "Sustainability data attributes (carbon footprint per ISO 14067, materials, end-of-life) provided in machine-readable form for ESPR-aligned data exchange. Tea is not within the first ESPR priority product groups; claim is forward-looking.",
+      "conformity": "partial",
+      "evidence": {
+        "assessmentReference": "https://icoun.org/dpp-cq/conformity/espr-mapping",
+        "attestedBy": "did:ico:issuer:zjtea-assoc",
+        "assessmentDate": "2026-09-10"
+      }
+    },
+    {
+      "framework": "ISO/IEC 42001:2023; EU AI Act Art. 50",
+      "claim": "AI-assisted assessment transparency and human oversight disclosed; AI management-system governance direction followed; data security and full-lifecycle data governance documented.",
+      "conformity": "full",
+      "evidence": {
+        "assessmentReference": "https://icoun.org/dpp-cq/conformity/iso42001-ai-act",
+        "attestedBy": "did:ico:issuer:zjtea-assoc",
+        "assessmentDate": "2026-09-10"
+      }
+    }
+  ],
+  "proof": {
+    "type": "DataIntegrityProof",
+    "cryptosuite": "ecdsa-sd-2023",
+    "created": "2026-09-15T10:30:00Z",
+    "proofPurpose": "assertionMethod",
+    "verificationMethod": "did:ico:issuer:zjtea-assoc#keys-sd-1",
+    "proofValue": "eyJzZGNfb3J...z9XQ2k"
+  },
+  "_sdJwtCompactForm": "The compact SD-JWT serialization (RFC 9529: <JWT>~<disclosure1>~...~<signature>) is the transport envelope for wallet exchange; this JSON-LD form follows W3C VC v2.0 with a Data Integrity proof using the ecdsa-sd-2023 cryptosuite. See docs/specs/credential-formats.md."
+}

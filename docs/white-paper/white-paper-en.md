@@ -1,16 +1,16 @@
 ========================================================================
-                    ICO-TS-001                      July 2026
+                    ICO-TS-001                      August 2026
 
    DPP-CQ: Digital Product Passport for Cultural & Quality Goods
                Standard Architecture and Core Specifications
 
-                    Version 1.3 — Public Review Draft
+                    Version 2.0.0-draft — Public Review Draft (2nd round)
 ========================================================================
 
   Originating Organization:  International Communication Organization (ICO)
   Document Number:           ICO-TS-001:2026
   Status:                    Public Review Draft
-  Comment Period:            July 6 – August 20, 2026 (Accelerated Procedure · 45-day review)
+  Comment Period:            September 1 – October 15, 2026 (2nd review: interoperability & compliance)
   Feedback:                  info@icoun.org | GitHub Issues
 ========================================================================
 
@@ -22,8 +22,8 @@
 ### DPP-CQ 文化与品质数字产品护照
 ### 标准架构与核心规范
 
-#### (ICO Digital Trust Standards Framework v1.3)
-#### （ICO 数字信任标准框架 v1.3）
+#### (ICO Digital Trust Standards Framework v2.0.0-draft)
+#### （ICO 数字信任标准框架 v2.0.0-draft）
 
 ---
 
@@ -31,13 +31,15 @@
 
 Against the backdrop of deep integration between the digital economy and global trade, cross-border product circulation is evolving from *physical flow* to *trusted flow*. Digital Product Passports (DPPs), as an emerging digital trust infrastructure, have achieved significant progress in the environmental data domain for industrial products, yet notable gaps remain in their coverage of cultural products, specialty agricultural goods, geographical indication products, and other categories.
 
-This document systematically presents the overall architecture, core specifications, governance mechanisms, and implementation roadmap of the **DPP-CQ Digital Product Passport for Cultural & Quality Goods standards framework**. Built upon mature technologies such as W3C DIDs, Verifiable Credentials (VCs), and Zero-Knowledge Proofs (ZKPs), this framework focuses on establishing digital trust in the cultural value and quality dimensions, addressing the inclusivity gap in existing DPP standards ecosystems.
+This document systematically presents the overall architecture, core specifications, governance mechanisms, and implementation roadmap of the **DPP-CQ Digital Product Passport for Cultural & Quality Goods standards framework**. Built upon mature technologies such as W3C DIDs, Verifiable Credentials (VCs), and standards-based selective disclosure (SD-JWT / BBS+), this framework focuses on establishing digital trust in the cultural value and quality dimensions, addressing the inclusivity gap in existing DPP standards ecosystems.
 
-The core standard, **ICO Std 2001 (DPP-CQ)**, is a digital passport specification for cultural and quality products. It supports dual carriers of QR codes and NFC, provides a three-tier verification mechanism, and protects sensitive craftsmanship and commercial data through zero-knowledge proofs. The standards framework employs a multi-stakeholder governance model to ensure openness, neutrality, and inclusivity.
+The core standard, **ICO Std 2001 (DPP-CQ)**, is a digital passport specification for cultural and quality products. It supports dual carriers of QR codes and NFC, provides a three-tier verification mechanism, and protects sensitive craftsmanship and commercial data through selective-disclosure proofs (SD-JWT / BBS+). The standards framework employs a multi-stakeholder governance model to ensure openness, neutrality, and inclusivity.
 
 This document is issued as a Public Review Draft. We sincerely invite governments, enterprises, academic institutions, and non-governmental organizations worldwide to participate in building a more inclusive global digital trust ecosystem.
 
-**Keywords**: Digital Product Passport; Cross-Cultural Digital Trust; Quality Assets; DPP-CQ; Decentralized Identifiers; Verifiable Credentials; Zero-Knowledge Proofs; Multi-Stakeholder Governance
+**v2.0.0-draft update (Aug–Sep 2026):** Following the first public review, this revision substantially expands the standard's international interoperability and compliance posture: a GS1 Digital Link / GTIN interop profile, three-tier physical carrier specification (open QR + SDM NFC + tamper-evident NFC) aligned with EN 18220 and normatively referencing ISO/IEC baselines (QR: ISO/IEC 18004 + ISO/IEC 15415; NFC: ISO/IEC 14443 Type 4), two normative credential format profiles (W3C Data Integrity with BBS+ and IETF SD-JWT VC / RFC 9529), an optional regional cryptography suite (SM2/SM3/SM4, opt-in), an ISO 14067-aligned sustainability data module (quality + sustainability dual-dimension model), AI-assisted assessment transparency provisions aligned with EU AI Act Art. 50 and ISO/IEC 42001:2023, an open interoperability API aligned with EN 18222:2026, an OID ↔ DID application-layer identifier bridge (ISO/IEC 9834-1/8824-1 and W3C), data lifecycle governance metadata, and UNTP-style conformity claims. All v2.0 additions are backward compatible with v1.x credentials.
+
+**Keywords**: Digital Product Passport; Cross-Cultural Digital Trust; Quality Assets; DPP-CQ; Decentralized Identifiers; Verifiable Credentials; Selective Disclosure (SD-JWT / BBS+); GS1 Digital Link; Multi-Stakeholder Governance
 
 ---
 
@@ -71,7 +73,7 @@ This document aims to:
 
 This document is a **Public Review Draft** published by the International Communication Organization (ICO).
 
-The content of this document may be revised based on community feedback. The official version shall be as officially published by ICO. The comment period closes on **August 20, 2026 (Accelerated Procedure · 45-day review period)**. Feedback may be submitted through the following channels:
+The content of this document may be revised based on community feedback. The official version shall be as officially published by ICO. This v2.0.0-draft incorporates the results of the first public review (July 6 – August 20, 2026) and opens a **second review period: September 1 – October 15, 2026**, focused on the new international interoperability and compliance annexes. Feedback may be submitted through the following channels:
 
 - GitHub Issues: https://github.com/ICO-cloud/dpp-cq-standard/issues
 - Email: info@icoun.org
@@ -110,6 +112,8 @@ For the complete list of contributors and detailed revision history, please refe
 
 | Version | Date       | Description of Changes                                                                                                                          |
 |---------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| v2.0.0-draft | Sep 2026 | International alignment refinement: open interoperability API aligned with EN 18222:2026 (Read/Lifecycle/Search conformance); OID ↔ DID application-layer identifier bridge (X.660/9834-1, 8824-1, RFC 3061, W3C `alsoKnownAs`); carriers normatively reference ISO/IEC 14443 Type 4, ISO/IEC 18004, ISO/IEC 15415; AI provisions aligned with EU AI Act Art. 50 and ISO/IEC 42001:2023; two normative annexes added (api-specification, identifier-mapping) |
+| v2.0.0-draft | Aug 2026 | International interoperability & compliance expansion: GS1 Digital Link/GTIN interop profile; three-tier carrier specification (EN 18220 aligned); SD-JWT VC (RFC 9529) profile alongside BBS+; optional SM2/SM3/SM4 regional cryptography suite (opt-in); ISO 14067 sustainability data module (quality+sustainability dual-dimension); AI-assisted assessment transparency (EU AI Act Art. 50); data lifecycle governance metadata; UNTP-style conformity claims; conformity declarations and PIA summary published; all additions backward compatible with v1.x |
 | v1.3    | July 2026  | Format standardization: aligned with international technical specification formats; added abstract, document status, copyright notice, and revision history; annexes classified as normative/informative; unified section numbering; main title updated to DPP-CQ; verified accuracy of data citations |
 | v1.2    | July 2026  | Added compliance and legal framework chapter, DPP-CQ technical specification annex, intellectual property policy, standards version management strategy, and FAQ; strengthened references to UNESCO/WIPO/UNECE |
 | v1.1    | July 2026  | Framework restructuring and refinement: optimized architecture description; added risks and challenges chapter, pilot framework, and UNECE interoperability initiative references |
@@ -137,6 +141,7 @@ For the complete list of contributors and detailed revision history, please refe
 15. [Annex C (Informative): Abbreviations](#annex-c-informative-abbreviations)
 16. [Annex D (Informative): References](#annex-d-informative-references)
 17. [Annex E (Informative): Frequently Asked Questions](#annex-e-informative-frequently-asked-questions)
+18. [Annex F (Normative): v2.0 Interoperability & Compliance Annexes](#annex-f-normative-v20-interoperability--compliance-annexes)
 
 ---
 
@@ -172,8 +177,8 @@ To build a **globally applicable, technology-neutral, and culturally inclusive**
 | **Neutral** | Technology-agnostic architecture, not tied to any specific vendor or technology stack | Supports multiple blockchain and cloud platforms |
 | **Inclusive** | Fully considers the needs of different cultural backgrounds and development stages | Supports lightweight implementations for low-resource environments |
 | **Interoperable** | Based on international technical standards, ensuring connectivity with existing and future systems | Compatible with W3C, ISO, GS1, UNECE, and other standards |
-| **Trustworthy** | Verifiable data, traceable processes, and adjudicatable disputes | Three-tier verification + Root Resolver Network + ZKP privacy protection |
-| **Privacy by Design** | Privacy protection embedded in architectural design; data minimization | Zero-Knowledge Proofs + Selective Disclosure |
+| **Trustworthy** | Verifiable data, traceable processes, and adjudicatable disputes | Three-tier verification + Root Resolver Network + selective-disclosure privacy protection |
+| **Privacy by Design** | Privacy protection embedded in architectural design; data minimization | Selective disclosure (SD-JWT / BBS+) |
 
 ---
 
@@ -198,17 +203,20 @@ Existing DPP standards are primarily led by advanced economies, focusing on envi
 
 ### 3.3 Interoperability with Existing Standards
 
-ICO standards adopt a strategy of **"compatibility first, supplementation and extension"**:
+ICO standards adopt a strategy of **"baseline compatibility, differentiated value"**:
 
-- **W3C DID/VC**: Used as the underlying identity and credential technology foundation, fully compatible
-- **GS1 Identification System**: Supports mapping and interoperability with GS1 product coding systems
-- **UNECE Global DPP Interoperability Initiative**: Participates in the global DPP interoperability framework led by the United Nations Economic Commission for Europe
-- **EU DPP/ESPR**: Designs data mapping pathways for cross-system information sharing
-- **ISO-related standards**: Compatible with standards such as ISO 22000 (food safety) and ISO 26000 (social responsibility)
+- **W3C DID/VC**: Used as the underlying identity and credential technology foundation, fully compatible; v2.0 supports both Data Integrity proofs (BBS+) and SD-JWT VC (RFC 9529)
+- **GS1 Identification System**: GTIN/GLN identifiers and GS1 Digital Link resolution are supported through a normative interop profile; supply-chain events map to EPCIS 2.0/CBV 2.0; DID and GTIN are bound as complementary identifiers
+- **EU DPP / ESPR / EN 18216–18223**: Open data carriers (EN 18220), unique identifiers (EN 18219), data exchange (EN 18216), lifecycle/searchability APIs (EN 18222) and sustainability data attributes are aligned at field level; conformity claims use UNTP-style vocabulary
+- **UN/CEFACT UNTP**: Conformity claim and interoperability vocabulary adopted as the multilateral bridge for cross-regime data exchange
+- **ISO/ITU-T standards**: ISO 22000 (food safety), ISO 14067 (product carbon footprint), ISO 26000 (social responsibility), ISO 22739 (blockchain terminology), ISO/IEC 14443 (NFC physical/link layer), ISO/IEC 18004/15415 (QR symbology and print quality), ISO/IEC 42001 (AI management system); ISO/ITU-T OID bridged via the application-layer OID ↔ DID binding (see §7.10)
+- **Regional cryptographic option**: the SM2/SM3/SM4 commercial cryptography suite is an opt-in profile for deployments within jurisdictions that require it, alongside the default international suites
+
+DPP-CQ does not replace statutory conformity assessment or sectoral certification held by producers; it carries and references such attestations in a verifiable, machine-readable form.
 
 ### 3.4 Technology Maturity Window
 
-Technologies such as W3C DIDs (Decentralized Identifiers), Verifiable Credentials, blockchain-based evidence anchoring, and Zero-Knowledge Proofs (ZKPs) have entered mature application phases, providing the technical foundation for building a globally applicable open standard for the cultural and quality dimensions.
+Technologies such as W3C DIDs (Decentralized Identifiers), Verifiable Credentials, blockchain-based evidence anchoring, and selective-disclosure credential technology (SD-JWT, BBS+) have entered mature application phases, providing the technical foundation for building a globally applicable open standard for the cultural and quality dimensions.
 
 Meanwhile, international documents and data such as UNESCO's *Operational Directives for the Implementation of the Convention for the Safeguarding of the Intangible Cultural Heritage* (2016/2018 edition) and WIPO's *World Intellectual Property Indicators 2024* all indicate the urgency and necessity of leveraging digital technology to protect cultural assets and geographical indications. The timing is opportune for establishing open standards oriented toward the cultural and quality dimensions.
 
@@ -222,7 +230,7 @@ Meanwhile, international documents and data such as UNESCO's *Operational Direct
 ┌─────────────────────────────────────────────────────┐
 │ Layer 4  Governance & Compliance                     │
 │  Standards development process · Multi-stakeholder   │
-│  governance · Dispute resolution · Certification     │
+│  governance · Dispute resolution · Assessment rules │
 │  rules                                               │
 ├─────────────────────────────────────────────────────┤
 │ Layer 3  System & Assessment                        │
@@ -257,7 +265,7 @@ Meanwhile, international documents and data such as UNESCO's *Operational Direct
 | **ICO Std 2001-2026** | **Digital Product Passport for Cultural & Quality Goods (DPP-CQ)** | **Public Review Draft** | **2026 Q3** |
 | ICO Std 2002-2026 | Global Haute Couture & Cultural Attire Quality Standard | Planned | 2026 Q4 |
 | ICO Std 2003-2026 | Global Framework for GI & Origin Digital Mutual Recognition | Planned | 2027 Q1 |
-| ICO Std 3001-2026 | Global Digital Credibility Certification (GDCC) | Draft | 2026 Q4 |
+| ICO Std 3001-2026 | Global Digital Credibility Assessment (GDCC) | Draft | 2026 Q4 |
 | ICO Std 4001-2026 | Standards Development & Publication Process | Under Development | 2026 Q3 |
 | ICO Std 4002-2026 | Multi-Stakeholder Governance Charter | Under Development | 2026 Q3 |
 
@@ -286,7 +294,7 @@ Meanwhile, international documents and data such as UNESCO's *Operational Direct
 - Supports dual-carrier verification via QR code and NFC
 - Three-tier verification mechanism: Quick Verification (<1s) / Deep Verification / Judicial-Grade Verification
 - Hybrid storage architecture: data stored off-chain, hashes anchored on-chain
-- **ZKP-enabled Privacy:** The standard enables manufacturers, ICH transmitters, and distribution entities to prove compliance with specific quality grades and origin regulatory requirements to consumers and regulatory authorities through Zero-Knowledge Proof technology, without disclosing core craft recipes, supply chain node identities, or commercial procurement prices — achieving "data usability without visibility, trustworthiness without information leakage"
+- **ZKP-enabled Privacy:** The standard enables manufacturers, ICH transmitters, and distribution entities to prove compliance with specific quality grades and origin regulatory requirements to consumers and regulatory authorities through selective-disclosure proofs (SD-JWT / BBS+), without disclosing core craft recipes, supply chain node identities, or commercial procurement prices — achieving "data usability without visibility, trustworthiness without information leakage"
 - Selective Disclosure: Data holders may choose the scope of disclosure based on the verification scenario
 
 **Applicable Categories:** Geographical indication agricultural products (tea, grains & oils, fruits, medicinal herbs, spices), Intangible Cultural Heritage products (ceramics, embroidery, lacquerware, woodwork), haute couture and cultural attire, premium food and beverages, handicrafts and cultural creative products.
@@ -295,9 +303,9 @@ Meanwhile, international documents and data such as UNESCO's *Operational Direct
 
 Defines the credibility assessment framework and provenance methodology for digital content and data assets, with particular emphasis on provenance identification specifications for AI-generated content. Covers data integrity verification, provenance chain construction methods, credibility grading assessment, timestamps, and evidence anchoring interfaces.
 
-### 5.3 ICO Std 3001: Global Digital Credibility Certification (GDCC)
+### 5.3 ICO Std 3001: Global Digital Credibility Assessment (GDCC)
 
-A digital credibility assessment and certification standard for institutions (enterprises, media, NGOs, etc.), constructing an assessment system across multiple dimensions including information transparency, data credibility, governance compliance, and cultural responsibility, with support for cross-cultural scenario adaptation.
+A digital credibility assessment and evaluation standard for institutions (enterprises, media, NGOs, etc.), constructing an assessment system across multiple dimensions including information transparency, data credibility, governance compliance, and cultural responsibility, with support for cross-cultural scenario adaptation.
 
 ---
 
@@ -364,19 +372,24 @@ To ensure high security and continuous availability of data resolution in global
 - **International Standards First**: Prioritize adoption of published international standards (W3C, IETF, ISO)
 - **Open Source & Open**: Core technology stack based on open-source licenses
 - **Extensible Architecture**: Modular design supporting future standard extensions
-- **Privacy by Design**: Data minimization principle, supporting selective disclosure and Zero-Knowledge Proofs
+- **Privacy by Design**: Data minimization principle, implemented via standards-based selective disclosure (SD-JWT / BBS+)
 
 ### 7.2 Core Technology Stack
 
 | Layer | Technical Standard | Reference / Compatible Specification |
 |---|---|---|
 | **Decentralized Identifiers** | W3C DID Core 1.0 | W3C Recommendation (Jul 2022) |
+| **Identifier Compatibility** | OID ↔ DID application-layer binding | ITU-T X.660 / ISO/IEC 9834-1; ISO/IEC 8824-1; RFC 3061 |
 | **Verifiable Credentials** | W3C Verifiable Credentials Data Model v2.0 | W3C Recommendation |
+| **Selective Disclosure** | SD-JWT (RFC 9529) / BBS+ signatures | IETF RFC 9529; W3C Data Integrity BBS cryptosuite |
 | **Data Semantics** | JSON-LD 1.1 | W3C Recommendation / IETF BCP 19 |
-| **Cryptographic Signatures** | BBS+ Signatures / Ed25519 | IETF RFC / RFC 8032 |
+| **Cryptographic Signatures** | BBS+ / Ed25519 / ECDSA P-256; SM2+SM3 optional | IETF RFC 8032; GB/T 32918 / GB/T 32905 (national crypto option) |
+| **Global Product Identification** | GS1 GTIN / GLN / GS1 Digital Link 1.6 | GS1 General Specifications; EU DPP EN 18219 alignment |
+| **Supply Chain Events** | GS1 EPCIS 2.0 / CBV 2.0 | GS1 Standard (2022); mapping profile defined in v2.0 |
 | **Data Anchoring** | Cryptographic Hash Anchoring | Blockchain-agnostic, multi-chain support |
-| **Physical Verification** | NFC Forum Type 2/4 · QR Code ISO 18004 | NFC Forum / ISO Standard |
-| **Interface Specification** | RESTful API / OpenAPI 3.0 | OpenAPI Initiative |
+| **Physical Verification** | QR ISO/IEC 18004 + ISO/IEC 15415 print quality; NFC ISO/IEC 14443 Type 4 with SDM (NTAG 424 DNA class); NFC Forum NDEF | EN 18220:2026 alignment; ISO/IEC baselines |
+| **Sustainability Data** | Product carbon footprint per ISO 14067 | Optional sustainability module; ESPR data-attribute direction |
+| **Interface Specification** | RESTful API / OpenAPI 3.0; open interop API; Digital Link content negotiation | EN 18222:2026 alignment; OpenAPI Initiative; GS1 Digital Link resolver pattern |
 
 ### 7.3 Multi-Chain and Multi-Cloud Architecture
 
@@ -402,8 +415,8 @@ The ICO standards framework adopts an intellectual property policy of "openness 
 - An Intellectual Property Working Group is established to oversee patent policy development and dispute resolution
 
 **Trademark and Logo Policy:**
-- "ICO Certified" mark, "DPP-CQ" mark, and others are registered trademarks of ICO
-- Certified products and services may use official marks subject to compliance requirements
+- "ICO Verified" mark, "DPP-CQ" mark, and others are registered trademarks of ICO
+- Products and services meeting DPP-CQ conformance requirements may use official marks subject to compliance requirements; DPP-CQ conformance is an assessment/verification (评定/验证), not statutory certification (认证)
 - Logo usage specifications and supervision mechanisms are established to prevent abuse and misleading
 - Logo usage by regional nodes and partners requires authorization and review
 
@@ -415,8 +428,8 @@ The ICO standards framework adopts an intellectual property policy of "openness 
 ### 7.6 Standards Version Management
 
 **Version Numbering Scheme:** Uses the format "major.minor.patch" (e.g., v1.2.3)
-- **Major version**: Incompatible architectural changes
-- **Minor version**: Backward-compatible functional additions
+- **Major version**: Architectural expansion of the standard's scope (e.g. v2.0 adds the GS1 interop profile, SD-JWT VC format and sustainability module); all v2.0 data additions are OPTIONAL so v1.x credentials remain valid
+- **Minor version**: Backward-compatible functional additions within the same architecture
 - **Patch version**: Backward-compatible bug fixes
 
 **Backward Compatibility Commitments:**
@@ -429,6 +442,121 @@ The ICO standards framework adopts an intellectual property policy of "openness 
 - International standards are reviewed every 5 years to ensure continued validity
 - Obsolete standards initiate revocation procedures with advance notice to all adopters
 
+### 7.7 Physical Carrier Strategy: Three-Tier, Open by Default
+
+DPP-CQ v2.0 defines three physical carrier levels (normative detail: [Carrier Specification](../interoperability/carrier-specification.md)):
+
+| Level | Carrier | International baseline | Security profile | Reader requirement |
+|---|---|---|---|---|
+| L1 | Open QR (GS1 Digital Link in interop profile) | ISO/IEC 18004 (QR symbology); ISO/IEC 15415 (print quality) | Cloneable; authenticity via registry | Any smartphone camera |
+| L2 | SDM secure NFC (NTAG 424 DNA class) | ISO/IEC 14443 Type 4; NFC Forum NDEF | Per-scan cryptographic SUN authentication | Any NFC phone, NDEF open read |
+| L3 | Tamper-evident NFC (TagTamper class) | ISO/IEC 14443 Type 4; NFC Forum NDEF | Tamper detection + SDM | Any NFC phone |
+
+Two principles govern carrier design:
+
+1. **Open carrier principle (aligned with ESPR Art. 9 and EN 18220:2026):**
+   every product must be readable with generally available means — no
+   proprietary app, registration, or fee. QR symbology follows ISO/IEC 18004
+   and print quality follows ISO/IEC 15415; NFC follows ISO/IEC 14443 Type 4
+   with open NFC Forum NDEF records. Security is achieved through cryptographic
+   verification of the resolved data, never through hiding the payload.
+2. **Dual carrier for international products:** products in the GS1 interop
+   profile carry both an open QR (universal scanning, retail/customer flows)
+   and an SDM NFC tag (cryptographic authenticity); both resolve to the same
+   passport, and the verification page indicates which carrier was presented.
+
+### 7.8 Dual-Dimension Data Model: Quality + Sustainability
+
+Existing DPP regimes (notably the EU ESPR framework) organize product data
+primarily around environmental sustainability and circular economy. DPP-CQ's
+core differentiation is the **quality and cultural value** dimension. v2.0
+formalizes a dual-dimension model rather than choosing between them:
+
+- **Quality & cultural dimension (DPP-CQ core):** quality grade, sensory and
+  laboratory attributes, craftsmanship, ICH/GI status, artisan lineage,
+  assessment methodology and AI-use disclosure.
+- **Sustainability dimension (v2.0 optional module):** product carbon footprint
+  per ISO 14067, material composition with recycled content, end-of-life
+  guidance — structured to map onto ESPR delegated-act data attributes as they
+  are adopted per product class.
+
+This design lets a single credential serve both purposes: it satisfies the
+cultural/quality trust gap DPP-CQ was created to address, while producing
+machine-readable sustainability data that EU importers, retailers and
+regulators can consume. The quality assessment itself remains governed by ICO
+standards (notably Std 3001), preserving the framework's independence.
+
+### 7.9 AI-Assisted Assessment Transparency
+
+Where AI systems support quality assessment (data extraction, pre-scoring,
+image recognition), DPP-CQ adopts its own transparency and human-oversight
+rules, aligned with the transparency obligations of **EU AI Act Art. 50** and
+the governance direction of **ISO/IEC 42001:2023 (AI management system,
+AIMS)**:
+
+- AI participation **MUST** be disclosed in the credential
+  (`qualityAttributes.assessment.aiDisclosure`).
+- The final grading decision **MUST** be made by a qualified human assessor;
+  the credential identifies the decision role and review process.
+- The assessment methodology reference and full report **MUST** be
+  retrievable via the credential (`reportReference`).
+
+### 7.10 Identifier Interoperability: OID ↔ DID Bridge Between Two International Systems
+
+The canonical identifier of a DPP-CQ credential is the W3C DID
+(`did:ico:dpp`). So that a credential can also be resolved by certificate,
+enterprise-registry and trade/customs systems built on the ISO/IEC & ITU-T
+Object Identifier (OID) architecture, v2.0 defines an **application-layer**
+OID ↔ DID compatibility binding — not a new DID method and not a change to
+root resolution. Normative detail is in
+[identifier-mapping.md](../interoperability/identifier-mapping.md); key points:
+
+- **Two complementary international systems:** OID (registration tree per
+  ITU-T X.660 / ISO/IEC 9834-1; ASN.1 OBJECT IDENTIFIER and OID-IRI per
+  ISO/IEC 8824-1) carries organizational/registration lineage; the W3C DID
+  carries cryptographic control proof and verifiability.
+- **Binding (normative):** the DID document lists the equivalent OID via the
+  standard W3C `alsoKnownAs` property (in RFC 3061 `urn:oid:` form), and the
+  credential carries the same equivalence in `identifiers.alias`; the OID-side
+  record may point back to the passport URI. No new `did:oid:` method is
+  registered.
+- **Bidirectional agreement required:** the DID document and credential
+  record must cite the same OID, and that OID must be formally allocated by an
+  X.660 / 9834-1 Registration Authority. A one-sided claim, an unallocated
+  OID, or a mismatch is surfaced as an identifier-consistency warning. ICO
+  does not allocate OID arcs.
+- **Optional, non-disruptive:** issuers not using OID rely on the canonical
+  DID path alone; the binding does not alter hash-cross-border, selective
+  disclosure, or carrier requirements.
+
+### 7.11 Open Interoperability API (Aligned with EN 18222)
+
+DPP-CQ v2.0 defines a single open machine-to-machine API surface covering
+passport creation, read, versioning/archiving, status/revocation and
+cross-identifier searchability, expressed as a RESTful API (OpenAPI 3.0),
+with normative provisions in
+[api-specification.md](../interoperability/api-specification.md). It is
+aligned with **EN 18222:2026 *Digital product passport — APIs for product
+passport lifecycle management and searchability***:
+
+- **Searchability:** a passport is locable by DID, GTIN, batch number, or a
+  bound OID, with no prior bilateral arrangement between systems.
+- **Gateway resolution:** read requests route to the authoritative data
+  holder for the product, including across hybrid and cross-border
+  deployments.
+- **Open read, authorized depth:** public data (product identity, quality
+  grade summary, issuer, privacy notice) is readable without registration or
+  fee; business-sensitive and personal claims are released via credential
+  exchange with selective disclosure.
+- **Full lifecycle and persistence:** every state change produces a new hash
+  anchor; revocation propagates across QR/NFC paths within SLA (target
+  < 5 minutes); API requirements keep a passport retrievable even if the
+  original economic operator ceases activity.
+- The six Root Resolver endpoints in Annex A.3 are the discovery, status and
+  anchoring subset of this surface. That subset alone is **DPP-CQ Read**
+  conformance; issuer/node systems must implement the lifecycle and search
+  methods to claim **DPP-CQ Lifecycle/Search** conformance.
+
 ---
 
 ## 8. Compliance & Legal Framework · 合规与法律框架
@@ -439,7 +567,7 @@ ICO standards employ an architectural design of **"data localization, hash cross
 
 - **Raw data stored locally**: Detailed product quality, craftsmanship, and supply chain data are stored locally by the issuer or certification body, with no mandatory cross-border transmission
 - **Hash fingerprint anchoring**: Only hash fingerprints of data (one-way irreversible) are registered and anchored at root nodes; hashes themselves contain no identifiable original information
-- **Zero-Knowledge Proof verification**: Sensitive data is verified via ZKP technology; verifiers receive only compliance conclusions without access to raw data
+- **Selective-disclosure verification**: Sensitive data is verified via SD-JWT / BBS+ selective disclosure; verifiers receive only the claims or compliance conclusions they are authorized for, without access to undisclosed raw data
 
 This architecture is compatible with China's *Data Security Law* and *Personal Information Protection Law*, the EU's General Data Protection Regulation (GDPR), and the data sovereignty principles of most countries.
 
@@ -447,12 +575,54 @@ This architecture is compatible with China's *Data Security Law* and *Personal I
 
 | Jurisdiction | Core Compliance Requirements | ICO Standard Adaptation |
 |---|---|---|
-| **China** | Data classification and grading, security assessment for outbound transfer of important data, critical information infrastructure protection | Localized data storage, hash cross-border, independent deployment of domestic root nodes |
-| **European Union** | GDPR data protection, Digital Markets Act (DMA), ESPR environmental disclosure | ZKP selective disclosure, data minimization, data mapping with EU DPP |
-| **Southeast Asia** | Significant variation in national data protection laws, differing localization requirements | Flexible regional node deployment, configurable data storage strategies |
-| **Global South** | Relatively weak data regulations, insufficient digital capacity | Lightweight solutions, capacity building support, technology transfer |
+| **China** | Data classification and grading, security assessment for outbound transfer of important data, critical information infrastructure protection; commercial cryptography requirements | Localized data storage, hash cross-border, independent deployment of domestic root nodes; optional SM2/SM3/SM4 cryptography suite; AI assessment transparency & human-oversight provisions (aligned with EU AI Act Art. 50 and ISO/IEC 42001); data lifecycle governance metadata |
+| **European Union** | GDPR data protection; ESPR digital product passport & sustainability data; EN 18219/18220 series; EU AI Act transparency | SD-JWT/BBS+ selective disclosure, data minimization; GS1 Digital Link & EN 18220-aligned open carriers; ISO 14067 sustainability module; conformity claims; AI-use disclosure |
+| **Southeast Asia** | Significant variation in national data protection laws, differing localization requirements | Flexible regional node deployment, configurable data storage strategies; lightweight L1 QR carrier for cost sensitivity |
+| **Middle East / GCC** | Developing data localization and halal/cultural-product traceability regimes; strong interest in digital trade infrastructure | Regional node deployment; cultural-quality framing compatible with heritage-product protection; GS1/UNTP interop for trade |
+| **Global South** | Relatively weak data regulations, insufficient digital capacity | Lightweight solutions, capacity building support, technology transfer; zero-licensing-fee adoption (see three red lines: no charging for standards use) |
 
-### 8.3 Electronic Evidence and Legal Effect
+### 8.2b International Interoperability Position
+
+DPP-CQ is an **independent international standard** and does not subordinate
+itself to any regional regulatory regime. Its interoperability strategy is
+"baseline compatibility, differentiated value":
+
+- **Baseline compatibility (non-negotiable interop):** open data carriers,
+  global identifiers (GTIN alongside DID), standard credential formats
+  (W3C VC / SD-JWT VC), standard APIs, and machine-readable conformity claims.
+  These ensure DPP-CQ credentials can be read and cross-checked by EU DPP,
+  retail, customs and GS1-based systems.
+- **Differentiated value (kept independent):** the quality-and-culture
+  assessment methodology (Std 3001), the multi-stakeholder governance model,
+  affordability for small producers, and applicability to cultural product
+  categories that environmental DPPs do not cover.
+- **Multilateral bridge:** active engagement with the UN/CEFACT UNTP (UN Transparency
+  Protocol) conformity-credential vocabulary and the ISO DPP
+  work item (ISO/PWI 25534-1 track), so that DPP-CQ interops through neutral,
+  multilateral standards rather than through any single jurisdiction's
+  registry.
+
+DPP-CQ's flagship categories (tea, wine & spirits, cultural crafts,
+traditional medicine and health products, specialty agri-foods) are not within
+the first ESPR priority product groups; the standard therefore has a strategic
+window to mature its interop profile before any statutory DPP obligations
+potentially reach its categories.
+
+### 8.3 Data Lifecycle Governance
+
+Every DPP-CQ credential in v2.0 carries a `dataLifecycle` record identifying
+the data controller, retention policy, storage jurisdiction, cross-border mode
+(default: hash-only), deletion/anonymization rules, privacy notice URI, and
+PIA/DPIA summary URI. A public PIA summary is maintained at
+[docs/compliance/pia-summary.md](../compliance/pia-summary.md), and
+conformity declarations against the ESPR/EN framework, EU AI Act,
+ISO/IEC 42001 and data-protection regimes are maintained at
+[docs/compliance/conformity-declarations.md](../compliance/conformity-declarations.md).
+Regulatory mappings for specific jurisdictions (including deployments within
+China) are informative deployment-support material and do not constitute
+normative references of the standard.
+
+### 8.4 Electronic Evidence and Legal Effect
 
 ICO standards are themselves technical and industry standards, without legal force (consistent with the nature of international standards such as those from ISO). However, their design fully considers judicial evidence requirements:
 
@@ -463,7 +633,7 @@ ICO standards are themselves technical and industry standards, without legal for
 
 Specific legal effect varies by jurisdiction. ICO encourages regional nodes to collaborate with local legal institutions to promote recognition of the evidentiary weight of DPP-CQ credentials in their respective jurisdictions.
 
-### 8.4 Dispute Resolution Mechanism
+### 8.5 Dispute Resolution Mechanism
 
 Referencing UNCITRAL (United Nations Commission on International Trade Law) arbitration rules and international commercial arbitration practices, ICO establishes a three-tier dispute resolution mechanism:
 
@@ -490,9 +660,9 @@ Referencing UNCITRAL (United Nations Commission on International Trade Law) arbi
 
 **Standards Participation:** Apply to join relevant standards Working Groups (WGs) to participate in standard development and review
 
-**Ecosystem Participation:** Become a certified service provider, regional node operator, or joint laboratory partner
+**Ecosystem Participation:** Become a verified service provider, regional node operator, or joint laboratory partner
 
-**Adoption Participation:** Implement ICO standards in products or services and apply for DPP-CQ certification
+**Adoption Participation:** Implement ICO standards in products or services and apply for DPP-CQ conformance assessment
 
 ---
 
@@ -511,27 +681,27 @@ Referencing UNCITRAL (United Nations Commission on International Trade Law) arbi
 - Publish 2–3 new standards (GI mutual recognition, haute couture, etc.)
 - Launch 3 regional nodes: Southeast Asia, Middle East, Africa
 - Establish 5+ industry joint laboratories
-- 500+ institutional adopters, 10,000+ certified products
+- 500+ institutional adopters, 10,000+ verified products
 - Establish formal cooperation with 2–3 international standards organizations
 
 **2028 and Beyond: Global Mutual Recognition and Ecosystem Maturity Year**
 - 10+ standards published
 - 20+ national/regional nodes
-- 1,000+ institutional adopters, 100,000+ certified products
+- 1,000+ institutional adopters, 100,000+ verified products
 - Establish mutual recognition mechanisms with major international standards organizations
 
 ### 10.2 Initial Pilot Framework
 
-The first batch of flagship product certification pilots will launch in the second half of 2026:
+The first batch of flagship product assessment pilots will launch in the second half of 2026:
 
 | Pilot Category | Flagship Direction | Collaboration Model | Success Metrics |
 |---|---|---|---|
-| GI Tea | Top-tier production region GI tea | Production region + brand joint certification | Number of certified SKUs, traceability data coverage rate |
+| GI Tea | Top-tier production region GI tea | Production region + brand joint assessment | Number of verified SKUs, traceability data coverage rate |
 | ICH Ceramics | Handcrafted technique heritage | Artisan + production region joint | Cultural data completeness, user verification volume |
-| Haute Couture Attire | Chinese haute couture brands | Brand certification + craft evidence anchoring | Full lifecycle passport coverage, market feedback |
+| Haute Couture Attire | Chinese haute couture brands | Brand assessment + craft evidence anchoring | Full lifecycle passport coverage, market feedback |
 | ICH Handicrafts | Embroidery / lacquerware, etc. | Transmitters + institutional joint | ICH value display, cross-border transaction improvement |
 
-Pilot evaluation dimensions: number of certified products, traceability data quality, user verification frequency, cross-border transaction improvement, producer value gain.
+Pilot evaluation dimensions: number of verified products, traceability data quality, user verification frequency, cross-border transaction improvement, producer value gain.
 
 ---
 
@@ -540,7 +710,7 @@ Pilot evaluation dimensions: number of certified products, traceability data qua
 | Risk | Description | Mitigation Strategy |
 |---|---|---|
 | **Adoption Resistance** | SMEs have limited digital capabilities and concerns about integration costs | Provide lightweight toolkits, SaaS platforms, capacity building programs; free during the first 6-month pilot period |
-| **Privacy and Data Security** | High protection requirements for cultural craftsmanship and commercial data | Strict ZKP application, off-chain storage architecture, regular third-party security audits; data control rests with issuers |
+| **Privacy and Data Security** | High protection requirements for cultural craftsmanship and commercial data | Strict selective-disclosure application, off-chain storage architecture, regular third-party security audits; data control rests with issuers |
 | **Standards Fragmentation** | Multiple sets of DPP standards coexist globally, creating confusion for enterprises | Actively promote mutual recognition and compatibility; participate in multilateral interoperability initiatives such as UNECE; avoid closed systems |
 | **Governance Neutrality** | International community has concerns about the fairness of standard-setting | Transparent governance processes, multi-party oversight mechanisms, independent third-party audits, balanced representation |
 | **Technology Evolution Risk** | Cryptography and blockchain technologies evolve rapidly, risking standard obsolescence | Modular design, extensible architecture, periodic technical reviews, backward compatibility strategy |
@@ -583,6 +753,13 @@ Examples:
 did:ico:dpp:tea:longjing-xh-2026-001
 did:ico:dpp:ceramic:jz-yd-2026-0892
 ```
+
+A product that also holds a formally allocated ISO/ITU-T Object Identifier
+binds it at the application layer: the DID document carries the OID in
+`alsoKnownAs` as an `urn:oid:` URN (RFC 3061), and the credential repeats the
+equivalence in `identifiers.alias`. The DID remains the canonical identifier;
+the binding rules (bidirectional agreement, registered OID only) are defined
+normatively in [identifier-mapping.md](../interoperability/identifier-mapping.md).
 
 ### A.2 JSON-LD Context Example
 
@@ -641,7 +818,14 @@ The JSON-LD context definition for DPP-CQ credentials:
 }
 ```
 
-### A.3 Root Resolver Node API Specification (Draft)
+### A.3 Root Resolver Node API (Discovery / Status / Anchoring Subset)
+
+The six endpoints below are the discovery, status and hash-anchoring subset
+exposed by a Root Resolver node. The complete open interoperability API for
+passport lifecycle management and searchability (resource model, identifier
+search by GTIN/OID/batch, lifecycle methods, conformance levels) is defined
+normatively in [api-specification.md](../interoperability/api-specification.md),
+aligned with EN 18222:2026.
 
 | Endpoint | Method | Function |
 |---|---|---|
@@ -679,11 +863,12 @@ Scan QR / NFC Tap
 | **Digital Product Passport (DPP)** | A digital identity credential containing core product data, readable via methods such as code scanning |
 | **Decentralized Identifier (DID)** | A decentralized identity identifier defined by W3C, independent of centralized identity providers |
 | **Verifiable Credential (VC)** | A digital credential digitally signed by the issuer, independently verifiable by third parties |
-| **Zero-Knowledge Proof (ZKP)** | A cryptographic protocol that can prove a statement true without disclosing the underlying data |
+| **Selective Disclosure (SD-JWT / BBS+)** | Cryptographic proofs (SD-JWT per RFC 9529; BBS+ unlinkable derived credentials) that let a holder reveal only selected claims while keeping the signature valid; v1.x used the umbrella term "zero-knowledge proofs (ZKP)", v2.0 normatively uses these standard suites |
 | **Selective Disclosure** | The practice by which a data holder discloses only the necessary data fields to a verifier |
 | **Geographical Indication (GI)** | An indication identifying a product as originating from a specific territory, where a given quality, reputation, or other characteristic of the product is essentially attributable to its geographical origin |
 | **Intangible Cultural Heritage (ICH)** | Practices and expressions recognized by communities, groups, and, in some cases, individuals as part of their cultural heritage, as defined by UNESCO |
 | **Root Resolver** | A unified resolution and anchoring infrastructure for globally distributed identifiers |
+| **Object Identifier (OID)** | An internationally unique hierarchical identifier allocated under the registration tree defined by ITU-T X.660 / ISO/IEC 9834-1, used in certificates, registries and enterprise systems; expressed in dotted notation, as OID-IRI, or as an `urn:oid:` URN (RFC 3061) |
 | **Hash Anchoring** | Storing hash fingerprints of data on tamper-proof media for integrity verification and timestamping |
 | **JSON-LD** | JSON for Linked Data — a JSON format for linked data, supporting semantic interoperability |
 | **Multi-Stakeholder Governance** | A governance model ensuring that all parties affected by decisions have the opportunity to participate in decision-making |
@@ -703,7 +888,7 @@ Scan QR / NFC Tap
 | ZKP | Zero-Knowledge Proof 零知识证明 |
 | GI | Geographical Indication 地理标志 |
 | ICH | Intangible Cultural Heritage 非物质文化遗产 |
-| GDCC | Global Digital Credibility Certification 全球数字公信力认证 |
+| GDCC | Global Digital Credibility Assessment 全球数字公信力评定 |
 | TCR | Tianji Credibility Registry 天机可信价值评级数据库 |
 | GDC | Global Digital Compact 全球数字契约 |
 | W3C | World Wide Web Consortium 万维网联盟 |
@@ -717,6 +902,10 @@ Scan QR / NFC Tap
 | GDPR | General Data Protection Regulation 通用数据保护条例 |
 | UNCITRAL | United Nations Commission on International Trade Law 联合国国际贸易法委员会 |
 | NFC | Near Field Communication 近场通信 |
+| OID | Object Identifier 对象标识符 |
+| OID-IRI | Object Identifier Internationalized Resource Identifier 对象标识符国际化资源标识符 |
+| API | Application Programming Interface 应用程序接口 |
+| REST | Representational State Transfer 表述性状态传递 |
 | CLA | Contributor License Agreement 贡献者许可协议 |
 
 ---
@@ -738,7 +927,20 @@ Scan QR / NFC Tap
 12. UNCITRAL. *UNCITRAL Model Law on Electronic Commerce*.
 13. ISO. *ISO 22000: Food Safety Management Systems*. International Organization for Standardization.
 14. GS1. *EPCIS 2.0 and Core Business Vocabulary (CBV)*. GS1 Standard.
-15. IETF. *The BBS Signature Scheme*. IETF Draft.
+15. IETF. *RFC 9529 — SD-JWT: Selective Disclosure for JWTs (SD-JWT)*. 2024.
+16. W3C. *Verifiable Credential Data Integrity 1.0* (EdDSA / BBS cryptosuites). W3C Recommendations.
+17. GS1. *GS1 Digital Link: URI Syntax*, version 1.6. GS1 Standard, 2024.
+18. CEN-CENELEC JTC 24. *EN 18216:2026 / EN 18219–18223:2026* — Digital Product Passport horizontal standards. 2026.
+19. European Union. *Regulation (EU) 2024/1689 (AI Act)*, Art. 50; *Regulation (EU) 2023/1542 (Batteries)*.
+20. ISO. *ISO 14067:2018 — Greenhouse gases — Carbon footprint of products*.
+21. UN/CEFACT. *UN Transparency Protocol (UNTP) — Conformity Credential specification*. untp.unece.org.
+22. ISO/IEC. *ISO/IEC 42001:2023 — Artificial intelligence — Management system*.
+23. IETF. *The BBS Signature Scheme*. IETF Draft.
+24. CEN-CENELEC JTC 24. *EN 18222:2026 — Digital product passport — Application Programming Interfaces (APIs) for the product passport lifecycle management and searchability*. 2026.
+25. ITU-T / ISO/IEC. *X.660 | ISO/IEC 9834-1:2012 — Information technology — Procedures for the operation of object identifier registration authorities*.
+26. ITU-T / ISO/IEC. *X.680 | ISO/IEC 8824-1 — Abstract Syntax Notation One (ASN.1): Specification of basic notation*.
+27. IETF. *RFC 3061 — A URN Namespace of Object Identifiers*.
+28. ISO/IEC. *ISO/IEC 14443 (Identification cards — Contactless integrated circuit cards — Proximity cards), ISO/IEC 18004 (QR code symbology), ISO/IEC 15415 (bar code symbol print quality)*.
 
 ---
 
@@ -757,7 +959,7 @@ A complementary relationship, not a competitive one.
 
 The EU DPP (under the ESPR framework) focuses primarily on environmental and circular economy data for industrial products — a "green dimension" Digital Product Passport. ICO DPP-CQ focuses on the cultural value and quality dimensions of cultural products and specialty agricultural goods — a "cultural dimension" Digital Product Passport. The two cover different product categories and data dimensions; they are complementary rather than substitutive.
 
-At the technical level, DPP-CQ is fully compatible with W3C DID/VC standards, sharing the same technical foundation as the EU DPP, enabling data interoperability. We welcome standard coordination and mutual recognition dialogue with relevant EU institutions.
+At the technical level, DPP-CQ is fully compatible with W3C DID/VC standards, sharing the same technical foundation as the EU DPP, enabling data interoperability. v2.0 makes this concrete: products in the GS1 interop profile carry GTIN identifiers and open GS1 Digital Link carriers (aligned with EN 18219/18220), credentials support SD-JWT VC (RFC 9529) alongside BBS+, and sustainability data follows ISO 14067 and UNTP-style conformity claims, so EU importers and regulators can read and cross-check DPP-CQ data with standard tooling. DPP-CQ's flagship categories (tea, wine & spirits, cultural crafts, traditional medicine products) are not in the first ESPR priority product groups, so there is no statutory conflict; the two regimes address different dimensions and can be carried by the same passport. We welcome standard coordination and mutual recognition dialogue with relevant EU institutions.
 
 ### Q3: Why is a Root Resolver Network needed? Will it create a monopoly?
 
@@ -774,7 +976,7 @@ The design of the root resolution mechanism follows the following principles:
 ICO standards employ an architectural design of "data localization, hash cross-border":
 - **Raw data stored locally**: Detailed product quality, craftsmanship, and supply chain data are stored locally by the issuer or certification body, with no mandatory cross-border transmission;
 - **Hash fingerprint anchoring**: Only hash fingerprints of data (one-way irreversible) are registered and anchored at root nodes; hashes themselves contain no identifiable original information;
-- **Zero-Knowledge Proofs**: Sensitive data is verified via ZKP technology; verifiers receive only compliance conclusions without access to raw data;
+- **Selective disclosure**: Sensitive data is verified via SD-JWT / BBS+ proofs; verifiers receive only the claims or compliance conclusions they are authorized for, without access to undisclosed raw data;
 - **Compliance adaptation**: Regional nodes may conduct localized deployment and compliance adjustments in accordance with local data regulations.
 
 This architecture fundamentally reduces the risk of cross-border flow of raw data and complies with regulatory requirements for data sovereignty and data security in all countries.
@@ -792,7 +994,7 @@ The standards themselves are completely free.
 - Reference implementations: Open-source and free, freely modifiable and commercially usable
 - Basic verification: Basic functions such as scan-to-verify are freely available
 
-Value-added services (such as custom development, advanced certification, technical support, etc.) may be provided by service providers in the ecosystem; ICO itself does not directly operate commercial services.
+Value-added services (such as custom development, advanced assessment services, technical support, etc.) may be provided by service providers in the ecosystem; ICO itself does not directly operate commercial services.
 
 ### Q7: What is the relationship with GS1 and ISO? Is this a separate stovepipe effort?
 
@@ -808,7 +1010,7 @@ This is precisely one of the core concerns of ICO standards.
 
 Our design goal is to enable small and medium-sized producers and ICH transmitters to "afford and benefit from" the system:
 - **Low-cost solutions**: Support low-cost verification methods such as QR codes, with startup costs as low as a few cents per item;
-- **Lightweight onboarding**: SaaS-based certification platforms are provided, requiring no technical team — usable upon registration;
+- **Lightweight onboarding**: SaaS-based assessment platforms are provided, requiring no technical team — usable upon registration;
 - **Volume discounts**: Discounts or waivers for small and medium-sized producers and ICH transmitters;
 - **Capacity building**: Training and technical support provided through regional nodes and partners.
 
@@ -840,19 +1042,51 @@ The multi-stakeholder governance mechanism is the institutional guarantee for st
 ## How to Cite This Document · 如何引用本文档
 
 **English Citation:**
-> International Communication Organization (ICO). *DPP-CQ: Digital Product Passport for Cultural & Quality Goods — Standard Architecture and Core Specifications*[R]. ICO-TS-001:2026, v1.3 (Public Review Draft). July 2026. https://github.com/ICO-cloud/dpp-cq-standard
+> International Communication Organization (ICO). *DPP-CQ: Digital Product Passport for Cultural & Quality Goods — Standard Architecture and Core Specifications*[R]. ICO-TS-001:2026, v2.0.0-draft (Public Review Draft). August 2026. https://github.com/ICO-cloud/dpp-cq-standard
 
 **中文引用格式：**
-> 国际传播组织（ICO）. DPP-CQ文化与品质数字产品护照：标准架构与核心规范[R]. ICO-TS-001:2026, v1.3（征求意见稿）. 2026年7月. https://github.com/ICO-cloud/dpp-cq-standard
+> 国际传播组织（ICO）. DPP-CQ文化与品质数字产品护照：标准架构与核心规范[R]. ICO-TS-001:2026, v2.0.0-draft（征求意见稿）. 2026年8月. https://github.com/ICO-cloud/dpp-cq-standard
+
+---
+
+## Annex F (Normative): v2.0 Interoperability & Compliance Annexes
+### 附录F（规范性）v2.0 互操作与合规附件
+
+The following separate documents form a normative part of ICO Std 2001 v2.0. They are maintained in the repository under `docs/`:
+
+| Document | Path | Content |
+|---|---|---|
+| **GS1 Digital Link & Identifier Mapping** | `docs/interoperability/gs1-digital-link-mapping.md` | GTIN↔DID binding rules, Digital Link URI structure and content negotiation, EPCIS 2.0 event mapping, EN 18219/18220 alignment |
+| **Data Carrier Specification** | `docs/interoperability/carrier-specification.md` | Three-tier carriers (L1 open QR / L2 SDM NFC / L3 tamper-evident NFC), open-carrier principle, dual-carrier rule, resolver behavior; ISO/IEC 14443 Type 4, ISO/IEC 18004, ISO/IEC 15415 baselines |
+| **Identifier Mapping: OID ↔ DID** | `docs/interoperability/identifier-mapping.md` | Application-layer equivalence binding via DID `alsoKnownAs` and credential `identifiers.alias`; X.660/9834-1 and 8824-1; no new DID method, no root-resolver change |
+| **Open Interoperability API** | `docs/interoperability/api-specification.md` | REST API aligned with EN 18222:2026: resource model, lifecycle methods, identifier searchability, Read/Lifecycle/Search conformance levels, error and non-functional requirements |
+| **Credential Format Profiles** | `docs/specs/credential-formats.md` | JSON-LD Data Integrity (BBS+) vs SD-JWT VC (RFC 9529) profiles; disclosure classification; SM2/SM3/SM4 optional regional cryptography suite; status and validity rules |
+| **Conformity Declarations** | `docs/compliance/conformity-declarations.md` | Self-declarations against EU ESPR/EN standards, ISO/IEC 42001, GDPR/PIPL, EU AI Act; jurisdiction-specific mappings are informative |
+| **PIA / DPIA Summary** | `docs/compliance/pia-summary.md` | Public privacy impact assessment: data flows, risk table, data-subject rights, cross-border legal basis |
+| **JSON Schema v2.0** | `schemas/dpp-cq.schema.json` | Machine-readable data model ($id: icoun.org/schemas/dpp-cq/v2.0.0-draft) |
+| **v2.0 Example Credential** | `examples/longjing-tea-v2.json` | Full interop-profile example (Longjing tea) |
+
+### Relationship to external frameworks
+
+| External framework | Nature | DPP-CQ posture |
+|---|---|---|
+| W3C DID / VC v2.0, IETF SD-JWT (RFC 9529) | Open standards | Foundation; fully adopted |
+| GS1 Digital Link / EPCIS 2.0 | Global supply-chain standards | Normative interop profile |
+| EU ESPR (Reg. 2024/1781); EN 18216–18223 (incl. EN 18222 APIs) | EU regulation / harmonized standards | Baseline compatibility for carriers, identifiers, APIs, sustainability fields; DPP-CQ categories not in first priority groups |
+| UN/CEFACT UNTP | UN multilateral vocabulary | Adopted for conformity claims; primary multilateral bridge |
+| ISO/IEC 14067, 22000, 22739, 42001, 14443, 18004, 15415 | ISO standards | Referenced in data model, terminology, AI governance and carrier baselines |
+| ITU-T X.660 / ISO/IEC 9834-1; X.680 / ISO/IEC 8824-1; RFC 3061 (OID) | International identifier standards | Application-layer OID ↔ DID binding; no new DID method |
+| SM2/SM3/SM4 (GB/T 32918/32905/32907) | Regional cryptography standards | Opt-in suite for deployments within jurisdictions that require it |
+| EU AI Act (Reg. 2024/1689) Art. 50; ISO/IEC 42001 | EU regulation / ISO standard | Transparency and AI management provisions adopted as baseline practice |
 
 ---
 
 **Published by · 发布机构**: International Communication Organization (ICO) 国际传播组织
 **Document No. · 文档编号**: ICO-TS-001:2026
-**Version · 版本**: v1.3
-**Status · 状态**: Public Review Draft · 征求意见稿
-**Issued · 发布日期**: July 2026 · 2026年7月
-**Comment Deadline · 意见征集截止**: August 20, 2026 (Accelerated Procedure · 45-day public review) · 2026年8月20日（快速通道 · 45天征集期）
+**Version · 版本**: v2.0.0-draft
+**Status · 状态**: Public Review Draft · 征求意见稿（第二轮）
+**Issued · 发布日期**: August 2026 · 2026年8月
+**Comment Deadline · 意见征集截止**: October 15, 2026 (second review round: international interoperability & compliance) · 2026年10月15日（第二轮：国际互操作与合规）
 **Feedback · 反馈**: info@icoun.org
 **Repository · 仓库**: https://github.com/ICO-cloud/dpp-cq-standard
 

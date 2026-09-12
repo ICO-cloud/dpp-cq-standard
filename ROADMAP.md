@@ -12,21 +12,26 @@
 - [x] **GitHub Community Launch** — Open source repository & community channels
 - [ ] **Governance Charter v1.0** — Multi-stakeholder governance framework
 - [ ] **Root Resolver Network (Prototype)** — Initial prototype of root DID resolution infrastructure
+- [x] **DPP-CQ v2.0.0-draft (Aug 2026)** — International interoperability & compliance expansion: GS1 Digital Link/GTIN interop profile, EN 18220-aligned three-tier carriers, SD-JWT VC (RFC 9529) + BBS+ dual formats, optional SM2/SM3/SM4 regional suite, ISO 14067 sustainability module, AI assessment transparency (EU AI Act Art. 50), data lifecycle metadata, UNTP conformity claims, conformity declarations & PIA summary
+- [x] **DPP-CQ v2.0.0-draft refinement (Sep 2026)** — Open interoperability API aligned with EN 18222:2026 (Read/Lifecycle/Search conformance); OID ↔ DID application-layer bridge (X.660/9834-1, 8824-1, RFC 3061); carriers normatively reference ISO/IEC 14443/18004/15415; AI provisions cite EU AI Act Art. 50 + ISO/IEC 42001; national-standard mappings demoted to informative
+- [ ] **Second Public Review** — Sep 1 – Oct 15, 2026 (international interoperability & compliance annexes)
 
 ### Q4 2026 (Oct–Dec)
 
-- [ ] **DPP-CQ v1.0** — First stable release of DPP-CQ standard
-- [ ] **Reference Implementation** — Open-source reference implementation of DPP-CQ
+- [ ] **DPP-CQ v2.0 Stable Release** — First stable v2.0 after second review (incorporates GS1/SD-JWT/carrier/compliance modules)
+- [ ] **Reference Implementation v2.0** — Open-source implementation including Digital Link resolver and SD-JWT VC issuance
 - [ ] **SDK v0.1 (Python / JS)** — First developer SDKs
+- [ ] **EPCIS 2.0 Event API** — EPCIS-compatible supply-chain event endpoints, layered on the EN 18222-aligned open API surface (Lifecycle conformance)
+- [ ] **GDPR/PIPL Dual-Compliance White Paper** — Hash cross-border legal analysis + data processing agreement templates
 - [ ] **Global Digital Credibility Governance Summit** — First major community event
 - [ ] **Pilot Programs Launch** — First batch of pilot products (tea, ceramics, haute couture)
-- [ ] **ICO Std 3001 (GDCC) Draft** — Institutional credibility certification standard draft
+- [ ] **ICO Std 3001 (GDCC) Draft** — Institutional credibility assessment standard draft
 
 ## 2027: Ecosystem Expansion & Regional Rollout
 
 ### Q1 2027 (Jan–Mar)
 
-- [ ] **GDCC v1.0** — Global Digital Credibility Certification standard release
+- [ ] **GDCC v1.0** — Global Digital Credibility Assessment standard release
 - [ ] **GI Mutual Recognition Standard Draft** — Geographical indication cross-border standard
 - [ ] **First Regional Node (Southeast Asia)** — Regional test node launch
 
@@ -45,7 +50,7 @@
 ### Q4 2027 (Oct–Dec)
 
 - [ ] **Africa Regional Node** — Third regional node
-- [ ] **5,000+ Certified Products** — Milestone for DPP-CQ adoption
+- [ ] **5,000+ Verified Products** — Milestone for DPP-CQ adoption
 - [ ] **1,000+ Developer Community** — Open-source community growth
 
 ## 2028+: Global Mutual Recognition & Maturity
@@ -55,7 +60,7 @@
 - **10+ standards** covering multiple product categories
 - **20+ regional nodes** across continents
 - **1,000+ institutional members**
-- **100,000+ certified products** globally
+- **100,000+ verified products** globally
 - **Formal mutual recognition** with major international standards bodies
 - **UNESCO / WIPO formal partnership** for cultural heritage digital protection
 
