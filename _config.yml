@@ -11,7 +11,6 @@ header_pages:
   - examples.md
 
 exclude:
-  - "*.pdf"
   - "CODE_OF_CONDUCT.md"
   - "CONTRIBUTING.md"
   - "SECURITY.md"
